@@ -1,0 +1,48 @@
+.dialog_background{
+	top:0;
+	left:0;
+	position:fixed;
+	height:100%;
+	width:100%;
+	background:rgba(0,0,50,0.6);
+}
+
+.dialog_background .dialog{
+	background:white;
+	margin:5em auto;
+	max-width:25em;
+	padding:1.3em 0 0.5em 0;
+	border-radius:0.5em;
+	box-shadow:0.1em 0.1em 0.5em rgba(0,0,0,0.5);
+	position:relative;
+}
+
+.dialog_content{
+	max-height:calc(100vh - 13em);
+	overflow-y:scroll;
+}
+
+.dialog .dialog_close_button{
+	position:absolute;
+	top:0.3em;
+	right:0.3em;
+	opacity:0.5;
+	cursor:pointer;
+}
+
+.dialog .dialog_close_button:hover{
+	opacity:0.8;
+}
+
+.dialog form .error{
+	color:red;
+}
+
+.dialog form .field{
+	margin-bottom:0.3em;
+}
+
+.dialog form label{
+	min-width:5.5em;
+	display:inline-block;
+}

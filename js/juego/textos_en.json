@@ -1,0 +1,3299 @@
+{
+   "textos":{
+      "Abrir":"Open",
+      "Jugar":"Play",
+	  "Saltar":"Skip",
+      "Capítulo 1":"Chapter 1: The awakening",
+      "Menú":"Menu",
+      "Diccionario":"Dictionary",
+      "Entrenamiento":"Training",
+      "Guardar":"Save",
+      "Cargar":"Load",
+      "Créditos":"Credits",
+      "Cancelar":"Cancel",
+      "Palabra":"Word",
+      "Romaji":"Romaji",
+      "Significado":"Meaning",
+      "Practicar":"Practice",
+      "Nivel":"Level",
+      "Entrenar":"Train",
+      "Habilidades":"Skills",
+      "Mejora":"Improvement",
+      "Salir":"Exit",
+      "Volar":"Fly",
+      "Atacar":"Attack",
+      "Curar":"Heal",
+      "Energía espiritual":"Spiritual energy",
+      "Avance habilidad":"Skill advance",
+      "¡Nivel alcanzado!":"Level reached!",
+      "Mejoras disponibles":"Avaliable improvements",
+      "Mejorar habilidad":"Improve skill",
+      "Comunes":"Common",
+      "Energía":"Energy",
+      "Ataque":"Attack",
+      "Curación":"Healing",
+      "Protección":"Protection",
+      "Encuentras":"Find",
+      "Oro":"Gold",
+      "Páginas":"Pages",
+      "Gema":"Gem",
+      "Cerrar":"Close",
+      "Aprender":"Learn",
+      "Movimiento ágil":"Agile movement",
+      "Ataque potenciado":"Enhaced attack",
+      "Bala acelerada":"Accelerated projectile",
+      "Aura ampliada":"Extended aura",
+      "Ataque frecuente":"Frequent attack",
+      "Absorber energía ambiental":"Environmental energy",
+      "Atraer partículas":"Attract particles",
+      "Ataque seguidor":"Follower attack",
+      "Curación potenciada":"Enhanced healing",
+      "Curación en grupo":"Group healing",
+      "Escudo en grupo":"Group shield",
+      "Escudo potenciado":"Enhanced shield",
+      "Hechizo de curar":"Healing spell",
+      "Hechizo de escudo":"Shield spell"
+   },
+   "preguntas":[
+      {
+         "p":"do",
+         "s":"hiragana",
+         "r":"ど",
+         "o":[
+            "で",
+            "こ"
+         ],
+         "snd":"do",
+         "teoria":"teoria_hiragana"
+      },
+      {
+         "p":"de",
+         "s":"hiragana",
+         "r":"で",
+         "o":[
+            "ど",
+            "く"
+         ],
+         "snd":"de"
+      },
+      {
+         "p":"su",
+         "s":"hiragana",
+         "r":"す",
+         "o":[
+            "そ",
+            "で"
+         ],
+         "snd":"su"
+      },
+      {
+         "p":"so",
+         "s":"hiragana",
+         "r":"そ",
+         "o":[
+            "す",
+            "こ"
+         ],
+         "snd":"so"
+      },
+      {
+         "p":"ku",
+         "s":"hiragana",
+         "r":"く",
+         "o":[
+            "こ",
+            "か"
+         ],
+         "snd":"ku"
+      },
+      {
+         "p":"ko",
+         "s":"hiragana",
+         "r":"こ",
+         "o":[
+            "に",
+            "く"
+         ],
+         "snd":"ko"
+      },
+      {
+         "p":"ka",
+         "s":"indicates interrogation",
+         "r":"か",
+         "o":[
+            "こ",
+            "く"
+         ],
+         "snd":"ka",
+         "teoria":"teoria_ka_y_ni"
+      },
+      {
+         "p":"ni",
+         "s":"indicates direction",
+         "r":"に",
+         "o":[
+            "こ",
+            "そ"
+         ],
+         "snd":"ni"
+      },
+      {
+         "p":"doko",
+         "s":"where",
+         "r":"どこ",
+         "o":[
+            "です",
+            "そこ"
+         ],
+         "snd":"doko",
+         "teoria":"teoria_palabras_hiragana_kanji_verbos"
+      },
+      {
+         "p":"soko",
+         "s":"there",
+         "r":"そこ",
+         "o":[
+            "です",
+            "どこ"
+         ],
+         "snd":"soko"
+      },
+      {
+         "p":"desu",
+         "s":"to be",
+         "r":"です",
+         "o":[
+            "そこ",
+            "どこ"
+         ],
+         "snd":"desu"
+      },
+      {
+         "p":"iku",
+         "s":"go",
+         "r":"行く",
+         "o":[
+            "徂く",
+            "早く"
+         ],
+         "snd":"iku"
+      },
+      {
+         "p":"kuchi",
+         "s":"mouth",
+         "r":"口",
+         "o":[
+            "十",
+            "日"
+         ],
+         "snd":"kuchi",
+         "teoria":"teoria_radicales"
+      },
+      {
+         "p":"hi",
+         "s":"day, sun",
+         "r":"日",
+         "o":[
+            "目",
+            "口"
+         ],
+         "snd":"hi"
+      },
+      {
+         "p":"me",
+         "s":"eye",
+         "r":"目",
+         "o":[
+            "耳",
+            "月"
+         ],
+         "snd":"me"
+      },
+      {
+         "p":"tsuki",
+         "s":"month, moon",
+         "r":"月",
+         "o":[
+            "目",
+            "耳"
+         ],
+         "snd":"tsuki"
+      },
+      {
+         "p":"juu",
+         "s":"ten",
+         "r":"十",
+         "o":[
+            "口",
+            "日"
+         ],
+         "snd":"juu"
+      },
+      {
+         "p":"hayaku",
+         "s":"quick",
+         "r":"早く",
+         "o":[
+            "行く",
+            "古く"
+         ],
+         "snd":"hayaku"
+      },
+      {
+         "p":"doko desu ka",
+         "s":"Where it is?",
+         "r":"どこですか",
+         "o":[
+            "There it goes."
+         ],
+         "t":"trad",
+         "snd":"doko desu ka",
+         "teoria":"teoria_estructura_frase"
+      },
+      {
+         "p":"soko ni iku",
+         "s":"There it goes.",
+         "r":"そこに行く",
+         "o":[
+            "Where it is?"
+         ],
+         "t":"trad",
+         "snd":"soko ni iku"
+      },
+      {
+         "p":"a",
+         "s":"hiragana",
+         "r":"あ",
+         "o":[
+            "お",
+            "な"
+         ],
+         "snd":"a"
+      },
+      {
+         "p":"na",
+         "s":"hiragana",
+         "r":"な",
+         "o":[
+            "た",
+            "す"
+         ],
+         "snd":"na",
+         "teoria":"teoria_diferencias_na_ta"
+      },
+      {
+         "p":"ta",
+         "s":"hiragana",
+         "r":"た",
+         "o":[
+            "な",
+            "に"
+         ],
+         "snd":"ta"
+      },
+      {
+         "p":"ha",
+         "s":"hiragana",
+         "r":"は",
+         "o":[
+            "な",
+            "ほ"
+         ],
+         "snd":"ha"
+      },
+      {
+         "p":"anata",
+         "s":"you",
+         "r":"あなた",
+         "o":[
+            "おなた",
+            "あたな"
+         ],
+         "snd":"anata"
+      },
+      {
+         "p":"wa",
+         "s":"indicates main topic",
+         "r":"は",
+         "o":[
+            "な",
+            "ほ"
+         ],
+         "snd":"wa",
+         "teoria":"teoria_particula_wa"
+      },
+      {
+         "p":"anata wa",
+         "s":"about you",
+         "r":"あなたは",
+         "o":[
+            "おなたは",
+            "あなたほ"
+         ],
+         "snd":"anata_wa"
+      },
+      {
+         "p":"no",
+         "s":"of, indicates relationship",
+         "r":"の",
+         "o":[
+            "お",
+            "は"
+         ],
+         "snd":"no"
+      },
+      {
+         "p":"hito",
+         "s":"person",
+         "r":"人",
+         "o":[
+            "大",
+            "夫"
+         ],
+         "snd":"hito"
+      },
+      {
+         "p":"otto",
+         "s":"husband",
+         "r":"夫",
+         "o":[
+            "大",
+            "本"
+         ],
+         "snd":"otto"
+      },
+      {
+         "p":"dai",
+         "s":"big (prefix)",
+         "r":"大",
+         "o":[
+            "犬",
+            "夫"
+         ],
+         "snd":"dai",
+         "teoria":"teoria_sufijos"
+      },
+      {
+         "p":"inu",
+         "s":"dog",
+         "r":"犬",
+         "o":[
+            "大",
+            "夫"
+         ],
+         "snd":"inu"
+      },
+      {
+         "p":"i",
+         "s":"hiragana",
+         "r":"い",
+         "o":[
+            "の",
+            "は"
+         ],
+         "snd":"i"
+      },
+      {
+         "p":"u",
+         "s":"hiragana",
+         "r":"う",
+         "o":[
+            "つ",
+            "て"
+         ],
+         "snd":"u"
+      },
+      {
+         "p":"ya",
+         "s":"hiragana",
+         "r":"や",
+         "o":[
+            "つ",
+            "う"
+         ],
+         "snd":"ya"
+      },
+      {
+         "p":"te",
+         "s":"hiragana",
+         "r":"て",
+         "o":[
+            "で",
+            "と"
+         ],
+         "snd":"te",
+         "teoria":"teoria_variación_te_de"
+      },
+      {
+         "p":"hai",
+         "s":"yes",
+         "r":"はい",
+         "o":[
+            "はの",
+            "ほい"
+         ],
+         "snd":"hai"
+      },
+      {
+         "p":"daijoubu",
+         "s":"to be all right",
+         "r":"大丈夫",
+         "o":[
+            "丈大夫",
+            "夫丈大"
+         ],
+         "snd":"daijoubu"
+      },
+      {
+         "p":"namae",
+         "s":"name",
+         "r":"名前",
+         "o":[
+            "夘前",
+            "名苅"
+         ],
+         "snd":"namae",
+         "teoria":"teoria_palabras_complejas_y_radicales"
+      },
+      {
+         "p":"isshoni",
+         "s":"together",
+         "r":"一緒に",
+         "o":[
+            "一紙に",
+            "一偖に"
+         ],
+         "snd":"isshoni"
+      },
+      {
+         "p":"ru",
+         "s":"hiragana",
+         "r":"る",
+         "o":[
+            "う",
+            "ろ"
+         ],
+         "snd":"ru"
+      },
+      {
+         "p":"shi",
+         "s":"hiragana",
+         "r":"し",
+         "o":[
+            "て",
+            "と"
+         ],
+         "snd":"shi"
+      },
+      {
+         "p":"ra",
+         "s":"hiragana",
+         "r":"ら",
+         "o":[
+            "ち",
+            "ろ"
+         ],
+         "snd":"ra",
+         "teoria":"diferencias_ra_chi"
+      },
+      {
+         "p":"chi",
+         "s":"hiragana",
+         "r":"ち",
+         "o":[
+            "ら",
+            "ろ"
+         ],
+         "snd":"chi"
+      },
+      {
+         "p":"ya",
+         "s":"arrow",
+         "r":"矢",
+         "o":[
+            "本",
+            "来"
+         ],
+         "snd":"ya"
+      },
+      {
+         "p":"rai",
+         "s":"next (prefix)",
+         "r":"来",
+         "o":[
+            "本",
+            "矢"
+         ],
+         "snd":"rai"
+      },
+      {
+         "p":"ki",
+         "s":"tree",
+         "r":"木",
+         "o":[
+            "本",
+            "夫"
+         ],
+         "snd":"ki"
+      },
+      {
+         "p":"hon",
+         "s":"book",
+         "r":"本",
+         "o":[
+            "来",
+            "矢"
+         ],
+         "snd":"hon",
+         "teoria":"teoria_hon_ki"
+      },
+      {
+         "p":"shiru",
+         "s":"to know",
+         "r":"知る",
+         "o":[
+            "利る",
+            "如る"
+         ],
+         "snd":"shiru"
+      },
+      {
+         "p":"kuru",
+         "s":"come",
+         "r":"来る",
+         "o":[
+            "本る",
+            "矢る"
+         ],
+         "snd":"kuru"
+      },
+      {
+         "p":"watashi tachi",
+         "s":"we",
+         "r":"私たち",
+         "o":[
+            "利たち",
+            "私たら"
+         ],
+         "snd":"watashi_tachi",
+         "teoria":"teoria_watashi_tachi"
+      },
+      {
+         "p":"hana",
+         "s":"flower",
+         "r":"花",
+         "o":[
+            "化",
+            "苻"
+         ],
+         "snd":"hana"
+      },
+      {
+         "p":"sa",
+         "s":"hiragana",
+         "r":"さ",
+         "o":[
+            "て",
+            "と"
+         ],
+         "snd":"sa"
+      },
+      {
+         "p":"tsu",
+         "s":"hiragana",
+         "r":"つ",
+         "o":[
+            "う",
+            "て"
+         ],
+         "snd":"tsu"
+      },
+      {
+         "p":"to",
+         "s":"with",
+         "r":"と",
+         "o":[
+            "て",
+            "ど"
+         ],
+         "snd":"to",
+         "teoria":"teoria_to"
+      },
+      {
+         "p":"koko",
+         "s":"here",
+         "r":"ここ",
+         "o":[
+            "たた",
+            "にに"
+         ],
+         "snd":"koko"
+      },
+      {
+         "p":"nani",
+         "s":"what",
+         "r":"何",
+         "o":[
+            "化",
+            "同"
+         ],
+         "snd":"nani"
+      },
+      {
+         "p":"kite",
+         "s":"come",
+         "r":"来て",
+         "o":[
+            "利る",
+            "如る"
+         ],
+         "snd":"kite",
+         "teoria":"teoria_forma_te_y_nai"
+      },
+      {
+         "p":"kudasai",
+         "s":"please",
+         "r":"ください",
+         "o":[
+            "くだとい",
+            "くたさい"
+         ],
+         "snd":"kudasai"
+      },
+      {
+         "p":"shiranai",
+         "s":"don't know",
+         "r":"知らない",
+         "o":[
+            "利る",
+            "如る"
+         ],
+         "snd":"shiranai"
+      },
+      {
+         "p":"kimashita",
+         "s":"came (to come)",
+         "r":"来ました",
+         "o":[
+            "矢ました",
+            "木ました"
+         ],
+         "snd":"kimashita",
+         "teoria":"teoria_pasado_formal_y_doble_consonante"
+      },
+      {
+         "p":"douyatte",
+         "s":"which way",
+         "r":"どうやって",
+         "o":[
+            "とうやって",
+            "とうやっで"
+         ],
+         "snd":"douyatte"
+      },
+      {
+         "p":"watashi wa shiranai",
+         "s":"I don't know",
+         "r":"私は知らない",
+         "o":[
+            "利らない",
+            "如らない"
+         ],
+         "snd":"watashi wa shiranai"
+      },
+      {
+         "p":"anata wa daijoubu?",
+         "s":"Are you all right?",
+         "r":"あなたは大丈夫？",
+         "o":[
+            "How are you?",
+            "Are you tired?"
+         ],
+         "snd":"anata wa daijoubu?",
+         "t":"trad"
+      },
+      {
+         "p":"kite kudasai",
+         "s":"Come, please.",
+         "r":"来てください",
+         "o":[
+            "とうやって",
+            "とうやっで"
+         ],
+         "snd":"kite kudasai",
+         "teoria":"teoria_forma_te_kudasai"
+      },
+      {
+         "p":"nan desu ka?",
+         "s":"What it is?",
+         "r":"何ですか",
+         "o":[
+            "How it is?",
+            "Are you all right?"
+         ],
+         "snd":"nan desu ka",
+         "t":"trad"
+      },
+      {
+         "p":"koko ni kimashita ka?",
+         "s":"You came here?",
+         "r":"ここに来ましたか",
+         "o":[
+            "You come back?",
+            "Are you here?"
+         ],
+         "snd":"koko ni kimashita ka",
+         "t":"trad"
+      },
+      {
+         "p":"watashi tachi to issho ni",
+         "s":"Together with us.",
+         "r":"私たちと一緒に",
+         "o":[
+            "Go with you.",
+            "Come with us."
+         ],
+         "snd":"watashi tachi to issho ni",
+         "t":"trad"
+      },
+      {
+         "p":"wo",
+         "s":"Indicates object",
+         "r":"を",
+         "o":[
+            "て",
+            "む"
+         ],
+         "snd":"wo",
+         "teoria":"teoria_wo_da"
+      },
+      {
+         "p":"re",
+         "s":"hiragana",
+         "r":"れ",
+         "o":[
+            "わ",
+            "ね"
+         ],
+         "snd":"re"
+      },
+      {
+         "p":"iru",
+         "s":"to be",
+         "r":"いる",
+         "o":[
+            "とる",
+            "いろ"
+         ],
+         "snd":"iru"
+      },
+      {
+         "p":"da",
+         "s":"to be",
+         "r":"だ",
+         "o":[
+            "た",
+            "な"
+         ],
+         "snd":"da"
+      },
+      {
+         "p":"kokoro",
+         "s":"heart",
+         "r":"心",
+         "o":[
+            "方",
+            "化"
+         ],
+         "snd":"kokoro"
+      },
+      {
+         "p":"kore",
+         "s":"this",
+         "r":"これ",
+         "o":[
+            "こわ",
+            "こね"
+         ],
+         "snd":"kore"
+      },
+      {
+         "p":"imasu",
+         "s":"to be (formal)",
+         "r":"います",
+         "o":[
+            "こます",
+            "いすま"
+         ],
+         "snd":"imasu",
+         "teoria":"teoria_masu"
+      },
+      {
+         "p":"shitte",
+         "s":"to know (-te form)",
+         "r":"知って",
+         "o":[
+            "知て",
+            "利って"
+         ],
+         "snd":"shitte"
+      },
+      {
+         "p":"kata",
+         "s":"person (respectful)",
+         "r":"方",
+         "o":[
+            "心",
+            "力"
+         ],
+         "snd":"kata"
+      },
+      {
+         "p":"ta",
+         "s":"rice field",
+         "r":"田",
+         "o":[
+            "日",
+            "皿"
+         ],
+         "snd":"ka"
+      },
+      {
+         "p":"yama",
+         "s":"mountain",
+         "r":"山",
+         "o":[
+            "出",
+            "心"
+         ],
+         "snd":"yama"
+      },
+      {
+         "p":"hon wo shitte imasu ka",
+         "s":"Do you know the book?",
+         "s":"ou know the book?",
+         "r":"本を知っていますか？",
+         "o":[
+            "Where is the book?",
+            "Have you learnt the book?"
+         ],
+         "t":"trad",
+         "snd":"hon wo shitte imasu ka",
+         "teoria":"teoria_te_imasu"
+      },
+      {
+         "p":"hanasu",
+         "s":"to free",
+         "r":"放す",
+         "o":[
+            "知す",
+            "改す"
+         ],
+         "snd":"hanasu",
+         "teoria":"teoria_otros_verbos"
+      },
+      {
+         "p":"omou",
+         "s":"to think",
+         "r":"思う",
+         "o":[
+            "見う",
+            "出う"
+         ],
+         "snd":"omou"
+      },
+      {
+         "p":"deru",
+         "s":"to exit",
+         "r":"出る",
+         "o":[
+            "心る",
+            "思る"
+         ],
+         "snd":"deru"
+      },
+      {
+         "p":"miru",
+         "s":"to look",
+         "r":"見る",
+         "o":[
+            "目る",
+            "思る"
+         ],
+         "snd":"miru"
+      },
+      {
+         "p":"omoide",
+         "s":"memory",
+         "r":"思い出",
+         "o":[
+            "見い出",
+            "思い心"
+         ],
+         "snd":"omoide"
+      },
+      {
+         "p":"miseru",
+         "s":"to show",
+         "r":"見せる",
+         "o":[
+            "見せて",
+            "思せる"
+         ],
+         "snd":"miseru"
+      },
+      {
+         "p":"misete",
+         "s":"show (imperative)",
+         "r":"見せて",
+         "o":[
+            "見せる",
+            "思せて"
+         ],
+         "snd":"misete",
+         "teoria":"teoria_imperativo"
+      },
+      {
+         "p":"modoru",
+         "s":"come back, return",
+         "r":"戻る",
+         "o":[
+            "戸る",
+            "涙る"
+         ],
+         "snd":"modoru"
+      },
+      {
+         "p":"be",
+         "s":"hiragana",
+         "r":"べ",
+         "o":[
+            "へ",
+            "づ"
+         ],
+         "snd":"be"
+      },
+      {
+         "p":"ki",
+         "s":"hiragana",
+         "r":"き",
+         "o":[
+            "ぎ",
+            "さ"
+         ],
+         "snd":"ki"
+      },
+      {
+         "p":"e",
+         "s":"hiragana",
+         "r":"え",
+         "o":[
+            "う",
+            "そ"
+         ],
+         "snd":"e"
+      },
+      {
+         "p":"yo",
+         "s":"emphasizes an order",
+         "r":"よ",
+         "o":[
+            "な",
+            "ま"
+         ],
+         "snd":"yo",
+         "teoria":"teoria_yo"
+      },
+      {
+         "p":"kiken",
+         "s":"danger",
+         "r":"危険\t",
+         "o":[
+            "厄険",
+            "危倹"
+         ],
+         "snd":"kiken"
+      },
+      {
+         "p":"beki",
+         "s":"should",
+         "r":"べき",
+         "o":[
+            "へき",
+            "べさ"
+         ],
+         "snd":"beki"
+      },
+      {
+         "p":"iie",
+         "s":"no",
+         "r":"いいえ",
+         "o":[
+            "いええ",
+            "ここえ"
+         ],
+         "snd":"iie"
+      },
+      {
+         "p":"itai",
+         "s":"want to be",
+         "r":"いたい",
+         "o":[
+            "いだい",
+            "こたこ"
+         ],
+         "snd":"itai",
+         "teoria":"teoria_tai"
+      },
+      {
+         "p":"omoide wo misete",
+         "s":"Show the memories.",
+         "r":"思い出を見せて。",
+         "o":[
+            "Look the memories.",
+            "Show the past."
+         ],
+         "snd":"omoide wo misete",
+         "t":"trad",
+         "teoria":"teoria_wo_beki_yo"
+      },
+      {
+         "p":"kiken desu.",
+         "s":"It's dangerous.",
+         "r":"危険です。",
+         "o":[
+            "It's dificult",
+            "It's strange."
+         ],
+         "snd":"kiken desu",
+         "t":"trad"
+      },
+      {
+         "p":"modoru beki da yo",
+         "s":"You should go back.",
+         "r":"戻るべきだよ。",
+         "o":[
+            "You should wait.",
+            "You can go back."
+         ],
+         "t":"trad"
+      },
+      {
+         "p":"anata to isshoni itai desu.",
+         "s":"I want to be with you.",
+         "r":"あなたと一緒にいたいです。",
+         "o":[
+            "I'm with you.",
+            "I want to go with you."
+         ],
+         "snd":"anata to isshoni itai desu",
+         "t":"trad"
+      }
+   ],
+   "dialogos":{
+      "preset":[
+         {
+            "anim":"rect",
+            "name":"black_background",
+            "color":"black",
+            "width":1920,
+            "height":1080
+         }
+      ],
+      "inicio":[
+         {
+            "music":"13inicio"
+         },
+         {
+            "anim":"text",
+            "wait":200,
+            "y":800,
+            "x":960,
+            "text":"You are traveling to a new world.",
+            "time":2000
+         },
+         {
+            "anim":"text",
+            "wait":5200,
+            "y":800,
+            "x":960,
+            "text":"Towards a light that attracts you...",
+            "time":2000
+         },
+         {
+            "anim":"image",
+            "wait":1000,
+            "name":"luz",
+            "x":960,
+            "y":540,
+            "scale":0.01,
+            "time":1000,
+            "waitEnd":1
+         },
+         {
+            "anim":"change",
+            "wait":1000,
+            "name":"luz",
+            "scale":1.7,
+            "time":20000
+         },
+         {
+            "anim":"text",
+            "wait":8200,
+            "y":800,
+            "x":960,
+            "text":"Towards a voice that calls you ...",
+            "time":2000
+         },
+         {
+            "anim":"text",
+            "wait":13200,
+            "y":800,
+            "x":960,
+            "text":"And you know the adventure begins.",
+            "time":2000
+         },
+         {
+            "anim":"image",
+            "wait":16000,
+            "name":"c_nami",
+            "x":960,
+            "y":560,
+            "scale":1,
+            "time":4000
+         },
+         {
+            "anim":"change",
+            "wait":16000,
+            "name":"c_nami",
+            "scale":1.3,
+            "time":4000
+         },
+         {
+            "anim":"hide",
+            "wait":20000,
+            "name":"black_background",
+            "time":100,
+            "waitEnd":1
+         },
+         {
+            "t":"It has worked!"
+         },
+         {
+            "t":"Thanks for coming. I suppose I owe you an explanation: I have invoked you because I need your help."
+         },
+         {
+            "t":"My name is Nami Kitsune and I am the librarian of the school of magical creatures."
+         },
+         {
+            "t":"These are the undergrounds of the school. A book called \"Mahou no kotoba\" has been lost around here. That book can change everything."
+         },
+         {
+            "t":"I also believe that there are students pursuing it. I fear that they get in trouble."
+         },
+         {
+            "anim":"hide",
+            "name":"luz",
+            "time":1000
+         },
+         {
+            "anim":"hide",
+            "name":"c_nami",
+            "time":1000,
+            "waitEnd":1
+         },
+         {
+            "music":"3exploracion"
+         },
+         {
+            "t":"I will give you more details later, but it is important that we hurry.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I need you to guide me through these corridors and help me if there is any danger."
+         },
+         {
+            "t":"First of all let's take a look at the furniture in this room. I feel there is magic nearby."
+         }
+      ],
+      "Escaleras arriba":[
+         {
+            "t":"Those stairs take you back to school.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I can show you the school later if you want, but we don't have time right now."
+         }
+      ],
+      "Armario roto":[
+         {
+            "find":"page",
+            "feat":"Movimiento ágil"
+         },
+         {
+            "t":"A page of the book! This was what I felt.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"But why is the book losing pages? Something strange happens."
+         },
+         {
+            "t":"The good thing is that it can help you learn magic."
+         },
+         {
+            "t":"For example, this one can teach you to fly faster. I advise you to learn it as soon as possible."
+         }
+      ],
+      "primeraSubida":[
+         {
+            "t":"Congratulations! You just level up.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"When leveling up you can choose a new skill. Choose wisely"
+         },
+         {
+            "t":"Look for a skill that look interesting to you from the page on the right. Click on it and then click on the improve button."
+         }
+      ],
+      "Habla del libro":[
+         {
+            "find":"page",
+            "feat":"Absorber energía ambiental"
+         },
+         {
+            "t":"Another page! This one talks about how to collect energy from the environment.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"This knowledge will be very useful for you. This place is full of energy, and you'll need it to cast spells."
+         },
+         {
+            "t":"In any case I'm worried that the book is losing pages. I wonder why."
+         },
+         {
+            "t":"Maybe it is leaving them for some reason, or it is creating new ones and it needs space."
+         }
+      ],
+      "Nami lejos":[
+         {
+            "t":"You can not examine the objects without Nami's help, wait for her to approach."
+         }
+      ],
+      "mensajeEsperame":[
+         {
+            "t":"Hey, wait for me, please! I can not go as fast as you.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"And if I lose sight of you I will not be able to follow you."
+         }
+      ],
+      "sinEnergía":[
+         {
+            "t":"You lack energy to do magic, right? I could lend you something of mine.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Get close to me if you want it and I'll transfer it to you."
+         },
+         {
+            "opciones":[
+               {
+                  "t":"Accept it (move closer).",
+                  "a":[
+                     {
+                        "t":"All right, let me concentrate.",
+                        "pj":"c_nami"
+                     },
+                     {
+                        "t":"Mmmmmm."
+                     },
+                     {
+                        "custom":"give_energy",
+                        "energy":"2000"
+                     },
+                     {
+                        "t":"You feel how energy fills you, and you regain your full potential.",
+                        "pj":"none"
+                     },
+                     {
+                        "t":"But Nami falls to her knees, showing symptoms of fatigue."
+                     },
+                     {
+                        "t":"Don't worry, I'm fine. But I don't think I can help you much more with this.",
+                        "pj":"c_nami"
+                     }
+                  ]
+               },
+               {
+                  "t":"Reject it (move away).",
+                  "a":[
+                     {
+                        "t":"All right. You can recover energy from the environment just waiting.",
+                        "pj":"c_nami"
+                     }
+                  ]
+               }
+            ]
+         },
+         {
+            "t":"In any case there are techniques that can help you recover energy faster. I advise you to study them as soon as possible."
+         }
+      ],
+      "vesPrimerEnemigo":[
+         {
+            "t":"Watch out! That blue mass that moves is a toxic slime.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I can't get close or it will poison me, but you can take rid of it by using your magic."
+         },
+         {
+            "t":"Just click on the slime to throw a ball of energy."
+         }
+      ],
+      "eliminasPrimerEnemigo":[
+         {
+            "t":"Good job! You've got rid of with the slime.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It should have released the spiritual energy that kept it in place."
+         },
+         {
+            "t":"I can't see it, but if you can, pick it up. You will need it."
+         },
+         {
+            "t":"You will have spent energy casting spells, so it will be good to replenish it."
+         }
+      ],
+      "Frasco inicial":[
+         {
+            "t":"These flasks must contain alchemical products.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"That could be the origin of the slimes we have seen."
+         },
+         {
+            "t":"The power of the book must have infused them with spiritual energy, giving them life."
+         }
+      ],
+      "Armario laboratorio":[
+         {
+            "find":"page",
+            "feat":"Ataque frecuente"
+         },
+         {
+            "t":"Hmmm ... It says here about how to launch your energy attacks more quickly.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It may be interesting to end up with monsters sooner, but be careful."
+         },
+         {
+            "t":"Make sure you have enough energy, or it won't do you any good to shoot quickly."
+         }
+      ],
+      "Mesa experimentos":[
+         {
+            "t":"Wow, this looks like it was some kind of alchemical equipment.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"This floor must be some kind of laboratory."
+         },
+         {
+            "t":"In case you're interested, these underground belonged to a civilization now vanished."
+         },
+         {
+            "t":"Of course we don't like to live underground, so we do not use them."
+         }
+      ],
+      "Estantería laboratorio":[
+         {
+            "find":"page",
+            "feat":"Aura ampliada"
+         },
+         {
+            "t":"A work on the aura ... It will be good for you.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"The aura can be defined as the magical form of our body."
+         },
+         {
+            "t":"In your case the aura is your whole body, because you do not have the physical part."
+         },
+         {
+            "t":"Expanding your aura can help you retain more magic for when you need it."
+         }
+      ],
+      "Agradecer espíritu":[
+         {
+            "if":[
+               "not",
+               [
+                  "var",
+                  "agradecimientoEspiritu"
+               ]
+            ],
+            "then":[
+               {
+                  "t":"Now that there seems to be no danger, I wanted to thank you for what you are doing.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"I know that in these circumstances it is difficult for me to know you, since we can't even speak. But I think you have to be a great person."
+               },
+               {
+                  "t":"When we invoke spirits from other planes, they usually ask us for something in return. You, on the other hand, help with no reason."
+               },
+               {
+                  "t":"I want you to know that when this is over I will look for a way to help you too."
+               },
+               {
+                  "set":"agradecimientoEspiritu",
+                  "expresion":[
+                     "val",
+                     true
+                  ]
+               }
+            ]
+         }
+      ],
+      "Emboscada":[
+         {
+            "if":[
+               "not",
+               [
+                  "var",
+                  "emboscada"
+               ]
+            ],
+            "then":[
+               {
+                  "t":"Eh ... It seems that something moves there.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"Oh no! It's another one of those slimes!"
+               },
+               {
+                  "custom":"muestraLimo"
+               },
+               {
+                  "set":"emboscada",
+                  "expresion":[
+                     "val",
+                     true
+                  ]
+               }
+            ]
+         }
+      ],
+      "Almacén":[
+         {
+            "if":[
+               "not",
+               [
+                  "var",
+                  "vistoLaboratorio"
+               ]
+            ],
+            "then":[
+               {
+                  "t":"It seems that this was a warehouse. It is all full of alchemical products.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"I'm afraid we'll find more toxic slime on this floor."
+               },
+               {
+                  "set":"vistoLaboratorio",
+                  "expresion":[
+                     "val",
+                     true
+                  ]
+               }
+            ],
+            "else":[
+               {
+                  "t":"More alchemical products. I wonder what they would use them for.",
+                  "pj":"c_nami"
+               }
+            ]
+         }
+      ],
+      "Mesa almacén":[
+         {
+            "find":"page",
+            "feat":"Ataque potenciado"
+         },
+         {
+            "t":"Here he talks about how to enhance magic attacks.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Be careful with this too, because enhancing the attacks will cause you to expend more energy."
+         },
+         {
+            "t":"You can also learn spells that help you recover energy."
+         }
+      ],
+      "Nada":[
+         {
+            "t":"Doesn't seem to be anything interesting here.",
+            "pj":"c_nami"
+         }
+      ],
+      "Estatua":[
+         {
+            "if":[
+               "not",
+               [
+                  "var",
+                  "estatuaVista"
+               ]
+            ],
+            "then":[
+               {
+                  "t":"These must have been the Ancients who created this underground.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"In these statues it is not easy to recognize how they were, but I have seen illustrations of them."
+               },
+               {
+                  "t":"What we don't know very well is what their society was like."
+               },
+               {
+                  "t":"They were supposed to dominate a very powerful magic. It scares me a little, in fact."
+               },
+               {
+                  "t":"But the most mysterious of that race is its disappearance. It's cause is unknown."
+               },
+               {
+                  "set":"estatuaVista",
+                  "expresion":[
+                     "val",
+                     true
+                  ]
+               }
+            ],
+            "else":[
+               {
+                  "t":"Another statue like the previous one. Either they were very similar, or they must have been important.",
+                  "pj":"c_nami"
+               }
+            ]
+         }
+      ],
+      "Biblioteca":[
+         {
+            "if":[
+               "not",
+               [
+                  "var",
+                  "bibliotecaVista"
+               ]
+            ],
+            "then":[
+               {
+                  "t":"This seems to have been a library, although there's no books left.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"They were probably alchemical books for laboratories."
+               },
+               {
+                  "t":"They might have spoiled over time, after all it has been centuries since the disappearance of the Ancients."
+               },
+               {
+                  "t":"They had the ability to make better books with their magic, but most were normal books."
+               },
+               {
+                  "t":"By the way, the book we are looking for is one of those magical books that the Ancients created."
+               },
+               {
+                  "set":"bibliotecaVista",
+                  "expresion":[
+                     "val",
+                     true
+                  ]
+               }
+            ],
+            "else":[
+               {
+                  "t":"It makes me sad to see a library without books.",
+                  "pj":"c_nami"
+               }
+            ]
+         }
+      ],
+      "Estantería biblioteca":[
+         {
+            "find":"page",
+            "feat":"Movimiento ágil"
+         },
+         {
+            "t":"Another page on how to improve the movements in flight ...",
+            "pj":"c_nami"
+         },
+         {
+            "t":"What's happening? We are finding too many pages."
+         },
+         {
+            "t":"Don't think the book is defective. On the contrary, it is doing it on purpose."
+         },
+         {
+            "t":"That book belonged to great sorceresses of the past, and ended up acquiring own conscience."
+         },
+         {
+            "t":"I would bet it has a goal."
+         }
+      ],
+      "Mesa biblioteca":[
+         {
+            "find":"page",
+            "feat":"Bala acelerada"
+         },
+         {
+            "t":"Oh I see. A page on how to accelerate magical projectiles.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Very useful, especially when you fight from the distance."
+         },
+         {
+            "t":"I remember when I learned this technique. It isn't easy to master."
+         },
+         {
+            "t":"Although the truth is that you are doing quite well. Magic seems to be something natural for you."
+         }
+      ],
+      "Mesa animales":[
+         {
+            "find":"page",
+            "feat":"Atraer partículas"
+         },
+         {
+            "t":"Let me see ... This chapter talks about how to attract energy particles.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Like those that come out of the slimes  when they are eliminated."
+         },
+         {
+            "t":"The energy stays concentrated for only a few seconds, then it disperses and can not be recovered."
+         },
+         {
+            "t":"That's why this kind of techniques can be very useful."
+         },
+         {
+            "t":"But it's only useful for spirits. The corporeal beings do not have the possibility of using them."
+         },
+         {
+            "t":"I had never thought about it, but this book has a lot of information that magicians can not use."
+         }
+      ],
+      "Jaula":[
+         {
+            "if":[
+               "var",
+               "primeraJaula"
+            ],
+            "then":[
+               {
+                  "t":"Wow! This looks like cages.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"I just had a chill. They were probably for animals used in experiments."
+               },
+               {
+                  "t":"Apparently, the Ancients could be quite cruel. Even sadists."
+               },
+               {
+                  "t":"I do not think they were all like that, anyway."
+               },
+               {
+                  "t":"The truth is that we know very little about their culture."
+               },
+               {
+                  "set":"primeraJaula",
+                  "expresion":[
+                     "val",
+                     false
+                  ]
+               }
+            ],
+            "else":[
+               {
+                  "t":"I don't even want to think about what would happen to the animals that were here.",
+                  "pj":"c_nami"
+               }
+            ]
+         }
+      ],
+      "Objeto inesperado":[
+         {
+            "findObject":"gema"
+         },
+         {
+            "t":"There is something here! It looks like a gem.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"We use gems to store spiritual energy, so perhaps this is from one of the students who went down."
+         },
+         {
+            "t":"In fact I feel that I've seen it before, but I don't remember who it was."
+         },
+         {
+            "t":"Poor dears, they probably believe that they are to blame for what is happening with the book."
+         },
+         {
+            "t":"The truth is that the book has a will of its own, and what it is doing must have another reason."
+         },
+         {
+            "t":"In any case I will take the gem, we might need it later."
+         }
+      ],
+      "Relieve":[
+         {
+            "t":"This looks like inscriptions in the Ancients language.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I do not know how to read it very well, but I can decipher some of it's words."
+         },
+         {
+            "t":"It seems as if they celebrated a victory, although I do not know against whom."
+         },
+         {
+            "t":"Against other Ancients perhaps? In theory, the magical creatures didn't even know us."
+         },
+         {
+            "t":"And when they took refuge underground, they moved further away from us."
+         },
+         {
+            "t":"Thanks be given that we were not affected by its annihilating magic."
+         }
+      ],
+      "Mesa operaciones":[
+         {
+            "t":"This looks like an infirmary ... or something like that.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"And here is another page that ... seems interesting."
+         },
+         {
+            "find":"page",
+            "feat":"Hechizo de curar"
+         },
+         {
+            "t":"It contains the healing spell! I advise you to learn this quickly.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It's funny that the book has left this page right here. I guess it fits with their way of thinking."
+         },
+         {
+            "t":"It doesn't understand things as a person, but he tries to copy our logic."
+         }
+      ],
+      "Curame":[
+         {
+            "t":"Now that you know the healing spell, could you heal me?",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Being hurt makes things worse and I walk more slowly."
+         },
+         {
+            "t":"And I don't want to waste my own energy because I can't recover it as easily as you do."
+         },
+         {
+            "t":"It is assumed that above you can see a blue star."
+         },
+         {
+            "t":"If you touch it, a red heart will appear."
+         },
+         {
+            "t":"Touch that heart and then me to cast the spell."
+         },
+         {
+            "t":"That's how they told me that magic works for you, although I do not understand why."
+         }
+      ],
+      "Cama":[
+         {
+            "if":[
+               "var",
+               "primeraCama"
+            ],
+            "then":[
+               {
+                  "t":"I wonder what kind of people occupied these beds.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"I want to believe that they would be magicians who suffered accidents doing experiments, but ..."
+               },
+               {
+                  "t":"I've read too many weird things about the Ancients ..."
+               },
+               {
+                  "t":"Although I suppose you can not judge other cultures with our perspective."
+               },
+               {
+                  "set":"primeraCama",
+                  "expresion":[
+                     "val",
+                     false
+                  ]
+               }
+            ],
+            "else":[
+               {
+                  "t":"If these were beds, they do not seem to be very comfortable.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"Our beds are all magically improved to be ideal."
+               },
+               {
+                  "t":"Of course, the Ancients might not have that possibility."
+               },
+               {
+                  "t":"Although they knew more about magic than us, they were not magical creatures themselves."
+               }
+            ]
+         }
+      ],
+      "Aura2":[
+         {
+            "find":"page",
+            "feat":"Aura ampliada"
+         },
+         {
+            "t":"Another page about the aura.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"The aura is something curious. Not being able to see it makes it difficult to control."
+         },
+         {
+            "t":"To my knowledge, in your world the aura is not known, right?"
+         },
+         {
+            "t":"I wonder who would discover it in ours."
+         }
+      ],
+      "Alquimia avanzada":[
+         {
+            "t":"I have always had the feeling that the Ancients had an enormously advanced alchemy.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Magical creatures use our own magic more."
+         },
+         {
+            "t":"Many times I wonder if the origin of the magic of the Ancients is different from ours."
+         }
+      ],
+      "Armario curación potenciada":[
+         {
+            "find":"page",
+            "feat":"Curación potenciada"
+         },
+         {
+            "t":"Hey! This explains how to improve your healing.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"This technique is very useful because it does not increase the energy expenditure of the spell."
+         },
+         {
+            "t":"That is, you can heal us more with the same effort."
+         }
+      ],
+      "Más sobre recoger":[
+         {
+            "find":"page",
+            "feat":"Absorber energía ambiental"
+         },
+         {
+            "t":"More information on capturing environmental energy. It will be useful.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"But I keep wondering why the book is losing so many pages."
+         },
+         {
+            "t":"The headmistress of the school has been using it all these days without any problem, precisely trying to connect with your world."
+         },
+         {
+            "t":"Has she caused it somehow?"
+         },
+         {
+            "t":"I find it hard to believe, knowing her abilities. But with these old books you never know."
+         },
+         {
+            "t":"Even for the Ancients it had to be one of their oldest books."
+         }
+      ],
+      "Scriptorium":[
+         {
+            "if":[
+               "var",
+               "primerEscritorio"
+            ],
+            "then":[
+               {
+                  "t":"This table looks like a desk, it's full of ink stains.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"Maybe they stored the results of their experiments here. Or maybe it was a teaching classroom."
+               },
+               {
+                  "t":"What a pity that we have hardly any information about their investigations."
+               },
+               {
+                  "t":"Although as far as we know, some of them would not be to our liking."
+               },
+               {
+                  "set":"primerEscritorio",
+                  "expresion":[
+                     "val",
+                     false
+                  ]
+               }
+            ],
+            "else":[
+               {
+                  "t":"Here is something written. I think it says... Eh... I better not read it. It's just a joke of bad taste.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"Wow! I always imagine the Ancients as people so serious and majestic that I forget they were people like us."
+               },
+               {
+                  "t":"It couldn't be easy for them to have to come and take refuge here, in the underground."
+               },
+               {
+                  "t":"But of course, it is also true that it was they who made the surface uninhabitable."
+               }
+            ]
+         }
+      ],
+      "Estantería scriptorium":[
+         {
+            "t":"Nothing has been saved from their documents. Now they are just dust.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I wonder what happened to the Ancients. Where would they go?"
+         },
+         {
+            "t":"Magical creatures and the Ancients coexisted in the past, but we hid from them."
+         },
+         {
+            "t":"I do not know the reason, really. It was many years ago, and the origin of the problem hasn't come down to us."
+         }
+      ],
+      "Ataque seguidor":[
+         {
+            "find":"page",
+            "feat":"Ataque seguidor"
+         },
+         {
+            "t":"Ah ... A page on how to make attacks follow target.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It is an exceptionally complex magic, but it guarantees that you never fail."
+         },
+         {
+            "t":"It requires introducing into the sphere of energy the capacity to perceive its destiny."
+         }
+      ],
+      "Armario de pasillo":[
+         {
+            "find":"page",
+            "feat":"Ataque potenciado"
+         },
+         {
+            "t":"More information on how to increase the power of your attacks. It is an endless theme.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I know sorceresses capable of destroying a whole mountain with a single energy ball."
+         },
+         {
+            "t":"Of course, that is not very useful, actually."
+         }
+      ],
+      "Trata de comunicar":[
+         {
+            "if":[
+               "not",
+               [
+                  "var",
+                  "intentoHablar"
+               ]
+            ],
+            "then":[
+               {
+                  "t":"Before continuing ... I wanted to ask you something.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"I can try to use telepathy to communicate with you, but I do not want to do it without your permission."
+               },
+               {
+                  "t":"Let's do this, if you agree, come close to me, and if not, get away from me. You think?"
+               },
+               {
+                  "opciones":[
+                     {
+                        "t":"Yes (get closer).",
+                        "a":[
+                           {
+                              "t":"Okay, let me concentrate.",
+                              "pj":"c_nami"
+                           },
+                           {
+                              "t":"Mmmmmm."
+                           },
+                           {
+                              "t":"Nothing, I'm sorry, I only catch unconnected thoughts, and I can not understand them at all."
+                           },
+                           {
+                              "t":"It happens sometimes, spiritual minds are hard to read."
+                           }
+                        ]
+                     },
+                     {
+                        "t":"No (get away).",
+                        "a":[
+                           {
+                              "t":"Okay, I respect your decision.",
+                              "pj":"c_nami"
+                           }
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "t":"At least we have found a way that you can tell me yes or no."
+               },
+               {
+                  "t":"Taking advantage of that, I wanted to ask you something. Would you like to come to school in the future?"
+               },
+               {
+                  "t":"I know that in your world you are not a magical creature, but here you would, so you could study in our school."
+               },
+               {
+                  "opciones":[
+                     {
+                        "t":"Yes (get closer).",
+                        "a":[
+                           {
+                              "t":"Great! I would like to meet you in person.",
+                              "pj":"c_nami"
+                           },
+                           {
+                              "t":"Our headmistress is working on it, along with the queen of the fairies of your world."
+                           },
+                           {
+                              "t":"If you finally come here I assure you it will be very fun."
+                           }
+                        ]
+                     },
+                     {
+                        "t":"No (get away).",
+                        "a":[
+                           {
+                              "t":"Oh, well. Well I hope I can find another way to thank you.",
+                              "pj":"c_nami"
+                           },
+                           {
+                              "t":"You're really helping me a lot."
+                           }
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "set":"intentoHablar",
+                  "expresion":[
+                     "val",
+                     true
+                  ]
+               }
+            ]
+         }
+      ],
+      "Cristal":[
+         {
+            "t":"Look! This is a soul crystal. A living crystal.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"These crystals are what give life to the school."
+         },
+         {
+            "t":"Being alive they can store memories."
+         },
+         {
+            "t":"Maybe with a spell I can see what happened here."
+         },
+         {
+            "t":"思い出を見せて。"
+         },
+         {
+            "t":"It has worked! Look!",
+            "pj":"c_nami"
+         },
+         {
+            "t":"どこですか？",
+            "pj":"c_hikari",
+            "r":1,
+            "opacity":0.5
+         },
+         {
+            "t":"そこに行く！",
+            "pj":"c_mei",
+            "opacity":0.5
+         },
+         {
+            "t":"早く！",
+            "pj":"c_hikari",
+            "r":1,
+            "opacity":0.5
+         },
+         {
+            "t":"They are Hikari and Mei!",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It seems that they are looking for the book."
+         },
+         {
+            "t":"I'm glad Mei is here, Hikari is a freshman and may be in danger, but Mei ... is special."
+         },
+         {
+            "t":"The important thing is that we are on the right track."
+         }
+      ],
+      "Escaleras2":[
+         {
+            "t":"I don't detect the energy of the book around here.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I don't think they have taken this path, we must continue searching."
+         }
+      ],
+      "Mesa escudo":[
+         {
+            "find":"page",
+            "feat":"Hechizo de escudo"
+         },
+         {
+            "t":"Wow! A shield spell!",
+            "pj":"c_nami"
+         },
+         {
+            "t":"With this you can protect us from damage, but be careful, it consumes a lot of energy."
+         }
+      ],
+      "Acelerar en cama":[
+         {
+            "find":"page",
+            "feat":"Movimiento ágil"
+         },
+         {
+            "t":"I did not know these techniques to improve the flight.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It is also true that I have not trained that kind of magic too much."
+         },
+         {
+            "t":"In your world you have machines to do these things, right?"
+         },
+         {
+            "opciones":[
+               {
+                  "t":"Yes (get closer).",
+                  "a":[
+                     {
+                        "t":"I thought that. The truth is that I don't know much about your world, but the headmistress has compiled a lot of information.",
+                        "pj":"c_nami"
+                     },
+                     {
+                        "t":"I wonder what it will be like to fly on a machine. We can only do it with animals or magic."
+                     },
+                     {
+                        "t":"Except those who have wings, like fairies, of course."
+                     },
+                     {
+                        "t":"Although none of these ways of flying is too safe, actually."
+                     }
+                  ]
+               },
+               {
+                  "t":"No (get away).",
+                  "a":[
+                     {
+                        "t":"Oh, I must have understood something wrong. We have little knowledge about your world, actually.",
+                        "pj":"c_nami"
+                     },
+                     {
+                        "t":"It has been only a few months ago, the headmistress managed to contact it."
+                     }
+                  ]
+               }
+            ]
+         }
+      ],
+      "Jaula guardian":[
+         {
+            "t":"How strange is this, there is a bed and here is a cage.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"If someone was sleeping here, why is there also a place to enclose an animal?"
+         },
+         {
+            "t":"It could be for a pet, but if so, why lock it?"
+         }
+      ],
+      "Curar en grupo":[
+         {
+            "find":"page",
+            "feat":"Curación en grupo"
+         },
+         {
+            "t":"Phew, thanks to Inari that the page has not been stained with the alchemical products. It is very interesting",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Talk about how to emit a wave of healing energy that heals a whole group of people."
+         },
+         {
+            "t":"The best thing is that it does not need extra energy, and allows everyone to be cured quickly."
+         }
+      ],
+      "Tarros laboratorio":[
+         {
+            "t":"I am not sure that these jars and instruments are made of glass.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I would bet that it is some unknown material, created by the Ancients."
+         },
+         {
+            "t":"It is a civilization that at the same time amazes me and scares me."
+         }
+      ],
+      "Mesa laboratorio arriba":[
+         {
+            "t":"If I knew more about alchemy I might guess what they were doing here.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I think I lock myself up too much in the library with my books. I should practice magic more often."
+         },
+         {
+            "t":"It seems to me that the last month I spent more time in the library than outside of it."
+         },
+         {
+            "t":"Although of course, much of that time has been to learn your language."
+         },
+         {
+            "t":"It would have been impossible without the magic of the fairy queen of your world."
+         }
+      ],
+      "Gran puerta":[
+         {
+            "t":"Well, it's closed. And these are protections of the Ancients.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Maybe it's a measure of protection against the presence of monsters."
+         },
+         {
+            "t":"It's forgotten magic, and too powerful. I wouldn't know how to undo it."
+         },
+         {
+            "t":"There must be another way to open the door, or disable the protections."
+         },
+         {
+            "set":"puertaVista",
+            "expresion":[
+               "val",
+               true
+            ]
+         }
+      ],
+      "Primer dormitorio":[
+         {
+            "if":[
+               "not",
+               [
+                  "var",
+                  "primerDormitorio"
+               ]
+            ],
+            "then":[
+               {
+                  "t":"This looks like a bedroom.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"It is likely that many of the alchemists lived here."
+               },
+               {
+                  "t":"Or maybe it was a kind of alchemist school, and here the students would live."
+               },
+               {
+                  "set":"primerDormitorio",
+                  "expresion":[
+                     "val",
+                     true
+                  ]
+               }
+            ],
+            "else":[
+               {
+                  "t":"I'm still thinking how hard it had to be to come and live here inside.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"Millions of beings having to leave the surface forever. Unable to see the light of the sun again."
+               },
+               {
+                  "t":"What would lead them to cause such a destruction, and what harmed them so much?"
+               }
+            ]
+         }
+      ],
+      "Encuentra escudo potenciado":[
+         {
+            "find":"page",
+            "feat":"Escudo potenciado"
+         },
+         {
+            "t":"Aquí hay otra. Esta habla de cómo hacer escudos que duren más.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Al alargar la vida del escudo su coste aumenta un poco, pero sinceramente creo que merece la pena."
+         }
+      ],
+      "Segundo dormitorio":[
+         {
+            "t":"It is curious that these furniture have been presrved down here for so long.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It looks like wood, but they could not get it from the surface. Maybe some kind of underground plant."
+         },
+         {
+            "t":"Or maybe it's some other material that they invented."
+         }
+      ],
+      "Oración":[
+         {
+            "t":"Here he talks about the values of the Ancients. It is a kind of prayer.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It's funny, it seems that the Ancients were very similar to each other, unlike magical creatures."
+         },
+         {
+            "t":"As far as I know, in your world you are also very diverse, although you do not always consider yourself magical creatures."
+         },
+         {
+            "t":"Are you a magical creature?"
+         },
+         {
+            "opciones":[
+               {
+                  "t":"Yes (get closer).",
+                  "a":[
+                     {
+                        "t":"I'm sorry that we can't communicate better, I would like to know what kind of creature you are.",
+                        "pj":"c_nami"
+                     }
+                  ]
+               },
+               {
+                  "t":"No (get away).",
+                  "a":[
+                     {
+                        "t":"Yes, I have heard that there are people who do not recognize themselves as magical creatures in your world.",
+                        "pj":"c_nami"
+                     },
+                     {
+                        "t":"Even many people are unaware of its existence."
+                     }
+                  ]
+               },
+               {
+                  "t":"(You hesitate).",
+                  "a":[
+                     {
+                        "t":"Ah ... you may not really know. In your world it isn't something that is taught normally, as far as I know.",
+                        "pj":"c_nami"
+                     },
+                     {
+                        "t":"But, being sincere, if you doubt it is possible that you are. If you were not, you would not hesitate."
+                     },
+                     {
+                        "t":"When you have been educated to not believe in the existence of what you are, it is difficult to accept reality."
+                     }
+                  ]
+               }
+            ]
+         },
+         {
+            "t":"In any case I know that in your world many kinds of people and many ways of being coexist."
+         },
+         {
+            "t":"I love that kind of diversity, even if it is not I always understood."
+         }
+      ],
+      "Armario bala":[
+         {
+            "find":"page",
+            "feat":"Bala acelerada"
+         },
+         {
+            "t":"Another technique to accelerate the projectiles.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"After fighting like this room, I find it even more interesting."
+         }
+      ],
+      "Escudo en grupo":[
+         {
+            "find":"page",
+            "feat":"Escudo en grupo"
+         },
+         {
+            "t":"Oh! This can help us.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It makes the shields protect the whole group, instead of just one person."
+         },
+         {
+            "t":"With these techniques the slimes will be a minor annoyance."
+         }
+      ],
+      "Niña":[
+         {
+            "if":[
+               "not",
+               [
+                  "var",
+                  "encontradoHana"
+               ]
+            ],
+            "then":[
+               {
+                  "t":"I'm going to talk to this person. I think I've never seen it before.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"あなたは大丈夫ですか？",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"はい。",
+                  "pj":"c_nina",
+                  "r":1
+               },
+               {
+                  "t":"あなたの名前は何ですか？",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"花です。",
+                  "pj":"c_nina",
+                  "r":1
+               },
+               {
+                  "t":"She says her name is Hana, but I don't know her.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"Nor does she wear the school uniform."
+               },
+               {
+                  "t":"どうやってここに来ましたか？",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"私は知らない。",
+                  "pj":"c_nina",
+                  "r":1
+               },
+               {
+                  "t":"私たちと一緒に来てください。",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"はい。",
+                  "pj":"c_nina",
+                  "r":1
+               },
+               {
+                  "t":"She does not seem very talkative, maybe she's scared.",
+                  "pj":"c_nami"
+               },
+               {
+                  "t":"I told her  to come with us. Please, take care that nothing happens to her."
+               },
+               {
+                  "add_party":"Niña"
+               },
+               {
+                  "set":"encontradoHana",
+                  "expresion":[
+                     "val",
+                     true
+                  ]
+               }
+            ]
+         }
+      ],
+      "Hana encuentra una hoja":[
+         {
+            "t":"本です！",
+            "pj":"c_nina",
+            "r":1
+         },
+         {
+            "find":"page",
+            "feat":"Aura ampliada"
+         },
+         {
+            "t":"花、本を知っていますか？",
+            "pj":"c_nami"
+         },
+         {
+            "t":"はい。",
+            "pj":"c_nina",
+            "r":1
+         },
+         {
+            "t":"How strange, Hana has found a page and it looks like she recognize it...",
+            "pj":"c_nami"
+         },
+         {
+            "t":"She even says she knows the book."
+         },
+         {
+            "t":"How is that possible? Almost nobody has access to that book, and she doesn't look like a student at this school."
+         },
+         {
+            "t":"Maybe she has entered into the reserved wing with Hikari and Mei, but how could she enter the school in the first place?"
+         }
+      ],
+      "Curación potenciada 2":[
+         {
+            "find":"page",
+            "feat":"Curación potenciada"
+         },
+         {
+            "t":"More information about healing techniques.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Again, these techniques do not increase the energy needed to cast the spell, so they are quite useful."
+         }
+      ],
+      "Suposiciones Hana":[
+         {
+            "t":"When I saw these chemical products, I thought of a nonsense.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Do not take me too seriously, but ... what if Hana is a product of this lab?"
+         },
+         {
+            "t":"She could also be heir of the Ancients. There is nothing left of them, but some of their creations have been found alive."
+         },
+         {
+            "t":"The thing is that I don't recognize her as any kind of magical creature. I do not know if you want me to continue annoying you with my hypothesis ..."
+         },
+         {
+            "opciones":[
+               {
+                  "t":"Yes (get closer).",
+                  "a":[
+                     {
+                        "t":"It's okay. Obviously she isn't a fairy, nor a wolf girl, nor a vampire.",
+                        "pj":"c_nami"
+                     },
+                     {
+                        "t":"If she were a dragon, angel or similar, she could reach the capacity to hide its characteristics, but she doesn't seem to have so much power."
+                     },
+                     {
+                        "t":"And witches are easily distinguished by their smell. At least I do, I have a good nose."
+                     },
+                     {
+                        "t":"It is also true that there are countless magical creatures, and that I can't know them all, but ..."
+                     },
+                     {
+                        "t":"I don't know, there are too many unusual circumstances surrounding this girl."
+                     }
+                  ]
+               },
+               {
+                  "t":"No (get away)",
+                  "a":[
+                     {
+                        "t":"The truth is that sometimes I overdo thinking aloud.",
+                        "pj":"c_nami"
+                     }
+                  ]
+               }
+            ]
+         }
+      ],
+      "Último ataque potente":[
+         {
+            "find":"page",
+            "feat":"Ataque potenciado"
+         },
+         {
+            "t":"Another page on how to improve your attack.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"This seems excessive to me. Is it that force is the only way to solve things ?."
+         }
+      ],
+      "Escudo potenciado 2":[
+         {
+            "find":"page",
+            "feat":"Escudo potenciado"
+         },
+         {
+            "t":"This could be useful. It is true that eliminating the slimes is fine, but avoiding them is an option too.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"With the shield to the maximum perhaps we could run between them without problems."
+         },
+         {
+            "t":"Although on the other hand it is necessary to register everything well, we should not leave any forgotten page."
+         }
+      ],
+      "Estatua fundador":[
+         {
+            "t":"This statue has an inscription.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I do not understand it well, but I think it's about the founder of these laboratories, or something like that."
+         },
+         {
+            "t":"It indicates the date on which they were founded. Although I'm not sure, I think it's a few decades before the disappearance of the Ancients."
+         },
+         {
+            "t":"We never got to know what happened. They did not venture to the surface, and we did not go down to their subways."
+         },
+         {
+            "t":"We believed for years that they were still down here, until their machines on the surface began to fail. Nobody fixed them."
+         },
+         {
+            "t":"Then we started to explore the subways, and discovered that they were completely empty."
+         },
+         {
+            "t":"Some say they made a journey, but where?"
+         }
+      ],
+      "colector":[
+         {
+            "t":"Wow! This seems an accumulator of spiritual energy of the Ancients.",
+            "pj":"c_nami",
+            "r":1
+         },
+         {
+            "t":"It's strange, It should be completely exhausted ..."
+         },
+         {
+            "t":"Perhaps the presence of the book's pages is generating energy. That is why we must recover them all."
+         },
+         {
+            "t":"In fact it would be good also to empty this accumulator."
+         },
+         {
+            "if":[
+               "var",
+               "puertaVista"
+            ],
+            "then":[
+               {
+                  "t":"It may be what has blocked the door. If we empty it, we can move on."
+               }
+            ],
+            "else":[
+               {
+                  "t":"It may be activating unknown artifacts of this level. I think it would be better to empty it."
+               }
+            ]
+         },
+         {
+            "t":"I do not fully understand this technology, but I think I know how to do it."
+         },
+         {
+            "t":"What it contains is spiritual energy. You can absorb it if you get into the sphere."
+         },
+         {
+            "opciones":[
+               {
+                  "t":"Get into the sphere.",
+                  "a":[
+                     {
+                        "set":"energiaAbsorvida",
+                        "expresion":[
+                           "val",
+                           true
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "t":"Get away from the sphere.",
+                  "a":[
+                     {
+                        "t":"Oh, do not worry, It shouldn't hurt you.",
+                        "pj":"c_nami",
+                        "r":1
+                     },
+                     {
+                        "t":"In the worst case you would return to your plane and I could re-invoke you."
+                     },
+                     {
+                        "opciones":[
+                           {
+                              "t":"Get into the sphere.",
+                              "a":[
+                                 {
+                                    "set":"energiaAbsorvida",
+                                    "expresion":[
+                                       "val",
+                                       true
+                                    ]
+                                 }
+                              ]
+                           },
+                           {
+                              "t":"Get away from the sphere.",
+                              "a":[
+                                 {
+                                    "t":"Okay, I will simply try to release the energy.",
+                                    "pj":"c_nami",
+                                    "r":1
+                                 },
+                                 {
+                                    "t":"放す。"
+                                 },
+                                 {
+                                    "changeFrame":"colector",
+                                    "frame":"inactivo"
+                                 },
+                                 {
+                                    "custom":"give_energy",
+                                    "energy":"2000"
+                                 },
+                                 {
+                                    "t":"You feel as if an energy wave were going through the whole room.",
+                                    "pj":"none"
+                                 },
+                                 {
+                                    "t":"Wow! I expected it to have dissipated, but it seems that the energy continues here.",
+                                    "pj":"c_nami",
+                                    "r":1
+                                 },
+                                 {
+                                    "t":"If so, I fear that it may have affected other creatures."
+                                 }
+                              ]
+                           }
+                        ]
+                     }
+                  ]
+               }
+            ]
+         },
+         {
+            "if":[
+               "var",
+               "energiaAbsorvida"
+            ],
+            "then":[
+               {
+                  "t":"As soon as you enter the sphere you feel a powerful energy flooding you.",
+                  "pj":"none"
+               },
+               {
+                  "t":"You notes something strange ..."
+               },
+               {
+                  "changeFrame":"colector",
+                  "frame":"inactivo"
+               },
+               {
+                  "changeSpirit":"spirit2"
+               },
+               {
+                  "t":"Oh! You have changed!",
+                  "pj":"c_nami",
+                  "r":1
+               },
+               {
+                  "t":"The influence of the book is greater than I expected. The energy that you have absorbed wasn't neutral."
+               },
+               {
+                  "t":"It shouldn't be a problem, but I'll be careful if something happens."
+               }
+            ]
+         },
+         {
+            "changeFrame":"Gran puerta",
+            "frame":"abierta"
+         },
+         {
+            "unblock":"Gran puerta"
+         }
+      ],
+      "Cristal2":[
+         {
+            "t":"Another crystal! I will cast the spell again.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"思い出を見せて。",
+            "pj":"c_nami"
+         },
+         {
+            "t":"これは危険です。",
+            "pj":"c_mei",
+            "opacity":0.5
+         },
+         {
+            "t":"戻るべきだよ。",
+            "opacity":0.5
+         },
+         {
+            "t":"いいえ。",
+            "pj":"c_hikari",
+            "r":1,
+            "opacity":0.5
+         },
+         {
+            "t":"私はあなたと一緒にいたいです。",
+            "opacity":0.5,
+            "pj":"c_hikari",
+            "r":1
+         },
+         {
+            "t":"It seems that Mei is aware of the danger, but Hikari does not want to leave her alone.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Hikari is too inexperienced, she would be safer if she came back."
+         },
+         {
+            "t":"Anyway, I trust that Mei can protect her."
+         }
+      ],
+      "Escaleras salida":[
+         {
+            "t":"I feel the energy of the book around here!",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It's obvious that it has go down to another level."
+         },
+         {
+            "t":"I hope it haven't gotten far."
+         },
+         {
+            "t":"DEMO ENDS HERE."
+         },
+         {
+            "t":"I hope you like it and be able to finish the game so you can enjoy it completely."
+         }
+      ],
+      "teoria_hiragana":[
+         {
+            "t":"Here you will learn to use your powers.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"You will learn to use spells as you learn the language of magic."
+         },
+         {
+            "t":"These symbols are hiragana, and represent sounds. For example \"do\" in our language is written ど."
+         },
+         {
+            "t":"Try to memorize them well before continuing, because the book will ask you questions. The more you hit, the more your magic will improve."
+         }
+      ],
+      "teoria_ka_y_ni":[
+         {
+            "t":"Look at か (ka) and に (ni). They are not simple sounds, but particles, which have a special use in our language.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"か (ka) is placed at the end of the sentences to indicate that the sentence is a question. Later we will see examples."
+         },
+         {
+            "t":"に (ni) is placed behind a word to indicate an address, among other things."
+         },
+         {
+            "t":"In many cases the particles are similar to your prepositions."
+         }
+      ],
+      "teoria_palabras_hiragana_kanji_verbos":[
+         {
+            "t":"By joining the sounds we have seen we can form words. For example: どこ (doko), which means \"where\".",
+            "pj":"c_nami"
+         },
+         {
+            "t":"But not all words are written in hiragana. Some use kanjis, like 行く (iku) which is the verb \"go\"."
+         },
+         {
+            "t":"行く ends in く (ku), which is a hiragana that we have already seen. But it starts with a symbol that we do not know: 行, which in this case is read as \"i\"."
+         },
+         {
+            "t":"If you look at the difference of the symbols in kanji and hiragana, the kanjis are more complex and are mostly made with straight lines."
+         }
+      ],
+      "teoria_radicales":[
+         {
+            "t":"Here we have several more kanjis, which are similar.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"We start with the simplest ones because they are also used in more complex ones."
+         },
+         {
+            "t":"These are called radicals, and knowing them helps others learn."
+         },
+         {
+            "t":"Look, for example, at the \"moon\" kanji 月 (tsuki), which I will show you later as part of another more complex kanji."
+         }
+      ],
+      "teoria_estructura_frase":[
+         {
+            "t":"Now that we know a few words we can start to form sentences.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Look at どこですか. That ends in か tells us that it is a question."
+         },
+         {
+            "t":"どこ (doko) and です (desu) mean \"where\" and \"to be\", so this sentence asks \"where is it?\"."
+         },
+         {
+            "t":"In Japanese the verbs are put at the end of the sentence, both です (desu) and 行く (iku), which means \"go\"."
+         },
+         {
+            "t":"Also particles are put after the word or phrase they accompany, both か (ka) and に (ni)."
+         },
+         {
+            "t":"In the case of に (ni), it accompanies そこ (soko) which means there. Literally it says \"there to go\", or correctly translated: \"There it goes\"."
+         }
+      ],
+      "teoria_diferencias_na_ta":[
+         {
+            "t":"Here we have more syllables in hiragana.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"I advise you to pay special attention to the difference between な (na) and. た (ta), which are quite similar."
+         },
+         {
+            "t":"Another interesting symbol is は (ha), which we will see later that it isn't always pronounced that way."
+         }
+      ],
+      "teoria_particula_wa":[
+         {
+            "t":"Another important particle is the は (wa) particle.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"As you will see it is written as hiragana は (ha), but pronounced \"wa\". This tells us that it is the main topic particle."
+         },
+         {
+            "t":"This particle is placed behind a word to indicate that this is the main topic of the phrase."
+         },
+         {
+            "t":"For example あなたは (anata wa) is like saying: \"talking about you\" or \"about you\"."
+         }
+      ],
+      "teoria_sufijos":[
+         {
+            "t":"Some kanjis are a word for themselves, like 人 (hito - person), 夫 (otto - husband) and 犬 (inu - dog).",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Others like 大 (dai - big) are only used as part of other words. Soon we will see some example."
+         }
+      ],
+      "teoria_variación_te_de":[
+         {
+            "t":"Look at the new hiragana て (te). Doesn't it look familiar? It's almost like で (of).",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Those two small lines that have で and do not have て are called dakuten, and they serve to form voiced consonants."
+         },
+         {
+            "t":"We will see more examples in the future. I hope that knowing this will help you remember and distinguish these two syllables."
+         }
+      ],
+      "teoria_palabras_complejas_y_radicales":[
+         {
+            "t":"Do you remember the kanji 大 (dai - big)? Well, here we have it as part of the word 大丈夫 (daijoubu), which means \"to be fine\".",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Another more complicated word is 名前 (namae - name). The kanjis that form it may seem difficult to remember, but it is not so hard."
+         },
+         {
+            "t":"To achieve this, look at the radicals that compose them. For example, the bottom part of the first has the radical \"mouth\": 口 (kuchi)."
+         },
+         {
+            "t":"The second has the radical \"moon\" on the left. Do you remember it? It's 月 (tsuki), that I showed you before."
+         }
+      ],
+      "diferencias_ra_chi":[
+         {
+            "t":"In these hiragana I advise you to look at the difference between ら (ra) and ち (chi).",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Although they look alike, in ち (chi) the top line is completely horizontal and cuts the other line."
+         }
+      ],
+      "teoria_hon_ki":[
+         {
+            "t":"Here we have another series of kanjis quite similar. Look closely at the differences.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"For example, the book kanji (本) is like the tree kanji (木) but with one more line at the bottom."
+         }
+      ],
+      "teoria_watashi_tachi":[
+         {
+            "t":"Here we have two new verbs, both finished in る (ru), which is the most common ending for verbs.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Another interesting thing is the word 私たち (watashi tachi) which means \"we\"."
+         },
+         {
+            "t":"Actually た ち (tachi) is used to convert many words into plural, as we will see later."
+         }
+      ],
+      "teoria_to":[
+         {
+            "t":"Another common particle is と (to) that is put behind a name to indicate with whom we perform the action.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It is similar to our preposition \"with\"."
+         }
+      ],
+      "teoria_forma_te_y_nai":[
+         {
+            "t":"The verbs we have seen so far were in the so-called \"dictionary form\", ending in \"u\", like 来る (kuru).",
+            "pj":"c_nami"
+         },
+         {
+            "t":"But if you pay attention here we find the same kanji followed by another hiragana: 来て (kite).",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It is a conjugation of 来る (kuru), which is known as -て form (te form), and has many uses that we will soon begin to see."
+         },
+         {
+            "t":"Notice that the pronunciation of the kanji changes when conjugated: from \"ku\" it happens to \"ki\"."
+         },
+         {
+            "t":"This change of pronunciation is not usual: this is an irregular verb."
+         },
+         {
+            "t":"On the other hand 知らない (shiranai) is in form - ない (nai), which is the negative form of the verb."
+         },
+         {
+            "t":"知る (shiru) means \"to know\", while 知らない means \"not to know\"."
+         },
+         {
+            "t":"In this case, it is usually formed by changing the last syllable to the version with \"a\" and adding - な い (nai)."
+         },
+         {
+            "t":"That is, in this case る (ru) becomes ら (ra), and we add - ない: 知らない (shiranai)."
+         }
+      ],
+      "teoria_pasado_formal_y_doble_consonante":[
+         {
+            "t":"Here we have another conjugated verb: 来ました (kimashita).",
+            "pj":"c_nami"
+         },
+         {
+            "t":"In Japanese, you can talk more formally or less formally. This is one of the formal cases."
+         },
+         {
+            "t":"-ました (mashita) is the conjugation that indicates formal past. The る (ru) of the end is replaced by this conjugation."
+         },
+         {
+            "t":"While 来る (kuru) means \"I come\", 来ました (kimashita) means \"I came\"."
+         },
+         {
+            "t":"Also note the expression どうやって (douyatte). Do you see that he has a small つ (tsu) between や (ya) and て (te)?"
+         },
+         {
+            "t":"This little つ (tsu) is called soukuon, and it makes the next consonant have a double sound. In this case やって (yat-te)."
+         }
+      ],
+      "teoria_forma_te_kudasai":[
+         {
+            "t":"Here we have a first example of using the -て (te) form.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"To ask for something please put ください (kudasai) behind the verb in the -て (te) form."
+         },
+         {
+            "t":"For example, to ask someone to come, we say 来てください (kite kudasai)."
+         }
+      ],
+      "teoria_wo_da":[
+         {
+            "t":"を (wo) is another usual particle. We put it behind the object of the sentence on which the verb acts.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Notice also that in this particle the double vee almost don't sound. The sound is almost like a simple \"o\"."
+         },
+         {
+            "t":"We will see an example of its use later."
+         },
+         {
+            "t":"Also look at the word だ (da), which is the dakuten version of the syllable た (ta)."
+         },
+         {
+            "t":"This word is the informal form of です (desu), and has the same meaning."
+         }
+      ],
+      "teoria_masu":[
+         {
+            "t":"Here we have the verb います (imasu), which is the formal conjugation of いる.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"This is called the -ます (masu) form, and it is usually enough to substitute the last syllable of the verb for - ます (masu)."
+         },
+         {
+            "t":"So in formal mode we have -ます (masu) for the present and -ました (mashita) for the past."
+         }
+      ],
+      "teoria_te_imasu":[
+         {
+            "t":"Another use of the て (-te) form is the expression - て + います (-te imasu), which indicates continuous tense.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"Indicates that the action hasn't finished, that you are still doing it."
+         },
+         {
+            "t":"For example, in this case 知っています (shite imasu) means \"to be knowing\"."
+         }
+      ],
+      "teoria_otros_verbos":[
+         {
+            "t":"Here we have new verbs.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"As I said, this is the dictionary form, which ends in \"u\"."
+         },
+         {
+            "t":"Look especially at the Kanjis. You can memory some of them based on their radicals."
+         },
+         {
+            "t":"思う (omou) has the radicals 田 (ta) and 心 (kokoro), whereas 見る miru has the radical 目 (me), for example."
+         }
+      ],
+      "teoria_imperativo":[
+         {
+            "t":"Another use of the -て (te) form is the imperative.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"If we use the -て (te) form without putting ください (kudasai) behind, it ceases to be a request and becomes more like an order, in imperative."
+         },
+         {
+            "t":"For example, 見せて (misete), the -て (te) form of the verb 見せる (miseru), which means \"to show\", becomes \"show me\"."
+         }
+      ],
+      "teoria_yo":[
+         {
+            "t":"Here we have the particle よ (yo), which is placed at the end of the sentence to give expressiveness.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"It has several uses, like emphasizing a petition, or the certainty of your affirmation."
+         },
+         {
+            "t":"Later we will see examples of its use with which I will be able to explain it better."
+         }
+      ],
+      "teoria_tai":[
+         {
+            "t":"Another important conjugation is the conjugation たい (tai), which means to want.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"If いる (iru) means \"to be\", when we substitute る (ru) for たい (tai), it means \"want to be\"."
+         }
+      ],
+      "teoria_wo_beki_yo":[
+         {
+            "t":"In these expressions we have several examples of what we have explained before.",
+            "pj":"c_nami"
+         },
+         {
+            "t":"The particle を (wo) is used after 思い出 (omoide) \"memories\", to indicate that this is what we want to show."
+         },
+         {
+            "t":"The word べき (beki), used behind 戻 る (modoru), means \"you should go back\"."
+         },
+         {
+            "t":"And in that same phrase the particle よ (yo) is used at the end to express that that is something you really believe in."
+         },
+         {
+            "t":"Finally we also have the word 一緒に (isshoni) and and the conjugation いたい (itai) to express \"I want to be with you\"."
+         }
+      ]
+   }
+}
