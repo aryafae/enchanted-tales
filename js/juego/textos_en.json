@@ -2061,7 +2061,7 @@
                {
                   "opciones":[
                      {
-                        "t":"Yes (get closer).",
+                        "t":"Yes (move closer).",
                         "a":[
                            {
                               "t":"Okay, let me concentrate.",
@@ -2079,7 +2079,7 @@
                         ]
                      },
                      {
-                        "t":"No (get away).",
+                        "t":"No (move away).",
                         "a":[
                            {
                               "t":"Okay, I respect your decision.",
@@ -2101,7 +2101,7 @@
                {
                   "opciones":[
                      {
-                        "t":"Yes (get closer).",
+                        "t":"Yes (move closer).",
                         "a":[
                            {
                               "t":"Great! I would like to meet you in person.",
@@ -2116,7 +2116,7 @@
                         ]
                      },
                      {
-                        "t":"No (get away).",
+                        "t":"No (move away).",
                         "a":[
                            {
                               "t":"Oh, well I hope I can find another way to thank you.",
@@ -2148,7 +2148,7 @@
             "t":"These crystals are what give life to the school."
          },
          {
-            "t":"Being alive they can store memories."
+            "t":"Being alive, they can store memories."
          },
          {
             "t":"Maybe with a spell I can see what happened here."
@@ -2157,7 +2157,7 @@
             "t":"思い出を見せて。"
          },
          {
-            "t":"It has worked! Look!",
+            "t":"It worked! Look!",
             "pj":"c_nami"
          },
          {
@@ -2193,7 +2193,7 @@
       ],
       "Escaleras2":[
          {
-            "t":"I don't detect the energy of the book around here.",
+            "t":"I don't detect the energy from the book around here.",
             "pj":"c_nami"
          },
          {
@@ -2219,11 +2219,11 @@
             "feat":"Movimiento ágil"
          },
          {
-            "t":"I did not know these techniques to improve the flight.",
+            "t":"I never knew of these techniques to improve the flight.",
             "pj":"c_nami"
          },
          {
-            "t":"It is also true that I have not trained that kind of magic too much."
+            "t":"It's true, though, that I have not trained that kind of magic too much."
          },
          {
             "t":"In your world you have machines to do these things, right?"
@@ -2231,14 +2231,14 @@
          {
             "opciones":[
                {
-                  "t":"Yes (get closer).",
+                  "t":"Yes (move closer).",
                   "a":[
                      {
                         "t":"I thought that. The truth is that I don't know much about your world, but the headmistress has compiled a lot of information.",
                         "pj":"c_nami"
                      },
                      {
-                        "t":"I wonder what it will be like to fly on a machine. We can only do it with animals or magic."
+                        "t":"I wonder what it would be like to fly on a machine. We can only fly with animals or magic."
                      },
                      {
                         "t":"Except those who have wings, like fairies, of course."
@@ -2249,14 +2249,14 @@
                   ]
                },
                {
-                  "t":"No (get away).",
+                  "t":"No (move away).",
                   "a":[
                      {
-                        "t":"Oh, I must have understood something wrong. We have little knowledge about your world, actually.",
+                        "t":"Oh, I must have misunderstood something. We have so little knowledge about your world.",
                         "pj":"c_nami"
                      },
                      {
-                        "t":"It has been only a few months ago, the headmistress managed to contact it."
+                        "t":"Only a few months ago the headmistress managed to contact it."
                      }
                   ]
                }
@@ -2265,7 +2265,7 @@
       ],
       "Jaula guardian":[
          {
-            "t":"How strange is this, there is a bed and here is a cage.",
+            "t":"How strange, there is a bed and here is a cage.",
             "pj":"c_nami"
          },
          {
@@ -2281,14 +2281,14 @@
             "feat":"Curación en grupo"
          },
          {
-            "t":"Phew, thanks to Inari that the page has not been stained with the alchemical products. It is very interesting",
+            "t":"Phew, thank Inari that the page has not been stained with the alchemical products. It is very interesting",
             "pj":"c_nami"
          },
          {
-            "t":"Talk about how to emit a wave of healing energy that heals a whole group of people."
+            "t":"It talks about how to emit a wave of healing energy that heals a whole group of people."
          },
          {
-            "t":"The best thing is that it does not need extra energy, and allows everyone to be cured quickly."
+            "t":"The best part is that it does not need extra energy, and allows everyone to be healed quickly."
          }
       ],
       "Tarros laboratorio":[
@@ -2312,13 +2312,13 @@
             "t":"I think I lock myself up too much in the library with my books. I should practice magic more often."
          },
          {
-            "t":"It seems to me that the last month I spent more time in the library than outside of it."
+            "t":"It seems to me that the last month I spent more time inside the library than outside of it."
          },
          {
-            "t":"Although of course, much of that time has been to learn your language."
+            "t":"Although much of that time has been spent learning your language."
          },
          {
-            "t":"It would have been impossible without the magic of the fairy queen of your world."
+            "t":"It would have been impossible without the magic of the Fairy Queen of your world."
          }
       ],
       "Gran puerta":[
@@ -2361,7 +2361,7 @@
                   "t":"It is likely that many of the alchemists lived here."
                },
                {
-                  "t":"Or maybe it was a kind of alchemist school, and here the students would live."
+                  "t":"Or maybe it was a kind of alchemist school, and the students lived here."
                },
                {
                   "set":"primerDormitorio",
@@ -2377,7 +2377,7 @@
                   "pj":"c_nami"
                },
                {
-                  "t":"Millions of beings having to leave the surface forever. Unable to see the light of the sun again."
+                  "t":"Millions of beings having to leave the surface forever, unable to see the light of the sun again."
                },
                {
                   "t":"What would lead them to cause such a destruction, and what harmed them so much?"
@@ -2400,7 +2400,7 @@
       ],
       "Segundo dormitorio":[
          {
-            "t":"It is curious that these furniture have been presrved down here for so long.",
+            "t":"It is curious that this furniture has been preserved down here for so long.",
             "pj":"c_nami"
          },
          {
@@ -2412,7 +2412,7 @@
       ],
       "Oración":[
          {
-            "t":"Here he talks about the values of the Ancients. It is a kind of prayer.",
+            "t":"Here it talks about the values of the Ancients. It is a kind of prayer.",
             "pj":"c_nami"
          },
          {
@@ -2427,7 +2427,7 @@
          {
             "opciones":[
                {
-                  "t":"Yes (get closer).",
+                  "t":"Yes (move closer).",
                   "a":[
                      {
                         "t":"I'm sorry that we can't communicate better, I would like to know what kind of creature you are.",
@@ -2436,14 +2436,14 @@
                   ]
                },
                {
-                  "t":"No (get away).",
+                  "t":"No (move away).",
                   "a":[
                      {
                         "t":"Yes, I have heard that there are people who do not recognize themselves as magical creatures in your world.",
                         "pj":"c_nami"
                      },
                      {
-                        "t":"Even many people are unaware of its existence."
+                        "t":"Many people are completely unaware of their existence."
                      }
                   ]
                },
@@ -2451,24 +2451,24 @@
                   "t":"(You hesitate).",
                   "a":[
                      {
-                        "t":"Ah ... you may not really know. In your world it isn't something that is taught normally, as far as I know.",
+                        "t":"Ah ... you may not really know. In your world they don't teach you about it, as far as I know.",
                         "pj":"c_nami"
                      },
                      {
-                        "t":"But, being sincere, if you doubt it is possible that you are. If you were not, you would not hesitate."
+                        "t":"But, being sincere, if you have doubts it is possible that you are one. If you were not, you would not hesitate."
                      },
                      {
-                        "t":"When you have been educated to not believe in the existence of what you are, it is difficult to accept reality."
+                        "t":"When you have been educated to not believe in something that you are, it is difficult to accept the reality."
                      }
                   ]
                }
             ]
          },
          {
-            "t":"In any case I know that in your world many kinds of people and many ways of being coexist."
+            "t":"In any case I know that in your world many kinds of people coexist in many ways."
          },
          {
-            "t":"I love that kind of diversity, even if it is not I always understood."
+            "t":"I love that kind of diversity, even if I don't understand it."
          }
       ],
       "Armario bala":[
@@ -2477,11 +2477,11 @@
             "feat":"Bala acelerada"
          },
          {
-            "t":"Another technique to accelerate the projectiles.",
+            "t":"Another technique to accelerate projectiles.",
             "pj":"c_nami"
          },
          {
-            "t":"After fighting like this room, I find it even more interesting."
+            "t":"After a fight like that, I find it even more interesting."
          }
       ],
       "Escudo en grupo":[
@@ -2494,10 +2494,10 @@
             "pj":"c_nami"
          },
          {
-            "t":"It makes the shields protect the whole group, instead of just one person."
+            "t":"It makes the shield protect the whole group, instead of just one person."
          },
          {
-            "t":"With these techniques the slimes will be a minor annoyance."
+            "t":"With these techniques the slimes will only be a minor annoyance."
          }
       ],
       "Niña":[
@@ -2511,7 +2511,7 @@
             ],
             "then":[
                {
-                  "t":"I'm going to talk to this person. I think I've never seen it before.",
+                  "t":"I'm going to talk to this person. I think I've never seen them before.",
                   "pj":"c_nami"
                },
                {
@@ -2562,7 +2562,7 @@
                   "pj":"c_nami"
                },
                {
-                  "t":"I told her  to come with us. Please, take care that nothing happens to her."
+                  "t":"I told her to come with us. Please, take care that nothing happens to her."
                },
                {
                   "add_party":"Niña"
@@ -2597,7 +2597,7 @@
             "r":1
          },
          {
-            "t":"How strange, Hana has found a page and it looks like she recognize it...",
+            "t":"How strange, Hana has found a page and it looks like she recognizes it...",
             "pj":"c_nami"
          },
          {
@@ -2625,7 +2625,7 @@
       ],
       "Suposiciones Hana":[
          {
-            "t":"When I saw these chemical products, I thought of a nonsense.",
+            "t":"When I saw these chemical products, I had a funny thought...",
             "pj":"c_nami"
          },
          {
@@ -2640,17 +2640,17 @@
          {
             "opciones":[
                {
-                  "t":"Yes (get closer).",
+                  "t":"Yes (move closer).",
                   "a":[
                      {
-                        "t":"It's okay. Obviously she isn't a fairy, nor a wolf girl, nor a vampire.",
+                        "t":"Okay. Obviously she isn't a fairy, nor a wolf girl, nor a vampire.",
                         "pj":"c_nami"
                      },
                      {
-                        "t":"If she were a dragon, angel or similar, she could reach the capacity to hide its characteristics, but she doesn't seem to have so much power."
+                        "t":"If she were a dragon, angel or similar, she would have capacity to hide it, but she doesn't seem to have that much power."
                      },
                      {
-                        "t":"And witches are easily distinguished by their smell. At least I do, I have a good nose."
+                        "t":"And witches are easily distinguished by their smell. At least I can; I have a good nose."
                      },
                      {
                         "t":"It is also true that there are countless magical creatures, and that I can't know them all, but ..."
@@ -2661,10 +2661,10 @@
                   ]
                },
                {
-                  "t":"No (get away)",
+                  "t":"No (move away)",
                   "a":[
                      {
-                        "t":"The truth is that sometimes I overdo thinking aloud.",
+                        "t":"Sometimes I think out-loud too much.",
                         "pj":"c_nami"
                      }
                   ]
@@ -2682,7 +2682,7 @@
             "pj":"c_nami"
          },
          {
-            "t":"This seems excessive to me. Is it that force is the only way to solve things ?."
+            "t":"This seems excessive to me. Is force the only way to solve things?"
          }
       ],
       "Escudo potenciado 2":[
@@ -2691,14 +2691,14 @@
             "feat":"Escudo potenciado"
          },
          {
-            "t":"This could be useful. It is true that eliminating the slimes is fine, but avoiding them is an option too.",
+            "t":"This could be useful. Eliminating the slimes is fine, but avoiding them is an option too.",
             "pj":"c_nami"
          },
          {
             "t":"With the shield to the maximum perhaps we could run between them without problems."
          },
          {
-            "t":"Although on the other hand it is necessary to register everything well, we should not leave any forgotten page."
+            "t":"Although on the other hand it is necessary to search everywhere, we should not leave any page forgotten."
          }
       ],
       "Estatua fundador":[
@@ -2727,7 +2727,7 @@
       ],
       "colector":[
          {
-            "t":"Wow! This seems an accumulator of spiritual energy of the Ancients.",
+            "t":"Wow! This seems to be an accumulator of spiritual energy of the Ancients.",
             "pj":"c_nami",
             "r":1
          },
@@ -2825,7 +2825,7 @@
                                     "pj":"none"
                                  },
                                  {
-                                    "t":"Wow! I expected it to have dissipated, but it seems that the energy continues here.",
+                                    "t":"Wow! I expected it to have dissipated, but it seems that the energy remains here.",
                                     "pj":"c_nami",
                                     "r":1
                                  },
@@ -2847,11 +2847,11 @@
             ],
             "then":[
                {
-                  "t":"As soon as you enter the sphere you feel a powerful energy flooding you.",
+                  "t":"As soon as you enter the sphere you feel a powerful energy flooding over you.",
                   "pj":"none"
                },
                {
-                  "t":"You notes something strange ..."
+                  "t":"You note something strange ..."
                },
                {
                   "changeFrame":"colector",
@@ -2931,13 +2931,13 @@
             "t":"It's obvious that it has go down to another level."
          },
          {
-            "t":"I hope it haven't gotten far."
+            "t":"I hope it hasn't gottenn far."
          },
          {
             "t":"DEMO ENDS HERE."
          },
          {
-            "t":"I hope you like it and be able to finish the game so you can enjoy it completely."
+            "t":"I hope you like it and will be able to finish the game so you can enjoy it completely."
          }
       ],
       "teoria_hiragana":[
@@ -3181,10 +3181,10 @@
             "pj":"c_nami"
          },
          {
-            "t":"To ask for something please put ください (kudasai) behind the verb in the -て (te) form."
+            "t":"To ask for something politely put ください (kudasai) behind the verb in the -て (te) form."
          },
          {
-            "t":"For example, to ask someone to come, we say 来てください (kite kudasai)."
+            "t":"For example, to ask someone to "come please", we say 来てください (kite kudasai)."
          }
       ],
       "teoria_wo_da":[
@@ -3193,7 +3193,7 @@
             "pj":"c_nami"
          },
          {
-            "t":"Notice also that in this particle the double vee almost don't sound. The sound is almost like a simple \"o\"."
+            "t":"Notice also that in this particle the double vee almost doesn't sound. The sound is almost like a simple \"o\"."
          },
          {
             "t":"We will see an example of its use later."
@@ -3238,7 +3238,7 @@
             "t":"As I said, this is the dictionary form, which ends in \"u\"."
          },
          {
-            "t":"Look especially at the Kanjis. You can memory some of them based on their radicals."
+            "t":"Look especially at the Kanjis. You can memorize some of them based on their radicals."
          },
          {
             "t":"思う (omou) has the radicals 田 (ta) and 心 (kokoro), whereas 見る miru has the radical 目 (me), for example."
