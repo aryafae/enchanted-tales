@@ -1117,7 +1117,7 @@
             "wait":5200,
             "y":800,
             "x":960,
-            "text":"Towards a light that attracts you...",
+            "text":"Towards a light that draws you in ...",
             "time":2000
          },
          {
@@ -1150,7 +1150,7 @@
             "wait":13200,
             "y":800,
             "x":960,
-            "text":"And you know the adventure begins.",
+            "text":"And you know the adventure has begun.",
             "time":2000
          },
          {
@@ -1177,19 +1177,19 @@
             "waitEnd":1
          },
          {
-            "t":"It has worked!"
+            "t":"It worked!"
          },
          {
-            "t":"Thanks for coming. I suppose I owe you an explanation: I have invoked you because I need your help."
+            "t":"Thanks for coming. I suppose I owe you an explanation: I have summoned you because I need your help."
          },
          {
-            "t":"My name is Nami Kitsune and I am the librarian of the school of magical creatures."
+            "t":"My name is Nami Kitsune and I am the librarian of the School of Magical Creatures."
          },
          {
-            "t":"These are the undergrounds of the school. A book called \"Mahou no kotoba\" has been lost around here. That book can change everything."
+            "t":"These are the undergrounds of the school. A book called \"Mahou no kotoba\" has been lost somewhere around here. That book can change everything."
          },
          {
-            "t":"I also believe that there are students pursuing it. I fear that they get in trouble."
+            "t":"I also believe that there are students looking for it. I fear for their safety."
          },
          {
             "anim":"hide",
@@ -1206,7 +1206,7 @@
             "music":"3exploracion"
          },
          {
-            "t":"I will give you more details later, but it is important that we hurry.",
+            "t":"I will give you more details later, but now it is important that we hurry.",
             "pj":"c_nami"
          },
          {
@@ -1218,7 +1218,7 @@
       ],
       "Escaleras arriba":[
          {
-            "t":"Those stairs take you back to school.",
+            "t":"Those stairs take you back to the school.",
             "pj":"c_nami"
          },
          {
@@ -1235,25 +1235,25 @@
             "pj":"c_nami"
          },
          {
-            "t":"But why is the book losing pages? Something strange happens."
+            "t":"But why is the book losing pages? Something strange is happeneing."
          },
          {
-            "t":"The good thing is that it can help you learn magic."
+            "t":"The good thing though, is that you can learn magic from the pages."
          },
          {
-            "t":"For example, this one can teach you to fly faster. I advise you to learn it as soon as possible."
+            "t":"For example, this one can teach you to fly faster. I advise you to learn that one as soon as possible."
          }
       ],
       "primeraSubida":[
          {
-            "t":"Congratulations! You just level up.",
+            "t":"Congratulations! You just leveled up.",
             "pj":"c_nami"
          },
          {
-            "t":"When leveling up you can choose a new skill. Choose wisely"
+            "t":"When leveling up you can choose a new skill. Choose wisely."
          },
          {
-            "t":"Look for a skill that look interesting to you from the page on the right. Click on it and then click on the improve button."
+            "t":"Find for a skill that interests you from the page on the right. Click on it and then click on the improve button."
          }
       ],
       "Habla del libro":[
@@ -1269,7 +1269,7 @@
             "t":"This knowledge will be very useful for you. This place is full of energy, and you'll need it to cast spells."
          },
          {
-            "t":"In any case I'm worried that the book is losing pages. I wonder why."
+            "t":"However I'm still worried that the book is losing pages. I wonder why."
          },
          {
             "t":"Maybe it is leaving them for some reason, or it is creating new ones and it needs space."
@@ -1277,12 +1277,12 @@
       ],
       "Nami lejos":[
          {
-            "t":"You can not examine the objects without Nami's help, wait for her to approach."
+            "t":"You cannot examine the objects without Nami's help, wait for her to approach."
          }
       ],
       "mensajeEsperame":[
          {
-            "t":"Hey, wait for me, please! I can not go as fast as you.",
+            "t":"Hey, wait for me, please! I cannot go as fast as you.",
             "pj":"c_nami"
          },
          {
@@ -1314,11 +1314,11 @@
                         "energy":"2000"
                      },
                      {
-                        "t":"You feel how energy fills you, and you regain your full potential.",
+                        "t":"You feel the energy fill you, and you regain your full potential.",
                         "pj":"none"
                      },
                      {
-                        "t":"But Nami falls to her knees, showing symptoms of fatigue."
+                        "t":"But Nami falls to her knees, exhausted."
                      },
                      {
                         "t":"Don't worry, I'm fine. But I don't think I can help you much more with this.",
@@ -1330,7 +1330,7 @@
                   "t":"Reject it (move away).",
                   "a":[
                      {
-                        "t":"All right. You can recover energy from the environment just waiting.",
+                        "t":"All right. You can passively recover energy from the environment just by waiting.",
                         "pj":"c_nami"
                      }
                   ]
@@ -1347,7 +1347,7 @@
             "pj":"c_nami"
          },
          {
-            "t":"I can't get close or it will poison me, but you can take rid of it by using your magic."
+            "t":"I can't get close or it will poison me, but you can get rid of it by using your magic."
          },
          {
             "t":"Just click on the slime to throw a ball of energy."
@@ -1355,11 +1355,11 @@
       ],
       "eliminasPrimerEnemigo":[
          {
-            "t":"Good job! You've got rid of with the slime.",
+            "t":"Good job! You've got rid of the slime.",
             "pj":"c_nami"
          },
          {
-            "t":"It should have released the spiritual energy that kept it in place."
+            "t":"It should have released the spiritual energy that sustained it."
          },
          {
             "t":"I can't see it, but if you can, pick it up. You will need it."
@@ -1390,7 +1390,7 @@
             "pj":"c_nami"
          },
          {
-            "t":"It may be interesting to end up with monsters sooner, but be careful."
+            "t":"It may be tempting to take on the monsters quicker, but be careful."
          },
          {
             "t":"Make sure you have enough energy, or it won't do you any good to shoot quickly."
@@ -1405,7 +1405,7 @@
             "t":"This floor must be some kind of laboratory."
          },
          {
-            "t":"In case you're interested, these underground belonged to a civilization now vanished."
+            "t":"In case you're interested, these undergrounds belonged to a civilization now vanished."
          },
          {
             "t":"Of course we don't like to live underground, so we do not use them."
@@ -1417,7 +1417,7 @@
             "feat":"Aura ampliada"
          },
          {
-            "t":"A work on the aura ... It will be good for you.",
+            "t":"A work on the aura ... you definitely should read this one.",
             "pj":"c_nami"
          },
          {
@@ -1441,14 +1441,14 @@
             ],
             "then":[
                {
-                  "t":"Now that there seems to be no danger, I wanted to thank you for what you are doing.",
+                  "t":"Now that there seems to be no danger, I want to thank you for what you are doing.",
                   "pj":"c_nami"
                },
                {
-                  "t":"I know that in these circumstances it is difficult for me to know you, since we can't even speak. But I think you have to be a great person."
+                  "t":"I know that, given the circumstance, it is difficult for me to get to know you, since we can't even speak. But I think you must be a great person."
                },
                {
-                  "t":"When we invoke spirits from other planes, they usually ask us for something in return. You, on the other hand, help with no reason."
+                  "t":"When we invoke spirits from other planes, they usually ask us for something in return. You, on the other hand, help without any demands."
                },
                {
                   "t":"I want you to know that when this is over I will look for a way to help you too."
@@ -1474,7 +1474,7 @@
             ],
             "then":[
                {
-                  "t":"Eh ... It seems that something moves there.",
+                  "t":"Eh ... It seems that something is moving over there.",
                   "pj":"c_nami"
                },
                {
@@ -1532,11 +1532,11 @@
             "feat":"Ataque potenciado"
          },
          {
-            "t":"Here he talks about how to enhance magic attacks.",
+            "t":"Here it talks about how to enhance magic attacks.",
             "pj":"c_nami"
          },
          {
-            "t":"Be careful with this too, because enhancing the attacks will cause you to expend more energy."
+            "t":"Be careful with this too, because enhancing the attacks will cost more energy."
          },
          {
             "t":"You can also learn spells that help you recover energy."
@@ -1563,16 +1563,16 @@
                   "pj":"c_nami"
                },
                {
-                  "t":"In these statues it is not easy to recognize how they were, but I have seen illustrations of them."
+                  "t":"It's hard to tell what they looked like from these statues, but I have seen illustrations of them."
                },
                {
-                  "t":"What we don't know very well is what their society was like."
+                  "t":"What we don't know is what their society was like."
                },
                {
-                  "t":"They were supposed to dominate a very powerful magic. It scares me a little, in fact."
+                  "t":"They supposedly dominated a very powerful magic. It scares me a little, in fact."
                },
                {
-                  "t":"But the most mysterious of that race is its disappearance. It's cause is unknown."
+                  "t":"But the most mysterious thing about them is their disappearance. Its cause is unknown."
                },
                {
                   "set":"estatuaVista",
@@ -1584,7 +1584,7 @@
             ],
             "else":[
                {
-                  "t":"Another statue like the previous one. Either they were very similar, or they must have been important.",
+                  "t":"Another statue like the other one. Either they were very similar, or they must have been important.",
                   "pj":"c_nami"
                }
             ]
@@ -1608,10 +1608,10 @@
                   "t":"They were probably alchemical books for laboratories."
                },
                {
-                  "t":"They might have spoiled over time, after all it has been centuries since the disappearance of the Ancients."
+                  "t":"They might have disintegrated over time, after all it has been centuries since the disappearance of the Ancients."
                },
                {
-                  "t":"They had the ability to make better books with their magic, but most were normal books."
+                  "t":"The Ancients had the ability to make better books with their magic, but most were normal books."
                },
                {
                   "t":"By the way, the book we are looking for is one of those magical books that the Ancients created."
@@ -1638,20 +1638,20 @@
             "feat":"Movimiento ágil"
          },
          {
-            "t":"Another page on how to improve the movements in flight ...",
+            "t":"Another page on how to improve movement in flight ...",
             "pj":"c_nami"
          },
          {
-            "t":"What's happening? We are finding too many pages."
+            "t":"What's happening? We are finding so many pages."
          },
          {
             "t":"Don't think the book is defective. On the contrary, it is doing it on purpose."
          },
          {
-            "t":"That book belonged to great sorceresses of the past, and ended up acquiring own conscience."
+            "t":"That book belonged to great sorceresses of the past, and ended up acquiring its own conscience."
          },
          {
-            "t":"I would bet it has a goal."
+            "t":"I would bet it has a purpose of its own."
          }
       ],
       "Mesa biblioteca":[
@@ -1664,13 +1664,13 @@
             "pj":"c_nami"
          },
          {
-            "t":"Very useful, especially when you fight from the distance."
+            "t":"Very useful, especially when you fight from a distance."
          },
          {
             "t":"I remember when I learned this technique. It isn't easy to master."
          },
          {
-            "t":"Although the truth is that you are doing quite well. Magic seems to be something natural for you."
+            "t":"Although honestly, you are doing quite well. Magic seems to come natural for you."
          }
       ],
       "Mesa animales":[
@@ -1683,10 +1683,10 @@
             "pj":"c_nami"
          },
          {
-            "t":"Like those that come out of the slimes  when they are eliminated."
+            "t":"Like those that come out of the slimes when they are eliminated."
          },
          {
-            "t":"The energy stays concentrated for only a few seconds, then it disperses and can not be recovered."
+            "t":"The energy stays concentrated for only a few seconds, then it disperses and cannot be recovered."
          },
          {
             "t":"That's why this kind of techniques can be very useful."
@@ -1713,13 +1713,13 @@
                   "t":"I just had a chill. They were probably for animals used in experiments."
                },
                {
-                  "t":"Apparently, the Ancients could be quite cruel. Even sadists."
+                  "t":"Apparently, the Ancients could be quite cruel, sadistic even."
                },
                {
-                  "t":"I do not think they were all like that, anyway."
+                  "t":"But I do not think they were all like that."
                },
                {
-                  "t":"The truth is that we know very little about their culture."
+                  "t":"We know so very little about their culture."
                },
                {
                   "set":"primeraJaula",
@@ -1749,7 +1749,7 @@
             "t":"We use gems to store spiritual energy, so perhaps this is from one of the students who went down."
          },
          {
-            "t":"In fact I feel that I've seen it before, but I don't remember who it was."
+            "t":"In fact I feel that I've seen it before, but I don't remember whose it was."
          },
          {
             "t":"Poor dears, they probably believe that they are to blame for what is happening with the book."
@@ -1767,7 +1767,7 @@
             "pj":"c_nami"
          },
          {
-            "t":"I do not know how to read it very well, but I can decipher some of it's words."
+            "t":"I do not know how to read it very well, but I can decipher some of its words."
          },
          {
             "t":"It seems as if they celebrated a victory, although I do not know against whom."
@@ -1779,7 +1779,7 @@
             "t":"And when they took refuge underground, they moved further away from us."
          },
          {
-            "t":"Thanks be given that we were not affected by its annihilating magic."
+            "t":"Thanks be given that we were not affected by their annihilating magic."
          }
       ],
       "Mesa operaciones":[
@@ -1802,7 +1802,7 @@
             "t":"It's funny that the book has left this page right here. I guess it fits with their way of thinking."
          },
          {
-            "t":"It doesn't understand things as a person, but he tries to copy our logic."
+            "t":"The book doesn't understand things as a person, but it tries to mimic behaviors."
          }
       ],
       "Curame":[
@@ -1817,7 +1817,7 @@
             "t":"And I don't want to waste my own energy because I can't recover it as easily as you do."
          },
          {
-            "t":"It is assumed that above you can see a blue star."
+            "t":"Can you see the blue star above you?"
          },
          {
             "t":"If you touch it, a red heart will appear."
@@ -1847,7 +1847,7 @@
                   "t":"I've read too many weird things about the Ancients ..."
                },
                {
-                  "t":"Although I suppose you can not judge other cultures with our perspective."
+                  "t":"Although I suppose we cannot judge other cultures from our perspective."
                },
                {
                   "set":"primeraCama",
@@ -1859,14 +1859,14 @@
             ],
             "else":[
                {
-                  "t":"If these were beds, they do not seem to be very comfortable.",
+                  "t":"If these were beds, they sure aren't very comfortable.",
                   "pj":"c_nami"
                },
                {
-                  "t":"Our beds are all magically improved to be ideal."
+                  "t":"Our beds are all magically enchanted to be perfect."
                },
                {
-                  "t":"Of course, the Ancients might not have that possibility."
+                  "t":"Of course, the Ancients might not have been able to do that."
                },
                {
                   "t":"Although they knew more about magic than us, they were not magical creatures themselves."
@@ -1895,7 +1895,7 @@
       ],
       "Alquimia avanzada":[
          {
-            "t":"I have always had the feeling that the Ancients had an enormously advanced alchemy.",
+            "t":"I have always had the feeling that the Ancients had enormously advanced alchemy.",
             "pj":"c_nami"
          },
          {
@@ -1915,7 +1915,7 @@
             "pj":"c_nami"
          },
          {
-            "t":"This technique is very useful because it does not increase the energy expenditure of the spell."
+            "t":"This technique is very useful because it does not increase the energy cost of the spell."
          },
          {
             "t":"That is, you can heal us more with the same effort."
@@ -1937,7 +1937,7 @@
             "t":"The headmistress of the school has been using it all these days without any problem, precisely trying to connect with your world."
          },
          {
-            "t":"Has she caused it somehow?"
+            "t":"Has she caused this somehow?"
          },
          {
             "t":"I find it hard to believe, knowing her abilities. But with these old books you never know."
@@ -1976,7 +1976,7 @@
             ],
             "else":[
                {
-                  "t":"Here is something written. I think it says... Eh... I better not read it. It's just a joke of bad taste.",
+                  "t":"Here is something written. I think it says... Eh... I better not read it. It's just a joke in bad taste.",
                   "pj":"c_nami"
                },
                {
@@ -2012,11 +2012,11 @@
             "feat":"Ataque seguidor"
          },
          {
-            "t":"Ah ... A page on how to make attacks follow target.",
+            "t":"Ah ... A page on how to make attacks follow a target.",
             "pj":"c_nami"
          },
          {
-            "t":"It is an exceptionally complex magic, but it guarantees that you never fail."
+            "t":"It is an exceptionally complex magic, but it guarantees that you will never miss."
          },
          {
             "t":"It requires introducing into the sphere of energy the capacity to perceive its destiny."
@@ -2056,7 +2056,7 @@
                   "t":"I can try to use telepathy to communicate with you, but I do not want to do it without your permission."
                },
                {
-                  "t":"Let's do this, if you agree, come close to me, and if not, get away from me. You think?"
+                  "t":"Let's do this, if you agree, come close to me, and if not, get away from me. What do you think?"
                },
                {
                   "opciones":[
@@ -2093,10 +2093,10 @@
                   "t":"At least we have found a way that you can tell me yes or no."
                },
                {
-                  "t":"Taking advantage of that, I wanted to ask you something. Would you like to come to school in the future?"
+                  "t":"Taking advantage of that, I wanted to ask you something. Would you like to come to our school in the future?"
                },
                {
-                  "t":"I know that in your world you are not a magical creature, but here you would, so you could study in our school."
+                  "t":"I know that in your world you are not a magical creature, but here you would be, so you could study in our school."
                },
                {
                   "opciones":[
@@ -2119,7 +2119,7 @@
                         "t":"No (get away).",
                         "a":[
                            {
-                              "t":"Oh, well. Well I hope I can find another way to thank you.",
+                              "t":"Oh, well I hope I can find another way to thank you.",
                               "pj":"c_nami"
                            },
                            {
