@@ -211,17 +211,20 @@ $(function(){
 			cargadas.push(info_personajes[i].avatar)
 		}*/
 	
-	for(var i in monsters)
-		if(cargadas.indexOf(monsters[i].imagen) == -1){
-			manifest.push({src: files_dir+monsters[i].imagen+files_name, "id": "monster"+monsters[i].id})
-			cargadas.push(monsters[i].imagen)
-		}
-	
 	for(var i in elementos_escena)
 		if(cargadas.indexOf(elementos_escena[i].imagen) == -1){
 			manifest.push({src: files_dir+elementos_escena[i].imagen+files_name, "id": "elemento"+elementos_escena[i].id});
 			cargadas.push(elementos_escena[i].imagen)
 		}
+	
+	for(var i in monsters)
+		if(cargadas.indexOf(monsters[i].imagen) == -1){
+			manifest.push({src: files_dir+monsters[i].imagen+files_name, "id": "monster"+monsters[i].id})
+			cargadas.push(monsters[i].imagen)
+		}
+		
+	manifest.push({src: "img/juego/estrella.png", id: "estrella"})
+		
 	
 	//for(var i in soundsToLoad)
 	//	manifest.push({src: itrad.filesDir+soundsToLoad[i]+"/0/0/1/sound.mp3", "id": "sound"+soundsToLoad[i]})

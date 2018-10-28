@@ -1623,6 +1623,7 @@ PathFinder.prototype.getAdyacentes=function (nodo){
 function loadImage(name)
 {
 	var img=loader.getResult(name);
+  if(!img) alert("File "+name+" not found")
 	if(pixelScale==1) return img
 	if(imagesLoaded[name]) return imagesLoaded[name];
 	var scale=pixelScale
