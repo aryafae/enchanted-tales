@@ -3,6 +3,7 @@ var debug={
 	"avoidDialogs":0,
 }
 
+
 var game_options={
 	controlTeclado:1
 }
