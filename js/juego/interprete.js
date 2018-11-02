@@ -62,7 +62,6 @@ function preparaEscenario(){
 	
 	drawTestMap()
 	
-	capa_interfaz= new createjs.Container();
 	
 	barra_energia = new createjs.Bitmap(loader.getResult("barra_energia"))
 	barra_energia.x=1780-perfil.aura;
@@ -88,12 +87,10 @@ function preparaEscenario(){
 	
 	niebla = new createjs.Bitmap(loader.getResult("niebla"))
 	
-	pantalla_de_juego=new createjs.Container();
 	pantalla_de_juego.addChild(scene);
 	pantalla_de_juego.addChild(niebla);
 	pantalla_de_juego.addChild(capa_interfaz);
 	
-	capa_animaciones=new createjs.Container();
 	pantalla_de_juego.addChild(capa_animaciones);
 	
 	if(!estado.juegoEmpezado){
@@ -661,7 +658,7 @@ var handleKeyUp = function(e){
 	if(e.keyCode==68 || e.keyCode==39) moveRight=false
 	if(e.keyCode==83 || e.keyCode==40) moveDown=false
 	
-	if(game_options.controlTeclado && e.keyCode==32 && objetoActivable){
+	if(game_options.controlTeclado && (e.keyCode==32 || e.keyCode==13) && objetoActivable){
 		iniciaDialogo(objetoActivable.nombre)
 		objetoActivable.removeAllEventListeners("click") // Sólo se puede usar una vez
 		objetoActivable.activo=false;
@@ -1190,7 +1187,7 @@ function controlTeclado(event){
 	// Calculamos distancia a casilla
 	// For para cada elemento calculamos la distancia (nos quedamos con el más cercano que esté en rango y no inactivo)
 	var cercano=0
-	var min_distancia=32*pixelScale+1
+	var min_distancia=64*pixelScale+1
 	for(var i=0;i<testLayers['character_layer'].numChildren;i++){
 		var child=testLayers['character_layer'].getChildAt(i)
 		if(child!=spirit && child.activo){
@@ -1623,7 +1620,6 @@ PathFinder.prototype.getAdyacentes=function (nodo){
 function loadImage(name)
 {
 	var img=loader.getResult(name);
-  if(!img) alert("File "+name+" not found")
 	if(pixelScale==1) return img
 	if(imagesLoaded[name]) return imagesLoaded[name];
 	var scale=pixelScale

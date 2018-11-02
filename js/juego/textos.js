@@ -1,6 +1,7 @@
 var textos={
 	"Abrir":"Abrir",
 	"Jugar":"Jugar",
+	"Apoya nuestro proyecto":"Apoya nuestro proyecto",
 	
 	"Menú":"Menú",
 	"Diccionario":"Diccionario",

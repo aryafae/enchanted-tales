@@ -1,5 +1,7 @@
 {
 "textos":{
+	"¿Quieres continuar?":"Si continuas saldrás del juego e irás a la página del proyecto ¿Quieres continuar?",
+	"Apoya nuestro proyecto":"Apoya nuestro proyecto",
 	"Abrir":"Abrir",
 	"Jugar":"Jugar",
 	"Saltar":"Saltar",
@@ -39,6 +41,7 @@
 	"Gema":"Gema",
 	"Cerrar":"Cerrar",
 	"Aprender":"Aprender",
+	
 	"Movimiento ágil":"Movimiento ágil",
 	"Ataque potenciado":"Ataque potenciado",
 	"Bala acelerada":"Proyectil acelerado",
@@ -52,29 +55,50 @@
 	"Escudo en grupo":"Escudo en grupo",
 	"Escudo potenciado":"Escudo potenciado",
 	"Hechizo de curar":"Hechizo de curar",
-	"Hechizo de escudo":"Hechizo de escudo"
+	"Hechizo de escudo":"Hechizo de escudo",
+	
+	
+	"Movimiento ágil_desc":"Podrás moverte más rápido",
+	"Ataque potenciado_desc":"Tu ataque hará más daño, pero también consumirá más energía",
+	"Bala acelerada_desc":"Tus proyectiles mágicos se moverán más rápido",
+	"Aura ampliada_desc":"Podrás almacenar más energía para cuando la necesites",
+	"Ataque frecuente_desc":"Podrás disparar con más frecuencia",
+	"Absorber energía ambiental_desc":"Recuperarás más energía del entorno cada segundo",
+	"Atraer partículas_desc":"Atraerás las partículas de energía que liberen los enemigos",
+	"Ataque seguidor_desc":"Tu ataque tendrá más posibilidades de dar al enemigo",
+	"Curación potenciada_desc":"Tu hechizo de curación curará más rápido gastando la misma energía",
+	"Curación en grupo_desc":"Tu hechizo de curación curará a todos los miembros del grupo con la misma energía",
+	"Escudo en grupo_desc":"Tu hechizo de escudo protegerá a todos los miembros del grupo con la misma energía",
+	"Escudo potenciado_desc":"Tu hechizo de escudo durará más con el mismo gasto de energía",
+	"Hechizo de curar_desc":"Podrás curar a los miembros de tu grupo con este hechizo",
+	"Hechizo de escudo_desc":"Podrás proteger a los miembros de tu grupo con este hechizo"
 },
 "preguntas":[
-	{"p":"do","s":"silabario hiragana","r":"ど","o":["で","こ"],"snd":"do","teoria":"teoria_hiragana"},
-	{"p":"de","s":"silabario hiragana","r":"で","o":["ど","く"],"snd":"de"},
+	{"p":"de","s":"silabario hiragana","r":"で","o":["ど","く"],"snd":"de","teoria":"1_teoria_hiragana"},
 	{"p":"su","s":"silabario hiragana","r":"す","o":["そ","で"],"snd":"su"},
-	{"p":"so","s":"silabario hiragana","r":"そ","o":["す","こ"],"snd":"so"},
-	{"p":"ku","s":"silabario hiragana","r":"く","o":["こ","か"],"snd":"ku"},
-	{"p":"ko","s":"silabario hiragana","r":"こ","o":["に","く"],"snd":"ko"},
-	{"p":"ka","s":"indica interrogación","r":"か","o":["こ","く"],"snd":"ka","teoria":"teoria_ka_y_ni"},
-	{"p":"ni","s":"indica dirección","r":"に","o":["こ","そ"],"snd":"ni"},
-	{"p":"doko","s":"dónde","r":"どこ","o":["です","そこ"],"snd":"doko","teoria":"teoria_palabras_hiragana_kanji_verbos"},
-	{"p":"soko","s":"ahí","r":"そこ","o":["です","どこ"],"snd":"soko"},
 	{"p":"desu","s":"ser, estar","r":"です","o":["そこ","どこ"],"snd":"desu"},
-	{"p":"iku","s":"ir","r":"行く","o":["徂く","早く"],"snd":"iku"},
-	{"p":"kuchi","s":"boca","r":"口","o":["十","日"],"snd":"kuchi","teoria":"teoria_radicales"},
-	{"p":"hi","s":"día, sol","r":"日","o":["目","口"],"snd":"hi"},
-	{"p":"me","s":"ojo","r":"目","o":["耳","月"],"snd":"me"},
-	{"p":"tsuki","s":"mes, luna","r":"月","o":["目","耳"],"snd":"tsuki"},
+	{"p":"ka","s":"indica interrogación","r":"か","o":["こ","く"],"snd":"ka"},
+	
+	{"p":"do","s":"silabario hiragana","r":"ど","o":["で","こ"],"snd":"do"},
+	{"p":"ko","s":"silabario hiragana","r":"こ","o":["に","く"],"snd":"ko"},
+	{"p":"doko","s":"dónde","r":"どこ","o":["です","そこ"],"snd":"doko"},
+	{"p":"doko desu ka","s":"¿Dónde está?","r":"どこですか","o":["Va por allí."],"t":"trad","snd":"doko desu ka","teoria":"2_frase"},
+	
+	{"p":"ku","s":"silabario hiragana","r":"く","o":["こ","か"],"snd":"ku"},
+	{"p":"hi","s":"día, sol","r":"日","o":["目","口"],"snd":"hi","teoria":"3_kanji"},
 	{"p":"juu","s":"diez","r":"十","o":["口","日"],"snd":"juu"},
 	{"p":"hayaku","s":"rápido","r":"早く","o":["行く","古く"],"snd":"hayaku"},
-	{"p":"doko desu ka","s":"¿Dónde está?","r":"どこですか","o":["Va por allí."],"t":"trad","snd":"doko desu ka","teoria":"teoria_estructura_frase"},
-	{"p":"soko ni iku","s":"Va por allí.","r":"そこに行く","o":["¿Dónde está?"],"t":"trad","snd":"soko ni iku"},
+	
+	{"p":"so","s":"silabario hiragana","r":"そ","o":["す","こ"],"snd":"so"},
+	{"p":"soko","s":"ahí","r":"そこ","o":["です","どこ"],"snd":"soko"},
+	{"p":"ni","s":"indica dirección","r":"に","o":["こ","そ"],"snd":"ni","teoria":"4_partículas"},
+	{"p":"iku","s":"ir","r":"行く","o":["徂く","早く"],"snd":"iku"},
+	
+	{"p":"soko ni iku","s":"Va por allí.","r":"そこに行く","o":["¿Dónde está?"],"t":"trad","snd":"soko ni iku","teoria":"4_partículas"},
+	{"p":"kuchi","s":"boca","r":"口","o":["十","日"],"snd":"kuchi","teoria":"5_frase_y_kanjis"},
+	{"p":"me","s":"ojo","r":"目","o":["耳","月"],"snd":"me"},
+	{"p":"tsuki","s":"mes, luna","r":"月","o":["目","耳"],"snd":"tsuki"},
+	
 	{"p":"a","s":"silabario hiragana","r":"あ","o":["お","な"],"snd":"a"},
 	{"p":"na","s":"silabario hiragana","r":"な","o":["た","す"],"snd":"na","teoria":"teoria_diferencias_na_ta"},
 	{"p":"ta","s":"silabario hiragana","r":"た","o":["な","に"],"snd":"ta"},
@@ -794,37 +818,38 @@
 	{"t":"LA DEMO TERMINA AQUÍ."},
 	{"t":"Espero que os guste y poder terminar el juego para que lo disfrutéis por completo."}
 ],
-"teoria_hiragana":[
+"1_teoria_hiragana":[
 	{"t":"Aquí vas a aprender a usar tus poderes.","pj":"c_nami"},
 	{"t":"Aprenderás a usar hechizos a medida que aprendas el lenguaje de la magia."},
-	{"t":"Estos símbolos son hiragana, y representan sonidos. Por ejemplo \"do\" en nuestro idioma se escribe ど."},
-	{"t":"Intenta memorizarlos bien antes de continuar, porque el libro te hará preguntas. Cuantas más aciertes, más mejorará tu magia."}
+	{"t":"Los símbolos で (de) y す (su) son hiragana, y representan sílabas. Si los juntamos tenemos la palabra です (desu), que significa \"ser\" o \"estar\"."},
+	{"t":"Por último tenemos el hiragana か (ka), que además es una partícula que indica interrogación. Pronto veremos más sobre esto."},
+	{"t":"Intenta memorizar todos los símbolos bien antes de continuar, porque el libro te hará preguntas. Cuantas más aciertes, más mejorará tu magia."}
 ],
-"teoria_ka_y_ni":[
-	{"t":"Fíjate en か (ka) y に (ni). No son simples sonidos, sino partículas, que tienen un uso especial en nuestro idioma.","pj":"c_nami"},
-	{"t":"か (ka) se pone al final de las frases para indicar que la frase es una pregunta. Más tarde veremos ejemplos."},
-	{"t":"に (ni) se pone detrás de una palabra para indicar una dirección, entre otras cosas."},
-	{"t":"En muchos casos las partículas son similares a vuestras preposiciones."}
+"2_frase":[
+	{"t":"Con los hiragana ど (do) y こ (ko) formamos la palabra どこ (doko), que significa \"dónde\".","pj":"c_nami"},
+	{"t":"Ahora que tenemos todo esto podemos formar nuestra primera frase: どこですか (doko desu ka)."},
+	{"t":"どこ (doko) significa \"dónde\" y です \"estar\"."},
+	{"t":"La partícula か al final de la frase indica que estamos haciendo una pregunta: \"¿Dónde está?\"."}
 ],
-"teoria_palabras_hiragana_kanji_verbos":[
-	{"t":"Juntando los sonidos que hemos visto podemos formar palabras. Por ejemplo: どこ (doko), que significa \"dónde\".","pj":"c_nami"},
-	{"t":"Pero no todas las palabras se escriben en hiragana. Algunas usan kanjis, como 行く (iku) que es el verbo \"ir\"."},
-	{"t":"行く termina en く (ku), que es un hiragana que ya hemos visto. Pero empieza por un símbolo que no conocemos: 行, que en este caso se lee como \"i\"."},
-	{"t":"Si te fijas en la diferencia de los símbolos en kanji y en hiragana, los kanjis son más complicados y están hechos sobre todo con líneas rectas."}
+"3_kanji":[
+	{"t":"Además de hiragana, en japonés se usan kanjis de origen chino para escribir palabras. Los kanjis no representan sonidos sino conceptos.","pj":"c_nami"},
+	{"t":"Por ejemplo 日 (hi) y 十 (juu) son kanjis. Fíjate como sus trazos suelen ser más rectilíneos que el hiragana."},
+	{"t":"Además se pueden unir para formar kanjis más complejos. La palabra 早く (hayaku) tiene un kanji formado por 日 (hi) y 十 (juu), uno encima del otro."},
+	{"t":"Estos kanjis más sencillos que forman otros se llaman radicales, y conocerlos ayuda a recordar los kanjis más complejos."},
+	{"t":"Usando tanto kanjis como hiragana podemos formar palabras como 早く (hayaku)."},
+	{"t":"Esta palabra significa \"rápidamente\", pero se puede usar como una expresión para pedirle a otra persona que se de prisa."}
 ],
-"teoria_radicales":[
-	{"t":"Aquí tenemos varios kanjis más, que son parecidos.","pj":"c_nami"},
-	{"t":"Empezamos por los más sencillos porque además estos se usan en otros más complejos."},
-	{"t":"Estos se llaman radicales, y conocerlos ayuda a aprender los otros."},
-	{"t":"Fíjate por ejemplo en el kanji de \"luna\" 月 (tsuki), que te enseñaré más adelante como parte de otro kanji más complejo."}
+"4_partículas":[
+	{"t":"En japonés los verbos suelen estar formados por kanjis seguidos por hiragana. Por ejemplo 行く (iku), el verbo \"ir\".","pj":"c_nami"},
+	{"t":"Junto al verbo 行く (iku) se suele usar la partícula に (ni), para indicar a dónde vamos, colocándola detras de la palabra que indica el destino."},
+	{"t":"Si escribimos そこに \"soko ni\" estamos indicando \"hacia ahí\". Enseguida veremos una frase que use todo esto."}
 ],
-"teoria_estructura_frase":[
-	{"t":"Ahora que sabemos unas cuantas palabras podemos empezar a formar frases.","pj":"c_nami"},
-	{"t":"Fíjate en どこですか. Que acabe en か nos indica que es una pregunta."},
-	{"t":"どこ (doko) y です (desu) significan \"dónde\" y \"ser/estar\", así que esta frase pregunta \"¿dónde esta?\"."},
-	{"t":"En japonés los verbos se ponen al final de la frase, tanto です (desu) como 行く (iku), que significa \"ir\"."},
-	{"t":"También las partículas se ponen después de la palabra o frase a la que acompañan, tanto か (ka) como に (ni)."},
-	{"t":"En el caso de に (ni), acompaña a そこ (soko) que significa allí. Literalmente dice \"allí ir\", o traducido correctamente: \"Va por allí\". "}
+"5_frase_y_kanjis":[
+	{"t":"Con todo lo anterior podemos formar una nueva frase そこに行く (soko ni iku).","pj":"c_nami"},
+	{"t":"Como en japonés el verbo no indica la persona, esta frase puede interpretarse de varias maneras dependiendo del contexto."},
+	{"t":"\"Va por ahí\", \"Vamos por ahí\" o \"Voy por ahí\" podrían ser traducciones posibles."},
+	{"t":"Otra cosa a resaltar es que en japonés los verbos se sitúan al final de la frase, y las partículas detrás de las palabras que acompañan."},
+	{"t":"Además de esto tenemos varios kanjis que nos serán útiles más adelante. "}
 ],
 "teoria_diferencias_na_ta":[
 	{"t":"Aquí tenemos más sílabas en hiragana.","pj":"c_nami"},

@@ -3,7 +3,6 @@ var debug={
 	"avoidDialogs":0,
 }
 
-
 var game_options={
 	controlTeclado:1
 }
@@ -31,6 +30,7 @@ var rotated=false;
 var scale;
 var pixelScale;
 libroAbierto=true;
+var fondo_juego
  
  var libro_juego,barra_progreso,barra_progreso_avance, interior_libro, interfaz_libro, entrada_juego,paginasLayer,capaAnimacion;
  var libroMusic,musicaExploracion,musicaDialogo;
@@ -43,7 +43,7 @@ var configObjetos
 var inicio_partida=new Date() // Para pruebas beta
  
 $(function(){
-	$("button").click(function(){
+	/*$("button").click(function(){
 			var el = document.getElementById('canvas'),
 			  rfs = el.requestFullscreen
 				|| el.webkitRequestFullScreen
@@ -52,7 +52,7 @@ $(function(){
 			$('canvas').addClass('fullScreen');
 			rfs.call(el);
 			resize()
-	})
+	})*/
 	
 	if(screen.width>1600) pixelScale=3;
 	else if(screen.width>1000) pixelScale=2;
@@ -79,37 +79,54 @@ $(function(){
 	}
 	
     stage = new createjs.Stage("canvas");
-	stage.canvas.width = 500
-	stage.canvas.height = 281
+	var w=window.innerWidth;
+	var h=window.innerHeight;
+	stage.canvas.width = w
+	stage.canvas.height = h
 	stage.enableMouseOver(5);
 	
-	interfaz_libro = new createjs.Container();
-	stage.addChild(interfaz_libro);
+	fondo_juego = new createjs.Shape();
+	fondo_juego.graphics.beginFill("#4d311f").drawRect(0, 0, 1920, 1080);
+	stage.addChild(fondo_juego);
 	
+	pantalla_de_juego = new createjs.Container();
+	pantalla_de_juego.alpha=0;
+	stage.addChild(pantalla_de_juego)
+	
+	capa_libro = new createjs.Container();
+	stage.addChild(capa_libro);
+	
+	interfaz_libro = new createjs.Container();
+	capa_libro.addChild(interfaz_libro);
+	
+	capa_animaciones=new createjs.Container();
 	dialogo = new createjs.Container();
-	dialogo.x=0;
+	capa_interfaz= new createjs.Container();
+	
+	resize()
+	
 	stage.addChild(dialogo)
 	
 	interior_libro = new createjs.Container();
 	interfaz_libro.addChild(interior_libro);
 	
 	libro_juego = new createjs.Container();
-	libro_juego.x=125;
+	libro_juego.x=540;
 	interfaz_libro.addChild(libro_juego);
 	
 	
 	var portada_libro = new createjs.Bitmap("img/juego/portada_libro.png");
-	portada_libro.scaleX=0.2
-	portada_libro.scaleY=0.2
+	portada_libro.scaleX=1
+	portada_libro.scaleY=1
 	libro_juego.addChild(portada_libro);
 	
 	barra_progreso = new createjs.Container();
-	barra_progreso.x=54
-	barra_progreso.y=160
+	barra_progreso.x=160
+	barra_progreso.y=600
 	libro_juego.addChild(barra_progreso)
 	
 	var fondo_barra_progreso = new createjs.Shape();
-	fondo_barra_progreso.graphics.beginFill("#030").drawRoundRect(0, 0, 150, 30,8);
+	fondo_barra_progreso.graphics.beginFill("#030").drawRoundRect(0, 0, 660, 80,15);
 	barra_progreso.addChild(fondo_barra_progreso)
 	
 	barra_progreso_avance = new createjs.Shape();
@@ -212,20 +229,19 @@ $(function(){
 			cargadas.push(info_personajes[i].avatar)
 		}*/
 	
-	for(var i in elementos_escena)
-		if(cargadas.indexOf(elementos_escena[i].imagen) == -1){
-			manifest.push({src: files_dir+elementos_escena[i].imagen+files_name, "id": "elemento"+elementos_escena[i].id});
-			cargadas.push(elementos_escena[i].imagen)
-		}
-	
 	for(var i in monsters)
 		if(cargadas.indexOf(monsters[i].imagen) == -1){
 			manifest.push({src: files_dir+monsters[i].imagen+files_name, "id": "monster"+monsters[i].id})
 			cargadas.push(monsters[i].imagen)
 		}
+	
+	for(var i in elementos_escena)
+		if(cargadas.indexOf(elementos_escena[i].imagen) == -1){
+			manifest.push({src: files_dir+elementos_escena[i].imagen+files_name, "id": "elemento"+elementos_escena[i].id});
+			cargadas.push(elementos_escena[i].imagen)
+		}
 		
-	manifest.push({src: "img/juego/estrella.png", id: "estrella"})
-		
+	manifest.push({src: "img/juego/brillo.png", id: "brillo"}) // Hack por que al parecer no carga la el último archivo añadido, así que metemos uno innecesario
 	
 	//for(var i in soundsToLoad)
 	//	manifest.push({src: itrad.filesDir+soundsToLoad[i]+"/0/0/1/sound.mp3", "id": "sound"+soundsToLoad[i]})
@@ -233,40 +249,39 @@ $(function(){
 	loader = new createjs.LoadQueue();
 	loader.installPlugin(createjs.Sound);
 	loader.on('progress', function(evt) {
-		var progress = Math.round(evt.loaded * 148);
-		if(progress<14) progress=14;
-		barra_progreso_avance.graphics.beginLinearGradientFill(["#eae","#b3b","#707","#a0a"],[0,0.5,0.5,1],0,1,0,29).drawRoundRect(1, 1, progress, 28,7);
+		var progress = Math.round(evt.loaded * 650);
+		if(progress<34) progress=34;
+		barra_progreso_avance.graphics.beginLinearGradientFill(["#eae","#b3b","#707","#a0a"],[0,0.5,0.5,1],0,1,0,70).
+			drawRoundRect(5, 5, progress, 70,14);
 	});
+	
 	loader.addEventListener("complete", function(){
 		preparaEscenario()
 		
 		iconos_dotes = new createjs.SpriteSheet({"images": [loader.getResult("dotes")],"frames": {"width":150, "height":150,"regX":75, "regY":75}});
 		
-		var text = new createjs.Text(textos["Abrir"], "20px Arial", "#ff0");
-		text.x = 74;
-		text.y = 3;
+		var text = new createjs.Text(textos["Abrir"], "45px 'Merienda One'", "#ff0");
+		text.x = 330;
+		text.y = 8;
 		text.textAlign='center'
 		barra_progreso.addChild(text);
 		barra_progreso.addEventListener("click",function(){
-			resize()
+			//resize()
 			
-			interfaz_libro.scaleX=scale;
-			interfaz_libro.scaleY=scale;
+			//interfaz_libro.scaleX=scale;
+			//interfaz_libro.scaleY=scale;
 			
-			libro_juego.x=960;
-			libro_juego.y=0;
-			libro_juego.scaleX=4;
-			libro_juego.scaleY=4;
+			//libro_juego.y=0;
 			//libro_juego.cache();
 			
-			$("button").show()
+			//$("button").show()
 			playMusic("10intro",0);
 			setTimeout(function(){
 				if(libroAbierto){
 					playMusic("7libro")
 				}
 			},12000)
-			setTimeout(openBook,1000)
+			openBook()
 		});
 	});
 	loader.loadManifest(manifest, true, "");
@@ -326,7 +341,9 @@ function openBook(){
 	libro.pagD=paginaD;
 	
 	var animSpeed=1000;
-	createjs.Tween.get(libro_juego).to({ skewY: -90 },animSpeed).call(function(){
+	interior_libro.x=-400
+	createjs.Tween.get(interior_libro).to({ x:0 },animSpeed)
+	createjs.Tween.get(libro_juego).to({ skewY: -90, x:960 },animSpeed).call(function(){
 		
 		var lateralI = new createjs.Container();
 		interfaz_libro.addChild(lateralI)
@@ -368,16 +385,19 @@ function entraJuego(){
 	var scale=canvasWidth/entrada_juego.getBounds().width;
 	var x=-(entrada_juego.x+entrada_juego.parent.x+entrada_juego.parent.parent.x+(entrada_juego.parent.parent.parent?entrada_juego.parent.parent.parent.x:0))*scale
 	var y=-(entrada_juego.y+entrada_juego.parent.y+entrada_juego.parent.parent.y+(entrada_juego.parent.parent.parent?entrada_juego.parent.parent.parent.y:0))*scale
-	stage.addChildAt(pantalla_de_juego,0);
 	$('canvas').css('background','black')
 	var animSpeed=1000;
 	var ease=createjs.Ease.getPowOut(2);
-	interfaz_libro.cache(0,0,1920,1080)
-	createjs.Tween.get(interfaz_libro).to({ scaleX: scale,scaleY: scale,x:x,y:y },animSpeed)
+	capa_libro.cache(0,0,1920,1080)
+	
+	capa_libro.previousScale=capa_libro.scaleX
+	capa_libro.previousX=capa_libro.x
+	capa_libro.previousY=capa_libro.y
+	createjs.Tween.get(capa_libro).to({ scaleX: scale,scaleY: scale,x:x,y:y },animSpeed)
 	.call(function(){
-		createjs.Tween.get(interfaz_libro).to({ alpha: 0 },400).call(function(){
+		pantalla_de_juego.alpha=1;
+		createjs.Tween.get(capa_libro).to({ alpha: 0 },400).call(function(){
 			pantalla_de_juego.mouseEnabled=true;
-			stage.removeChild(interfaz_libro)
 			abreJuego()
 			
 			// Hacemos un autoguardado
@@ -412,6 +432,8 @@ function getPaginasIndice(){
 	entrada_juego.y=154
 	paginaD.addChild(entrada_juego)
 	
+	entrada_juego.scaleY=396/entrada_juego.getBounds().height
+	
 	if(!screenShot){
 		screenShot = new createjs.Bitmap( loader.getResult("luz") );
 		screenShot.cache( 0, 0, screenShot.getBounds().width, screenShot.getBounds().height,entrada_juego.getBounds().width/screenShot.getBounds().width);
@@ -428,7 +450,27 @@ function getPaginasIndice(){
 	paginaD.addChild(marco)
 	marco.addEventListener("click", entraJuego)
 	
-	var texto_capitulo = new createjs.Bitmap(loader.getResult("texto_capitulo"))
+	
+	var menu=[
+		{'nombre':textos.Jugar,'enlace':entraJuego,'activo':true},
+		{'nombre':textos.Diccionario,'enlace':abrirDiccionario,'activo':true},
+		{'nombre':textos.Entrenamiento,'enlace':resumenEjercicio,'activo':true},
+	]
+	
+	for(var i in menu){
+		var enlace=new createjs.Text(menu[i].nombre, "40px 'Merienda One',Cursive", '#642');
+		enlace.x=150;enlace.y=600+i*80;
+		paginaD.addChild(enlace);
+		
+		if(!menu[i].activo) enlace.alpha=0.3;
+		else enlace.addEventListener("click",menu[i].enlace)
+		
+		var hit_enlace_diccionario = new createjs.Shape();
+		hit_enlace_diccionario.graphics.beginFill("#000").drawRect(0, 0, enlace.getMeasuredWidth(), enlace.getMeasuredHeight());
+		enlace.hitArea = hit_enlace_diccionario;
+	}
+	
+	/*var texto_capitulo = new createjs.Bitmap(loader.getResult("texto_capitulo"))
 	texto_capitulo.x=100
 	texto_capitulo.y=590
 	paginaD.addChild(texto_capitulo)
@@ -437,7 +479,7 @@ function getPaginasIndice(){
 	var texto_jugar=new createjs.Text(textos.Jugar, "60px 'Merienda One',Cursive", '#fdb');
 	texto_jugar.x=500;texto_jugar.y=300;texto_jugar.textAlign='center'
 	texto_jugar.alpha=0.7
-	paginaD.addChild(texto_jugar);
+	paginaD.addChild(texto_jugar);*/
 	
 	
 	var paginaI = new createjs.Container();
@@ -452,12 +494,11 @@ function getPaginasIndice(){
 	paginaI.addChild(texto_indice);
 	
 	var menu=[
-		{'nombre':textos.Diccionario,'enlace':abrirDiccionario,'activo':true},
-		{'nombre':textos.Entrenamiento,'enlace':resumenEjercicio,'activo':true},
 		{'nombre':textos["Guardar"],'enlace':mostrarGuardar,'activo':true},
 		{'nombre':textos["Cargar"],'enlace':mostrarCargar,'activo':true},
 		{'nombre':textos["Créditos"],'enlace':mostrarCreditos,'activo':true},
-		{'nombre':textos["Cerrar"],'enlace':cerrar,'activo':true},
+		{'nombre':textos["Apoya nuestro proyecto"],'enlace':mostrarApoyar,'activo':true},
+		//{'nombre':textos["Cerrar"],'enlace':cerrar,'activo':true},
 	]
 	
 	for(var i in menu){
@@ -502,6 +543,11 @@ function getPaginasIndice(){
 	enlace.hitArea = hit_enlace;
 	
 	return [paginaI,paginaD];
+}
+
+function mostrarApoyar(){
+	if(confirm(textos["¿Quieres continuar?"]))
+		window.location="https://ulule.com/enchanted-tales/"
 }
 
 function cerrar(){
@@ -661,36 +707,43 @@ function volverAlMenu(){
 	
     var canvas = document.getElementById( 'canvas' );
     screenshot = new createjs.Bitmap( canvas );
+	//screenshot.scaleY=1080*canvas.width/(1920*canvas.height)
     screenshot.cache( 0, 0, canvas.width, canvas.height,entrada_juego.getBounds().width/canvas.width);
+	//screenshot.scaleY=396/entrada_juego.getBounds().height
 	entrada_juego.image=screenshot.cacheCanvas;
 	screenShot=screenshot.cacheCanvas;
+	
+	entrada_juego.scaleY=396/entrada_juego.getBounds().height
 	
 	libroAbierto=true
 	playMusic("7libro");
 	createjs.Ticker.removeEventListener("tick", tick);
 	pantalla_de_juego.cache(0,0,canvasWidth,canvasHeight)
 	pantalla_de_juego.mouseEnabled=false;
-	interfaz_libro.uncache()
-	interfaz_libro.cache(0,0,canvasWidth*3,canvasHeight*3)
+	capa_libro.uncache()
+	capa_libro.cache(0,0,canvasWidth*3,canvasHeight*3)
 	
-	stage.addChildAt(interfaz_libro,1);
-	createjs.Tween.get(interfaz_libro).to({ scaleX: scale,scaleY: scale,x: 0,y: 0 },1000,createjs.Ease.getPowOut(2)).call(function(){
-		stage.removeChild(pantalla_de_juego)
-		interfaz_libro.uncache()
+	
+	createjs.Tween.get(capa_libro).to({ scaleX: capa_libro.previousScale,scaleY: capa_libro.previousScale,
+		x: capa_libro.previousX,y: capa_libro.previousY },1000,createjs.Ease.getPowOut(2)).call(function(){
+		capa_libro.uncache()
 	})
-	createjs.Tween.get(interfaz_libro).to({ alpha: 1 },500,createjs.Ease.getPowOut(2))
+	createjs.Tween.get(capa_libro).to({ alpha: 1 },500,createjs.Ease.getPowOut(2)).call(function(){
+		pantalla_de_juego.alpha=0;
+	})
 }
 
 window.addEventListener('resize', resize, false);
 
 var menuWidth=0;
 function resize() { 
-	if(stage.canvas.height>window.innerHeight)
-		$('canvas').removeClass('fullScreen');
 	var w=window.innerWidth;
 	var h=window.innerHeight;
 	stage.canvas.width = w
 	stage.canvas.height = h
+	
+	fondo_juego.scaleX=w/1920
+	fondo_juego.scaleY=h/1080
 	
 	if(w<h){
 		stage.rotation=90;
@@ -698,6 +751,10 @@ function resize() {
 		canvasWidth=h
 		canvasHeight=w
 		stage.regY=canvasHeight;
+		
+		tempH=h
+		h=w
+		w=tempH
 	}
 	else{
 		stage.rotation=0;
@@ -706,9 +763,60 @@ function resize() {
 		canvasWidth=w
 		canvasHeight=h
 	}
-	//alert(canvasWidth)
 	
-	scale=canvasWidth/1920;
+	// Calculamos el espacio y posición de la capa del libro
+	if(w/h>=1920/1080){ // Si es tan ancho o más que fullhd
+		var escala=h/1080
+		capa_libro.scaleX=escala
+		capa_libro.scaleY=escala
+		capa_libro.y=0;
+		capa_libro.x=(w-1920*escala)/2
+	}
+	else{
+		var escala=w/1920
+		capa_libro.scaleX=escala
+		capa_libro.scaleY=escala
+		capa_libro.y=(h-1080*escala)/2
+		capa_libro.x=0
+	}
+	
+	/*if(w/h>=1920/1080){ // Si es tan ancho o más que fullhd
+		var escala=h/1080
+		capa_animaciones.scaleX=escala
+		capa_animaciones.scaleY=escala
+		capa_animaciones.y=0;
+		capa_animaciones.x=(w-1920*escala)/2
+	}
+	else{
+		var escala=w/1920
+		capa_animaciones.scaleX=escala
+		capa_animaciones.scaleY=escala
+		capa_animaciones.y=(h-1080*escala)/2
+		capa_animaciones.x=0
+	}*/
+	
+	if(w/h>=1920/1080){ // Si es tan ancho o más que fullhd
+		var escala=h/1080
+		dialogo.scaleX=escala
+		dialogo.scaleY=escala
+		dialogo.y=0;
+		dialogo.x=(w-1920*escala)/2
+	}
+	else{
+		var escala=w/1920
+		dialogo.scaleX=escala
+		dialogo.scaleY=escala
+		dialogo.y=(h-1080*escala)
+		dialogo.x=0
+	}
+	
+	capa_animaciones.scaleX=w/1920
+	capa_animaciones.scaleY=h/1080
+	
+	capa_interfaz.scaleX=w/1920
+	capa_interfaz.scaleY=h/1080
+	
+	/*scale=canvasWidth/1920;
 	
 	if(capa_interfaz){
 		capa_interfaz.scaleX=scale;
@@ -717,9 +825,8 @@ function resize() {
 		capa_animaciones.scaleY=scale;
 		dialogo.scaleX=scale;
 		dialogo.scaleY=scale;
-	}
+	}*/
 }
-
 
 var configLibro={
 	"pageWidth":919,

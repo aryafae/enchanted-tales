@@ -458,21 +458,18 @@ function abre_aprendizaje(evt){
 	
 	pantalla_de_juego.cache(0,0,canvasWidth,canvasHeight)
 	pantalla_de_juego.mouseEnabled=false;
-	stage.addChildAt(interfaz_libro,1);
 	var animSpeed=500;
 	var ease=createjs.Ease.getPowOut(2);
-	createjs.Tween.get(interfaz_libro).to({ scaleX: scale },animSpeed,ease)
-	createjs.Tween.get(interfaz_libro).to({ scaleY: scale },animSpeed,ease)
-	createjs.Tween.get(interfaz_libro).to({ x: 0 },animSpeed,ease)
-	createjs.Tween.get(interfaz_libro).to({ y: 0 },animSpeed,ease).call(function(){
-		capa_interfaz.removeChild(pagina);
-		stage.removeChild(pantalla_de_juego)
-		interfaz_libro.uncache()
+	createjs.Tween.get(capa_libro).to({ scaleX: capa_libro.previousScale,scaleY: capa_libro.previousScale,
+		x: capa_libro.previousX,y: capa_libro.previousY },animSpeed,ease).call(function(){
+		capa_libro.uncache()
 		
 		if(debug.avoidExercises) resumenEjercicio(false,5)
 		else abrirEjercicio()
 	})
-	createjs.Tween.get(interfaz_libro).to({ alpha: 1 },500,ease)
+	createjs.Tween.get(capa_libro).to({ alpha: 1 },500,ease).call(function(){
+		pantalla_de_juego.alpha=0;
+	})
 }
 
 var capa_dialogo;
@@ -503,7 +500,7 @@ function showMessage(accion){
 	if(!burbuja_dialogo){
 		var fondo_dialogo=new createjs.Bitmap(loader.getResult("dialogo"))
 		burbuja_dialogo = new createjs.Container();
-		burbuja_dialogo.y=-fondo_dialogo.getBounds().height+canvasHeight/scale;
+		burbuja_dialogo.y=1080-fondo_dialogo.getBounds().height;
 		dialogo.addChild(burbuja_dialogo)
 		burbuja_dialogo.addChild(fondo_dialogo)
 		
@@ -522,7 +519,7 @@ function showMessage(accion){
 	else if(accion.pj){
 		if(imagen_avatar) burbuja_dialogo.removeChild(imagen_avatar)
 		imagen_avatar=new createjs.Bitmap(loader.getResult(accion.pj))
-		imagen_avatar.y=-imagen_avatar.getBounds().height+canvasHeight/scale-burbuja_dialogo.y;
+		imagen_avatar.y=-imagen_avatar.getBounds().height+1080-burbuja_dialogo.y;
 		if(accion.opacity) imagen_avatar.alpha=accion.opacity
 		burbuja_dialogo.addChild(imagen_avatar)
 		texto_dialogo.lineWidth=1850-imagen_avatar.getBounds().width;

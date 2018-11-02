@@ -119,7 +119,7 @@ function addLineasDiccionario(pag,numpag){
 		pag.addChild(txtLeft(crearTextoLibro(diccionario.palabras_diccionario[p].s,500,topTabla+pos*altoLinea+80,25,'#742')))
 	}
 	
-	pag.addChild(crearTextoLibro(numpag+'/'+Math.ceil(diccionario.palabras_diccionario.length/8)+' - '+itrad.diccionario,450,970,25,'#963'));
+	pag.addChild(crearTextoLibro(numpag+'/'+Math.ceil(diccionario.palabras_diccionario.length/8)+' - '+textos.Diccionario,450,970,25,'#963'));
 }
 
  
@@ -755,6 +755,10 @@ function verDote(evt){
 	var pagD = new createjs.Container();
 	
 	pagD.addChild(crearTextoLibro(textos[evt.target.dote],450,200,60))
+	
+	var texto_desc=crearTextoLibro(textos[evt.target.dote+"_desc"],450,700,40)
+	texto_desc.lineWidth=700;
+	pagD.addChild(texto_desc)
 	
 	var icono = new createjs.Sprite(iconos_dotes);
 	icono.gotoAndStop(dote.icono)

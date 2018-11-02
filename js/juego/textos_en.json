@@ -1,5 +1,7 @@
 {
    "textos":{
+	"¿Quieres continuar?":"If you continue, you will leave the game and go to the project page. Do you want to continue?",
+	"Apoya nuestro proyecto":"Support our project",
       "Abrir":"Open",
       "Jugar":"Play",
 	  "Saltar":"Skip",
@@ -52,7 +54,23 @@
       "Escudo en grupo":"Group shield",
       "Escudo potenciado":"Enhanced shield",
       "Hechizo de curar":"Healing spell",
-      "Hechizo de escudo":"Shield spell"
+      "Hechizo de escudo":"Shield spell",
+	
+	
+	"Movimiento ágil_desc":"Podrás moverte más rápido",
+	"Ataque potenciado_desc":"Tu ataque hará más daño, pero también consumirá más energía",
+	"Bala acelerada_desc":"Tus proyectiles mágicos se moverán más rápido",
+	"Aura ampliada_desc":"Podrás almacenar más energía para cuando la necesites",
+	"Ataque frecuente_desc":"Podrás disparar con más frecuencia",
+	"Absorber energía ambiental_desc":"Recuperarás más energía del entorno cada segundo",
+	"Atraer partículas_desc":"Atraerás las partículas de energía que liberen los enemigos",
+	"Ataque seguidor_desc":"Tu ataque tendrá más posibilidades de dar al enemigo",
+	"Curación potenciada_desc":"Tu hechizo de curación curará más rápido gastando la misma energía",
+	"Curación en grupo_desc":"Tu hechizo de curación curará a todos los miembros del grupo con la misma energía",
+	"Escudo en grupo_desc":"Tu hechizo de escudo protegerá a todos los miembros del grupo con la misma energía",
+	"Escudo potenciado_desc":"Tu hechizo de escudo durará más con el mismo gasto de energía",
+	"Hechizo de curar_desc":"Podrás curar a los miembros de tu grupo con este hechizo",
+	"Hechizo de escudo_desc":"Podrás proteger a los miembros de tu grupo con este hechizo"
    },
    "preguntas":[
       {
@@ -3184,7 +3202,7 @@
             "t":"To ask for something politely put ください (kudasai) behind the verb in the -て (te) form."
          },
          {
-            "t":"For example, to ask someone to "come please", we say 来てください (kite kudasai)."
+            "t":"For example, to ask someone to 'come please', we say 来てください (kite kudasai)."
          }
       ],
       "teoria_wo_da":[
