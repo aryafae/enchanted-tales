@@ -46,19 +46,21 @@ function preparaEscenario(){
 	scene= new createjs.Container();
 	testLayers['map_layer'] = new createjs.Container();
 	testLayers['map_layer'].mouseEnabled=false;
-	testLayers['click_layer'] = new createjs.Container();
+	//testLayers['click_layer'] = new createjs.Container();
 	testLayers['character_layer'] = new createjs.Container();
 	testLayers['brillos_layer'] = new createjs.Container();
 	testLayers['balas_layer'] = new createjs.Container();
 	scene.addChild(testLayers['map_layer']);
-	scene.addChild(testLayers['click_layer']);
+	//scene.addChild(testLayers['click_layer']);
 	scene.addChild(testLayers['character_layer']);
 	scene.addChild(testLayers['brillos_layer']);
 	scene.addChild(testLayers['balas_layer']);
 	var hit = new createjs.Shape();
 	hit.graphics.beginFill("#000").drawRect(0, 0, 19200, 10800);
-	testLayers['click_layer'].hitArea = hit;
-	testLayers['click_layer'].on("click", testClickHandler)
+	//testLayers['click_layer'].hitArea = hit;
+	//testLayers['click_layer'].on("click", testClickHandler)
+	scene.hitArea = hit;
+	scene.on("click",testClickHandler)
 	
 	drawTestMap()
 	
@@ -86,12 +88,107 @@ function preparaEscenario(){
 	
 	
 	niebla = new createjs.Bitmap(loader.getResult("niebla"))
-	
 	pantalla_de_juego.addChild(scene);
 	pantalla_de_juego.addChild(niebla);
 	pantalla_de_juego.addChild(capa_interfaz);
+	pantalla_de_juego.addChild(capa_interfaz_izquierdo);
+	pantalla_de_juego.addChild(capa_interfaz_derecho);
 	
 	pantalla_de_juego.addChild(capa_animaciones);
+	
+	startMovingJoystic=false
+	moveX=0;
+	moveY=0;
+	if(game_options.versionTactil){
+		botonUsar = new createjs.Container();
+		botonUsar.x=1450
+		botonUsar.y=810
+		capa_interfaz_derecho.addChild(botonUsar)
+		var fondo = new createjs.Shape();
+		fondo.graphics.beginFill("#000").beginStroke("#fff").drawRoundRect(0, 0, 400, 200,15);
+		botonUsar.addChild(fondo)
+		var text = new createjs.Text(textos["Mirar"], "65px 'Merienda One'", "#fff");
+		text.x = 200;
+		text.y = 55;
+		text.textAlign='center'
+		botonUsar.addChild(text);
+		botonUsar.alpha=0;
+		
+		botonUsar.on("click",function(){
+			if(objetoActivable && objetoActivable.activo){
+				iniciaDialogo(objetoActivable.nombre)
+				objetoActivable.removeAllEventListeners("click") // Sólo se puede usar una vez
+				objetoActivable.activo=false;
+				objetoActivable.shadow=null;
+				objetoActivable=false;
+			}
+		})
+		
+		move_control = new createjs.Bitmap(loader.getResult("move_control"))
+		move_control.regX=110
+		move_control.regY=110
+		move_control.x=250
+		move_control.y=830
+		move_control.alpha=0.5
+		capa_interfaz_izquierdo.addChild(move_control)
+		stage.on("stagemousedown",function(evt){
+			var x=evt.stageX/capa_interfaz_izquierdo.scaleX
+			var y=evt.stageY/capa_interfaz_izquierdo.scaleY
+			if(x<400 && y>680){
+				evt.preventDefault();
+				move_control.x=x
+				move_control.y=y
+				move_control.alpha=1
+				startMovingJoystic=true
+			}
+		})
+		stage.on("stagemouseup",function(evt){
+			var x=evt.stageX/capa_interfaz_izquierdo.scaleX
+			var y=evt.stageY/capa_interfaz_izquierdo.scaleY
+			move_control.x=250
+			move_control.y=830
+			move_control.alpha=0.5
+			startMovingJoystic=false
+			moveX=0;
+			moveY=0;
+			if(x<400 && y>680){
+				evt.preventDefault();
+				return true
+			}
+		})
+		stage.on("stagemousemove",function(evt){
+			if(startMovingJoystic){
+				var x=evt.stageX/capa_interfaz_izquierdo.scaleX
+				var y=evt.stageY/capa_interfaz_izquierdo.scaleY
+				moveX=x-move_control.x
+				moveY=y-move_control.y
+				
+				var margin=50
+				var maxDesp=50
+				if(moveX>0){
+					if(moveX<margin) moveX=0;
+					else moveX=(moveX-margin)/maxDesp
+					if(moveX>1) moveX=1;
+				}
+				if(moveX<0){
+					if(-moveX<margin) moveX=0;
+					else moveX=(moveX+margin)/maxDesp
+					if(moveX<-1) moveX=-1;
+				}
+				if(moveY>0){
+					if(moveY<margin) moveY=0;
+					else moveY=(moveY-margin)/maxDesp
+					if(moveY>1) moveY=1;
+				}
+				if(moveY<0){
+					if(-moveY<margin) moveY=0;
+					else moveY=(moveY+margin)/maxDesp
+					if(moveY<-1) moveY=-1;
+				}
+				frameRate.text=moveX+" - "+moveY;
+			}
+		})
+	}
 	
 	if(!estado.juegoEmpezado){
 		// Capa negra
@@ -1135,6 +1232,9 @@ function tick(event) {
 }
 
 function controlTeclado(event){
+	// Movemos el espíritu con el joystic virtual
+	if(moveX) spirit.x+=event.delta/1000*spirit.velocidad*moveX*0.7
+	if(moveY) spirit.y+=event.delta/1000*spirit.velocidad*moveY*0.7
 	// Movemos el espíritu con el teclado
 	if(moveUp){
 		if(moveLeft){
@@ -1219,6 +1319,10 @@ function controlTeclado(event){
 		objetoActivable.shadow=null;
 		objetoActivable=0;
 	}
+	
+	if(game_options.versionTactil)
+		if(objetoActivable) botonUsar.alpha=1
+		else botonUsar.alpha=0
 }
 
 var objetoActivable

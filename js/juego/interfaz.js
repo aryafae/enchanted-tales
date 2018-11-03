@@ -4,7 +4,8 @@ var debug={
 }
 
 var game_options={
-	controlTeclado:1
+	controlTeclado:1,
+	versionTactil:1
 }
 
 var game_values={
@@ -84,6 +85,8 @@ $(function(){
 	stage.canvas.width = w
 	stage.canvas.height = h
 	stage.enableMouseOver(5);
+	createjs.Touch.enable(stage);
+	stage.preventSelection = false;
 	
 	fondo_juego = new createjs.Shape();
 	fondo_juego.graphics.beginFill("#4d311f").drawRect(0, 0, 1920, 1080);
@@ -102,6 +105,8 @@ $(function(){
 	capa_animaciones=new createjs.Container();
 	dialogo = new createjs.Container();
 	capa_interfaz= new createjs.Container();
+	capa_interfaz_izquierdo= new createjs.Container();
+	capa_interfaz_derecho= new createjs.Container();
 	
 	resize()
 	
@@ -163,6 +168,7 @@ $(function(){
 		
 		{src: "img/juego/barra_energia.png", id: "barra_energia"},
 		{src: "img/juego/nivel_energia.png", id: "nivel_energia"},
+		{src: "img/juego/move_control.png", id: "move_control"},
 		
 		{src: "img/juego/pagina.png", id: "pagina"},
 		
@@ -779,6 +785,13 @@ function resize() {
 		capa_libro.y=(h-1080*escala)/2
 		capa_libro.x=0
 	}
+	
+	capa_interfaz_izquierdo.scaleX=h/1080
+	capa_interfaz_izquierdo.scaleY=h/1080
+	
+	capa_interfaz_derecho.scaleX=h/1080
+	capa_interfaz_derecho.scaleY=h/1080
+	capa_interfaz_derecho.x=w-1920*h/1080
 	
 	/*if(w/h>=1920/1080){ // Si es tan ancho o más que fullhd
 		var escala=h/1080
