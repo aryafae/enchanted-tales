@@ -107,6 +107,7 @@ $(function(){
 	capa_interfaz= new createjs.Container();
 	capa_interfaz_izquierdo= new createjs.Container();
 	capa_interfaz_derecho= new createjs.Container();
+	capa_niebla= new createjs.Container();
 	
 	resize()
 	
@@ -748,6 +749,8 @@ function resize() {
 	stage.canvas.width = w
 	stage.canvas.height = h
 	
+	//console.log(window.innerWidth)
+	
 	fondo_juego.scaleX=w/1920
 	fondo_juego.scaleY=h/1080
 	
@@ -792,6 +795,12 @@ function resize() {
 	capa_interfaz_derecho.scaleX=h/1080
 	capa_interfaz_derecho.scaleY=h/1080
 	capa_interfaz_derecho.x=w-1920*h/1080
+	
+	capa_niebla.scaleX=h/700
+	capa_niebla.scaleY=h/700
+	capa_niebla.x=w/2-1920*capa_niebla.scaleX
+	capa_niebla.y=h/2-1080*capa_niebla.scaleX
+	//capa_niebla.x=(w-1920*h/1080)/2
 	
 	/*if(w/h>=1920/1080){ // Si es tan ancho o más que fullhd
 		var escala=h/1080

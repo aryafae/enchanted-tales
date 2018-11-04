@@ -88,8 +88,10 @@ function preparaEscenario(){
 	
 	
 	niebla = new createjs.Bitmap(loader.getResult("niebla"))
+	capa_niebla.addChild(niebla);
+	
 	pantalla_de_juego.addChild(scene);
-	pantalla_de_juego.addChild(niebla);
+	pantalla_de_juego.addChild(capa_niebla);
 	pantalla_de_juego.addChild(capa_interfaz);
 	pantalla_de_juego.addChild(capa_interfaz_izquierdo);
 	pantalla_de_juego.addChild(capa_interfaz_derecho);
@@ -125,8 +127,8 @@ function preparaEscenario(){
 		})
 		
 		move_control = new createjs.Bitmap(loader.getResult("move_control"))
-		move_control.regX=110
-		move_control.regY=110
+		move_control.regX=200
+		move_control.regY=200
 		move_control.x=250
 		move_control.y=830
 		move_control.alpha=0.5
@@ -163,8 +165,8 @@ function preparaEscenario(){
 				moveX=x-move_control.x
 				moveY=y-move_control.y
 				
-				var margin=50
-				var maxDesp=50
+				var margin=80
+				var maxDesp=80
 				if(moveX>0){
 					if(moveX<margin) moveX=0;
 					else moveX=(moveX-margin)/maxDesp
@@ -657,15 +659,15 @@ function setCentro(){
 	var sx=canvasWidth/2-(centroX+16*pixelScale)
 	if(sx>0) sx=0
 	if(sx<(canvasWidth-32*pixelScale*map_width)) sx=canvasWidth-32*pixelScale*map_width
-	var sy=canvasHeight/2-48*pixelScale-centroY;
+	var sy=canvasHeight/2-16*pixelScale-centroY;
 	if(sy>0) sy=0
 	if(sy<(canvasHeight-32*pixelScale*map_height)) sy=canvasHeight-32*pixelScale*map_height
 	
 	scene.x=Math.round(sx);
 	scene.y=Math.round(sy);
 	
-	niebla.x=spirit.x-1920+scene.x+16*pixelScale
-	niebla.y=spirit.y-1080+32*pixelScale+scene.y
+	//niebla.x=spirit.x-1920*niebla.scaleX+scene.x+16*pixelScale
+	//niebla.y=spirit.y-1080*niebla.scaleY+32*pixelScale+scene.y
 }
 	
 function abreJuego() {
@@ -1204,15 +1206,15 @@ function tick(event) {
 		var sx=canvasWidth/2-(centroX+16*pixelScale)
 		if(sx>0) sx=0
 		if(sx<(canvasWidth-32*pixelScale*map_width)) sx=canvasWidth-32*pixelScale*map_width
-		var sy=canvasHeight/2-48*pixelScale-centroY;
+		var sy=canvasHeight/2-16*pixelScale-centroY;
 		if(sy>0) sy=0
 		if(sy<(canvasHeight-32*pixelScale*map_height)) sy=canvasHeight-32*pixelScale*map_height
 		
 		scene.x=Math.round(sx);
 		scene.y=Math.round(sy);
 		
-		niebla.x=spirit.x-1920+scene.x+16*pixelScale
-		niebla.y=spirit.y-1080+32*pixelScale+scene.y
+		//niebla.x=spirit.x+scene.x+16*pixelScale//-1920*niebla.scaleX
+		//niebla.y=spirit.y+32*pixelScale+scene.y//-1080*niebla.scaleX
 		
 		testLayers['character_layer'].sortChildren(function(obj1, obj2, options) {
 			 if (obj1.y > obj2.y) { return 1; }
