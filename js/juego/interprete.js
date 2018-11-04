@@ -131,7 +131,7 @@ function preparaEscenario(){
 		move_control.regY=200
 		move_control.x=250
 		move_control.y=830
-		move_control.alpha=0.5
+		move_control.alpha=0.3
 		capa_interfaz_izquierdo.addChild(move_control)
 		stage.on("stagemousedown",function(evt){
 			var x=evt.stageX/capa_interfaz_izquierdo.scaleX
@@ -140,7 +140,7 @@ function preparaEscenario(){
 				evt.preventDefault();
 				move_control.x=x
 				move_control.y=y
-				move_control.alpha=1
+				move_control.alpha=0.8
 				startMovingJoystic=true
 			}
 		})
@@ -149,7 +149,7 @@ function preparaEscenario(){
 			var y=evt.stageY/capa_interfaz_izquierdo.scaleY
 			move_control.x=250
 			move_control.y=830
-			move_control.alpha=0.5
+			move_control.alpha=0.3
 			startMovingJoystic=false
 			moveX=0;
 			moveY=0;
@@ -187,7 +187,7 @@ function preparaEscenario(){
 					else moveY=(moveY+margin)/maxDesp
 					if(moveY<-1) moveY=-1;
 				}
-				frameRate.text=moveX+" - "+moveY;
+				//frameRate.text=moveX+" - "+moveY;
 			}
 		})
 	}
@@ -698,22 +698,28 @@ function testClickHandler(evt){
 	}
 	
 	if(game_options.controlTeclado){
-		x=ex-scene.x
-		y=ey-scene.y
-		var objetivo=0
-		if(dotes["Ataque seguidor"].aprendido){
-			var cercano=0
-			var min_distancia=32*pixelScale+1
-			for(var i in monster_list){
-				var child=monster_list[i]
-				var distancia=dist({"x":child.x+16*pixelScale,"y":child.y+16*pixelScale},{"x":x,"y":y})
-				if(distancia<min_distancia){
-					objetivo=child
-					min_distancia=distancia
-				}
-			}
-		}
-		dispara(x,y,objetivo)
+        var x=evt.stageX/capa_interfaz_izquierdo.scaleX
+        var y=evt.stageY/capa_interfaz_izquierdo.scaleY
+        
+        if(game_options.versionTactil && x<400 && y>680){}
+        else{
+            x=ex-scene.x
+            y=ey-scene.y
+            var objetivo=0
+            if(dotes["Ataque seguidor"].aprendido){
+                var cercano=0
+                var min_distancia=32*pixelScale+1
+                for(var i in monster_list){
+                    var child=monster_list[i]
+                    var distancia=dist({"x":child.x+16*pixelScale,"y":child.y+16*pixelScale},{"x":x,"y":y})
+                    if(distancia<min_distancia){
+                        objetivo=child
+                        min_distancia=distancia
+                    }
+                }
+            }
+            dispara(x,y,objetivo)
+        }
 	}
 	else{
 		if(ultimoDisparo+game_values.bloqueaDesdeDisparo>(new Date()).getTime()) return;
@@ -1323,7 +1329,7 @@ function controlTeclado(event){
 	}
 	
 	if(game_options.versionTactil)
-		if(objetoActivable) botonUsar.alpha=1
+		if(objetoActivable) botonUsar.alpha=0.8
 		else botonUsar.alpha=0
 }
 

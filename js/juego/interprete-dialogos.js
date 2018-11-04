@@ -265,7 +265,7 @@ function ejecutarAccion(accion){
 			n_acciones++
 		}
 		
-		listaDeOpciones.y=(canvasHeight/scale-186*n_acciones)/2
+		listaDeOpciones.y=(1080-186*n_acciones)/2
 	}
 	else if(accion.tipo==5){
 		var acciones=pila_acciones[0].acciones
@@ -277,7 +277,6 @@ function ejecutarAccion(accion){
 	}
 	else alert(JSON.stringify(accion))
 }
-
 var ordenDotes=[
 	"Movimiento ágil",
 	"Aura ampliada",
