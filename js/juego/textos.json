@@ -1,7 +1,24 @@
 {
 "textos":{
+    "Equipo de desarrollo":"Equipo de desarrollo",
+    "Magos colaboradores":"Mago colaboradores",
+    "Estudiantes de honor":"Estudiantes de honor",
+    "Estudiantes de magia":"Estudiantes de magia",
+    "Estudiantes novatos de magia":"Estudiantes novatos",
+    "Escépticos en la magia":"Escépticos en la magia",
+    
+    
+	"Música":"Música",
+	"Community Manager":"Community Manager",
+	"Tests y calidad":"Tests y calidad",
+	"Niveles e interfaz":"Niveles e interfaz",
+	"Programación":"Programación",
+    
+
 	"¿Quieres continuar?":"Si continuas saldrás del juego e irás a la página del proyecto ¿Quieres continuar?",
 	"Apoya nuestro proyecto":"Apoya nuestro proyecto",
+    
+	"Nuevo":"Nuevo",
 	"Abrir":"Abrir",
 	"Jugar":"Jugar",
 	"Mirar":"Mirar",
@@ -74,120 +91,159 @@
 	"Hechizo de curar_desc":"Podrás curar a los miembros de tu grupo con este hechizo",
 	"Hechizo de escudo_desc":"Podrás proteger a los miembros de tu grupo con este hechizo"
 },
+"lecciones":[
+    {"teoria":"1_teoria_hiragana","preguntas":[
+        {"p":"de","s":"hiragana","r":"で","o":["ど","く"],"snd":"de"},
+        {"p":"su","s":"hiragana","r":"す","o":["そ","で"],"snd":"su"},
+        {"p":"desu","s":"ser, estar","r":"です","o":["そこ","どこ"],"snd":"desu"}
+    ]},
+    {"teoria":"2_frase","preguntas":[
+        {"p":"do","s":"hiragana","r":"ど","o":["で","こ"],"snd":"do"},
+        {"p":"ko","s":"hiragana","r":"こ","o":["に","く"],"snd":"ko"},
+        {"p":"doko","s":"dónde","r":"どこ","o":["です","そこ"],"snd":"doko"},
+        {"p":"ka","s":"indica interrogación","r":"か","o":["こ","く"],"snd":"ka"},
+        {"p":"doko desu ka","s":"¿Dónde está?","r":"どこですか","o":["Va por allí."],"t":"trad","snd":"doko_desu_ka"}
+    ]},
+    {"teoria":"3_kanji","preguntas":[
+        {"p":"ku","s":"hiragana","r":"く","o":["こ","か"],"snd":"ku"},
+        {"p":"hi","s":"día, sol","r":"日","o":["目","口"],"snd":"hi"},
+        {"p":"juu","s":"diez","r":"十","o":["口","日"],"snd":"juu"},
+        {"p":"hayaku","s":"rápido","r":"早く","o":["行く","古く"],"snd":"hayaku"}
+    ]},
+    {"teoria":"4_partículas","preguntas":[
+        {"p":"so","s":"silabario hiragana","r":"そ","o":["す","こ"],"snd":"so"},
+        {"p":"soko","s":"ahí","r":"そこ","o":["です","どこ"],"snd":"soko"},
+        {"p":"ni","s":"indica dirección","r":"に","o":["こ","そ"],"snd":"ni"},
+        {"p":"iku","s":"ir","r":"行く","o":["徂く","早く"],"snd":"iku"},
+        {"p":"soko ni iku","s":"Va por allí.","r":"そこに行く","o":["¿Dónde está?"],"t":"trad","snd":"soko ni iku"}
+    ]},
+    {"teoria":"5_frase_y_kanjis","preguntas":[
+        {"p":"kuchi","s":"boca","r":"口","o":["十","日"],"snd":"kuchi"},
+        {"p":"me","s":"ojo","r":"目","o":["耳","月"],"snd":"me"},
+        {"p":"tsuki","s":"mes, luna","r":"月","o":["目","耳"],"snd":"tsuki"}
+    ]},
+    {"teoria":"teoria_diferencias_na_ta","preguntas":[
+        {"p":"a","s":"silabario hiragana","r":"あ","o":["お","な"],"snd":"a"},
+        {"p":"na","s":"silabario hiragana","r":"な","o":["た","す"],"snd":"na"},
+        {"p":"ta","s":"silabario hiragana","r":"た","o":["な","に"],"snd":"ta"},
+        {"p":"ha","s":"silabario hiragana","r":"は","o":["な","ほ"],"snd":"ha"}
+    ]},
+    {"teoria":"teoria_particula_wa","preguntas":[
+        {"p":"anata","s":"tú","r":"あなた","o":["おなた","あたな"],"snd":"anata"},
+        {"p":"wa","s":"indica tema","r":"は","o":["な","ほ"],"snd":"wa"},
+        {"p":"anata wa","s":"sobre ti","r":"あなたは","o":["おなたは","あなたほ"],"snd":"anata_wa"},
+        {"p":"no","s":"de, indica relación","r":"の","o":["お","は"],"snd":"no"}
+    ]},
+    {"teoria":"teoria_sufijos","preguntas":[
+        {"p":"hito","s":"persona","r":"人","o":["大","夫"],"snd":"hito"},
+        {"p":"otto","s":"marido","r":"夫","o":["大","本"],"snd":"otto"},
+        {"p":"dai","s":"grande (prefijo)","r":"大","o":["犬","夫"],"snd":"dai"},
+        {"p":"inu","s":"perro","r":"犬","o":["大","夫"],"snd":"inu"}
+    ]},
+    {"teoria":"teoria_variación_te_de","preguntas":[
+        {"p":"i","s":"silabario hiragana","r":"い","o":["の","は"],"snd":"i"},
+        {"p":"u","s":"silabario hiragana","r":"う","o":["つ","て"],"snd":"u"},
+        {"p":"ya","s":"silabario hiragana","r":"や","o":["つ","う"],"snd":"ya"},
+        {"p":"te","s":"silabario hiragana","r":"て","o":["で","と"],"snd":"te"}
+    ]},
+    {"teoria":"teoria_palabras_complejas_y_radicales","preguntas":[
+        {"p":"hai","s":"sí","r":"はい","o":["はの","ほい"],"snd":"hai"},
+        {"p":"daijoubu","s":"estar bien","r":"大丈夫","o":["丈大夫","夫丈大"],"snd":"daijoubu"},
+        {"p":"namae","s":"nombre","r":"名前","o":["夘前","名苅"],"snd":"namae"},
+        {"p":"isshoni","s":"juntos, junto con","r":"一緒に","o":["一紙に","一偖に"],"snd":"isshoni"}
+    ]},
+    {"teoria":"diferencias_ra_chi","preguntas":[
+        {"p":"ru","s":"silabario hiragana","r":"る","o":["う","ろ"],"snd":"ru"},
+        {"p":"shi","s":"silabario hiragana","r":"し","o":["て","と"],"snd":"shi"},
+        {"p":"ra","s":"silabario hiragana","r":"ら","o":["ち","ろ"],"snd":"ra"},
+        {"p":"chi","s":"silabario hiragana","r":"ち","o":["ら","ろ"],"snd":"chi"}
+    ]},
+    {"teoria":"teoria_hon_ki","preguntas":[
+        {"p":"ya","s":"flecha","r":"矢","o":["本","来"],"snd":"ya"},
+        {"p":"rai","s":"siguiente (prefijo)","r":"来","o":["本","矢"],"snd":"rai"},
+        {"p":"ki","s":"árbol","r":"木","o":["本","夫"],"snd":"ki"},
+        {"p":"hon","s":"libro","r":"本","o":["来","矢"],"snd":"hon"}
+    ]},
+    {"teoria":"teoria_watashi_tachi","preguntas":[
+        {"p":"shiru","s":"saber","r":"知る","o":["利る","如る"],"snd":"shiru"},
+        {"p":"kuru","s":"venir","r":"来る","o":["本る","矢る"],"snd":"kuru"},
+        {"p":"watashi tachi","s":"nosotros","r":"私たち","o":["利たち","私たら"],"snd":"watashi_tachi"},
+        {"p":"hana","s":"flor","r":"花","o":["化","苻"],"snd":"hana"}
+    ]},
+    {"teoria":"teoria_to","preguntas":[
+        {"p":"sa","s":"silabario hiragana","r":"さ","o":["て","と"],"snd":"sa"},
+        {"p":"tsu","s":"silabario hiragana","r":"つ","o":["う","て"],"snd":"tsu"},
+        {"p":"to","s":"con","r":"と","o":["て","ど"],"snd":"to"},
+        {"p":"koko","s":"aquí","r":"ここ","o":["たた","にに"],"snd":"koko"}
+    ]},
+    {"teoria":"teoria_forma_te_y_nai","preguntas":[
+        {"p":"nani","s":"qué","r":"何","o":["化","同"],"snd":"nani"},
+        {"p":"kite","s":"venir","r":"来て","o":["利る","如る"],"snd":"kite"},
+        {"p":"kudasai","s":"por favor","r":"ください","o":["くだとい","くたさい"],"snd":"kudasai"},
+        {"p":"shiranai","s":"no saber","r":"知らない","o":["利る","如る"],"snd":"shiranai"}
+    ]},
+    {"teoria":"teoria_pasado_formal_y_doble_consonante","preguntas":[
+        {"p":"kimashita","s":"vino (venir)","r":"来ました","o":["矢ました","木ました"],"snd":"kimashita"},
+        {"p":"douyatte","s":"de qué manera","r":"どうやって","o":["とうやって","とうやっで"],"snd":"douyatte"},
+        {"p":"watashi wa shiranai","s":"No lo sé.","r":"私は知らない","o":["利らない","如らない"],"snd":"watashi wa shiranai"},
+        {"p":"anata wa daijoubu?","s":"¿Estás bien?","r":"あなたは大丈夫？","o":["¿Cómo estás?","¿Estás cansado?"],"snd":"anata wa daijoubu?","t":"trad"}
+    ]},
+    {"teoria":"teoria_forma_te_kudasai","preguntas":[
+        {"p":"kite kudasai","s":"Ven, por favor.","r":"来てください","o":["とうやって","とうやっで"],"snd":"kite kudasai"},
+        {"p":"nan desu ka?","s":"¿Qué es?","r":"何ですか","o":["¿Cómo es?","¿Estás bien?"],"snd":"nan desu ka","t":"trad"}, 
+        {"p":"koko ni kimashita ka?","s":"¿Viniste aquí?","r":"ここに来ましたか","o":["¿Vuelves aquí?","¿Estás aquí?"],"snd":"koko ni kimashita ka","t":"trad"}, 
+        {"p":"watashi tachi to issho ni","s":"Junto con nosotros.","r":"私たちと一緒に","o":["Ir contigo.","Ven con nosotros."],"snd":"watashi tachi to issho ni","t":"trad"}
+    ]},
+    {"teoria":"teoria_wo_da","preguntas":[
+        {"p":"wo","s":"indica el objeto","r":"を","o":["て","む"],"snd":"wo"},
+        {"p":"re","s":"silabario hiragana","r":"れ","o":["わ","ね"],"snd":"re"},
+        {"p":"iru","s":"ser, estar","r":"いる","o":["とる","いろ"],"snd":"iru"},
+        {"p":"da","s":"ser","r":"だ","o":["た","な"],"snd":"da"}
+    ]},
+    {"teoria":"teoria_masu","preguntas":[
+        {"p":"kokoro","s":"corazón","r":"心","o":["方","化"],"snd":"kokoro"},
+        {"p":"kore","s":"esto","r":"これ","o":["こわ","こね"],"snd":"kore"},
+        {"p":"imasu","s":"ser, estar (formal)","r":"います","o":["こます","いすま"],"snd":"imasu"},
+        {"p":"shitte","s":"saber (forma -te)","r":"知って","o":["知て","利って"],"snd":"shitte"}
+    ]},
+    {"teoria":"teoria_te_imasu","preguntas":[
+        {"p":"kata","s":"persona (respetuoso)","r":"方","o":["心","力"],"snd":"kata"},
+        {"p":"ta","s":"campo de arroz","r":"田","o":["日","皿"],"snd":"ka"},
+        {"p":"yama","s":"montaña","r":"山","o":["出","心"],"snd":"yama"},
+        {"p":"hon wo shitte imasu ka","s":"¿Conoces el libro?","r":"本を知っていますか？","o":["¿Dónde está el libro?","¿Te sabes el libro?"],"t":"trad","snd":"hon wo shitte imasu ka"}
+    ]},
+    {"teoria":"teoria_otros_verbos","preguntas":[
+        {"p":"hanasu","s":"liberar","r":"放す","o":["知す","改す"],"snd":"hanasu"},
+        {"p":"omou","s":"pensar","r":"思う","o":["見う","出う"],"snd":"omou"},
+        {"p":"deru","s":"salir","r":"出る","o":["心る","思る"],"snd":"deru"},
+        {"p":"miru","s":"mirar","r":"見る","o":["目る","思る"],"snd":"miru"}
+    ]},
+    {"teoria":"teoria_imperativo","preguntas":[
+        {"p":"omoide","s":"recuerdo","r":"思い出","o":["見い出","思い心"],"snd":"omoide"},
+        {"p":"miseru","s":"mostrar","r":"見せる","o":["見せて","思せる"],"snd":"miseru"},
+        {"p":"misete","s":"muestra (imperativo)","r":"見せて","o":["見せる","思せて"],"snd":"misete"},
+        {"p":"modoru","s":"volver, regresar","r":"戻る","o":["戸る","涙る"],"snd":"modoru"}
+    ]},
+    {"teoria":"teoria_yo","preguntas":[
+        {"p":"be","s":"silabario hiragana","r":"べ","o":["へ","づ"],"snd":"be"},
+        {"p":"ki","s":"silabario hiragana","r":"き","o":["ぎ","さ"],"snd":"ki"},
+        {"p":"e","s":"silabario hiragana","r":"え","o":["う","そ"],"snd":"e"},
+        {"p":"yo","s":"enfatiza una orden","r":"よ","o":["な","ま"],"snd":"yo"}
+    ]},
+    {"teoria":"teoria_tai","preguntas":[
+        {"p":"kiken","s":"peligro","r":"危険\t","o":["厄険","危倹"],"snd":"kiken"},
+        {"p":"beki","s":"deberías","r":"べき","o":["へき","べさ"],"snd":"beki"},
+        {"p":"iie","s":"no","r":"いいえ","o":["いええ","ここえ"],"snd":"iie"},
+        {"p":"itai","s":"querer estar","r":"いたい","o":["いだい","こたこ"],"snd":"itai"}
+    ]},
+    {"teoria":"teoria_wo_beki_yo","preguntas":[    
+        {"p":"omoide wo misete","s":"Muestra los recuerdos.","r":"思い出を見せて。","o":["Mira los recurdos.","Muestra el pasado."],"snd":"omoide wo misete","t":"trad"},
+        {"p":"kiken desu.","s":"Es peligroso.","r":"危険です。","o":["Es difícil.","Es extraño."],"snd":"kiken desu","t":"trad"},
+        {"p":"modoru beki da yo","s":"Deberías volver.","r":"戻るべきだよ。","o":["Deberías esperar.","Puedes volver."],"t":"trad"},
+        {"p":"anata to isshoni itai desu.","s":"Quiero estar a contigo.","r":"あなたと一緒にいたいです。","o":["Estoy contigo.","Quiero ir contigo."],"snd":"anata to isshoni itai desu","t":"trad"}
+    ]}
+],
 "preguntas":[
-	{"p":"de","s":"silabario hiragana","r":"で","o":["ど","く"],"snd":"de","teoria":"1_teoria_hiragana"},
-	{"p":"su","s":"silabario hiragana","r":"す","o":["そ","で"],"snd":"su"},
-	{"p":"desu","s":"ser, estar","r":"です","o":["そこ","どこ"],"snd":"desu"},
-	{"p":"ka","s":"indica interrogación","r":"か","o":["こ","く"],"snd":"ka"},
-	
-	{"p":"do","s":"silabario hiragana","r":"ど","o":["で","こ"],"snd":"do"},
-	{"p":"ko","s":"silabario hiragana","r":"こ","o":["に","く"],"snd":"ko"},
-	{"p":"doko","s":"dónde","r":"どこ","o":["です","そこ"],"snd":"doko"},
-	{"p":"doko desu ka","s":"¿Dónde está?","r":"どこですか","o":["Va por allí."],"t":"trad","snd":"doko desu ka","teoria":"2_frase"},
-	
-	{"p":"ku","s":"silabario hiragana","r":"く","o":["こ","か"],"snd":"ku"},
-	{"p":"hi","s":"día, sol","r":"日","o":["目","口"],"snd":"hi","teoria":"3_kanji"},
-	{"p":"juu","s":"diez","r":"十","o":["口","日"],"snd":"juu"},
-	{"p":"hayaku","s":"rápido","r":"早く","o":["行く","古く"],"snd":"hayaku"},
-	
-	{"p":"so","s":"silabario hiragana","r":"そ","o":["す","こ"],"snd":"so"},
-	{"p":"soko","s":"ahí","r":"そこ","o":["です","どこ"],"snd":"soko"},
-	{"p":"ni","s":"indica dirección","r":"に","o":["こ","そ"],"snd":"ni","teoria":"4_partículas"},
-	{"p":"iku","s":"ir","r":"行く","o":["徂く","早く"],"snd":"iku"},
-	
-	{"p":"soko ni iku","s":"Va por allí.","r":"そこに行く","o":["¿Dónde está?"],"t":"trad","snd":"soko ni iku","teoria":"4_partículas"},
-	{"p":"kuchi","s":"boca","r":"口","o":["十","日"],"snd":"kuchi","teoria":"5_frase_y_kanjis"},
-	{"p":"me","s":"ojo","r":"目","o":["耳","月"],"snd":"me"},
-	{"p":"tsuki","s":"mes, luna","r":"月","o":["目","耳"],"snd":"tsuki"},
-	
-	{"p":"a","s":"silabario hiragana","r":"あ","o":["お","な"],"snd":"a"},
-	{"p":"na","s":"silabario hiragana","r":"な","o":["た","す"],"snd":"na","teoria":"teoria_diferencias_na_ta"},
-	{"p":"ta","s":"silabario hiragana","r":"た","o":["な","に"],"snd":"ta"},
-	{"p":"ha","s":"silabario hiragana","r":"は","o":["な","ほ"],"snd":"ha"},
-	{"p":"anata","s":"tú","r":"あなた","o":["おなた","あたな"],"snd":"anata"},
-	{"p":"wa","s":"indica tema","r":"は","o":["な","ほ"],"snd":"wa","teoria":"teoria_particula_wa"},
-	{"p":"anata wa","s":"sobre ti","r":"あなたは","o":["おなたは","あなたほ"],"snd":"anata_wa"},
-	{"p":"no","s":"de, indica relación","r":"の","o":["お","は"],"snd":"no"},
-	{"p":"hito","s":"persona","r":"人","o":["大","夫"],"snd":"hito"},
-	{"p":"otto","s":"marido","r":"夫","o":["大","本"],"snd":"otto"},
-	{"p":"dai","s":"grande (prefijo)","r":"大","o":["犬","夫"],"snd":"dai","teoria":"teoria_sufijos"},
-	{"p":"inu","s":"perro","r":"犬","o":["大","夫"],"snd":"inu"},
-	{"p":"i","s":"silabario hiragana","r":"い","o":["の","は"],"snd":"i"},
-	{"p":"u","s":"silabario hiragana","r":"う","o":["つ","て"],"snd":"u"},
-	{"p":"ya","s":"silabario hiragana","r":"や","o":["つ","う"],"snd":"ya"},
-	{"p":"te","s":"silabario hiragana","r":"て","o":["で","と"],"snd":"te","teoria":"teoria_variación_te_de"},
-	{"p":"hai","s":"sí","r":"はい","o":["はの","ほい"],"snd":"hai"},
-	{"p":"daijoubu","s":"estar bien","r":"大丈夫","o":["丈大夫","夫丈大"],"snd":"daijoubu"},
-	{"p":"namae","s":"nombre","r":"名前","o":["夘前","名苅"],"snd":"namae","teoria":"teoria_palabras_complejas_y_radicales"},
-	{"p":"isshoni","s":"juntos, junto con","r":"一緒に","o":["一紙に","一偖に"],"snd":"isshoni"},
-	{"p":"ru","s":"silabario hiragana","r":"る","o":["う","ろ"],"snd":"ru"},
-	{"p":"shi","s":"silabario hiragana","r":"し","o":["て","と"],"snd":"shi"},
-	{"p":"ra","s":"silabario hiragana","r":"ら","o":["ち","ろ"],"snd":"ra","teoria":"diferencias_ra_chi"},
-	{"p":"chi","s":"silabario hiragana","r":"ち","o":["ら","ろ"],"snd":"chi"},
-	{"p":"ya","s":"flecha","r":"矢","o":["本","来"],"snd":"ya"},
-	{"p":"rai","s":"siguiente (prefijo)","r":"来","o":["本","矢"],"snd":"rai"},
-	{"p":"ki","s":"árbol","r":"木","o":["本","夫"],"snd":"ki"},
-	{"p":"hon","s":"libro","r":"本","o":["来","矢"],"snd":"hon","teoria":"teoria_hon_ki"},
-	
-	{"p":"shiru","s":"saber","r":"知る","o":["利る","如る"],"snd":"shiru"},
-	{"p":"kuru","s":"venir","r":"来る","o":["本る","矢る"],"snd":"kuru"},
-	{"p":"watashi tachi","s":"nosotros","r":"私たち","o":["利たち","私たら"],"snd":"watashi_tachi","teoria":"teoria_watashi_tachi"},
-	{"p":"hana","s":"flor","r":"花","o":["化","苻"],"snd":"hana"},
-	
-	{"p":"sa","s":"silabario hiragana","r":"さ","o":["て","と"],"snd":"sa"},
-	{"p":"tsu","s":"silabario hiragana","r":"つ","o":["う","て"],"snd":"tsu"},
-	{"p":"to","s":"con","r":"と","o":["て","ど"],"snd":"to","teoria":"teoria_to"},
-	{"p":"koko","s":"aquí","r":"ここ","o":["たた","にに"],"snd":"koko"},
-	
-	{"p":"nani","s":"qué","r":"何","o":["化","同"],"snd":"nani"},
-	{"p":"kite","s":"venir","r":"来て","o":["利る","如る"],"snd":"kite","teoria":"teoria_forma_te_y_nai"},
-	{"p":"kudasai","s":"por favor","r":"ください","o":["くだとい","くたさい"],"snd":"kudasai"},
-	{"p":"shiranai","s":"no saber","r":"知らない","o":["利る","如る"],"snd":"shiranai"},
-	
-	{"p":"kimashita","s":"vino (venir)","r":"来ました","o":["矢ました","木ました"],"snd":"kimashita","teoria":"teoria_pasado_formal_y_doble_consonante"},
-	{"p":"douyatte","s":"de qué manera","r":"どうやって","o":["とうやって","とうやっで"],"snd":"douyatte"},
-	{"p":"watashi wa shiranai","s":"No lo sé.","r":"私は知らない","o":["利らない","如らない"],"snd":"watashi wa shiranai"},
-	{"p":"anata wa daijoubu?","s":"¿Estás bien?","r":"あなたは大丈夫？","o":["¿Cómo estás?","¿Estás cansado?"],"snd":"anata wa daijoubu?","t":"trad"},
-	
-	{"p":"kite kudasai","s":"Ven, por favor.","r":"来てください","o":["とうやって","とうやっで"],"snd":"kite kudasai","teoria":"teoria_forma_te_kudasai"},
-	{"p":"nan desu ka?","s":"¿Qué es?","r":"何ですか","o":["¿Cómo es?","¿Estás bien?"],"snd":"nan desu ka","t":"trad"}, 
-	{"p":"koko ni kimashita ka?","s":"¿Viniste aquí?","r":"ここに来ましたか","o":["¿Vuelves aquí?","¿Estás aquí?"],"snd":"koko ni kimashita ka","t":"trad"}, 
-	{"p":"watashi tachi to issho ni","s":"Junto con nosotros.","r":"私たちと一緒に","o":["Ir contigo.","Ven con nosotros."],"snd":"watashi tachi to issho ni","t":"trad"}, 
-	
-	{"p":"wo","s":"indica el objeto","r":"を","o":["て","む"],"snd":"wo","teoria":"teoria_wo_da"},
-	{"p":"re","s":"silabario hiragana","r":"れ","o":["わ","ね"],"snd":"re"},
-	{"p":"iru","s":"ser, estar","r":"いる","o":["とる","いろ"],"snd":"iru"},
-	{"p":"da","s":"ser","r":"だ","o":["た","な"],"snd":"da"},
-	
-	{"p":"kokoro","s":"corazón","r":"心","o":["方","化"],"snd":"kokoro"},
-	{"p":"kore","s":"esto","r":"これ","o":["こわ","こね"],"snd":"kore"},
-	{"p":"imasu","s":"ser, estar (formal)","r":"います","o":["こます","いすま"],"snd":"imasu","teoria":"teoria_masu"},
-	{"p":"shitte","s":"saber (forma -te)","r":"知って","o":["知て","利って"],"snd":"shitte"},
-	
-	{"p":"kata","s":"persona (respetuoso)","r":"方","o":["心","力"],"snd":"kata"},
-	{"p":"ta","s":"campo de arroz","r":"田","o":["日","皿"],"snd":"ka"},
-	{"p":"yama","s":"montaña","r":"山","o":["出","心"],"snd":"yama"},
-	{"p":"hon wo shitte imasu ka","s":"¿Conoces el libro?","r":"本を知っていますか？","o":["¿Dónde está el libro?","¿Te sabes el libro?"],"t":"trad","snd":"hon wo shitte imasu ka","teoria":"teoria_te_imasu"},
-	{"p":"hanasu","s":"liberar","r":"放す","o":["知す","改す"],"snd":"hanasu","teoria":"teoria_otros_verbos"},
-	{"p":"omou","s":"pensar","r":"思う","o":["見う","出う"],"snd":"omou"},
-	{"p":"deru","s":"salir","r":"出る","o":["心る","思る"],"snd":"deru"},
-	{"p":"miru","s":"mirar","r":"見る","o":["目る","思る"],"snd":"miru"},
-	{"p":"omoide","s":"recuerdo","r":"思い出","o":["見い出","思い心"],"snd":"omoide"},
-	{"p":"miseru","s":"mostrar","r":"見せる","o":["見せて","思せる"],"snd":"miseru"},
-	{"p":"misete","s":"muestra (imperativo)","r":"見せて","o":["見せる","思せて"],"snd":"misete","teoria":"teoria_imperativo"},
-	{"p":"modoru","s":"volver, regresar","r":"戻る","o":["戸る","涙る"],"snd":"modoru"},
-	{"p":"be","s":"silabario hiragana","r":"べ","o":["へ","づ"],"snd":"be"},
-	{"p":"ki","s":"silabario hiragana","r":"き","o":["ぎ","さ"],"snd":"ki"},
-	{"p":"e","s":"silabario hiragana","r":"え","o":["う","そ"],"snd":"e"},
-	{"p":"yo","s":"enfatiza una orden","r":"よ","o":["な","ま"],"snd":"yo","teoria":"teoria_yo"},
-	{"p":"kiken","s":"peligro","r":"危険\t","o":["厄険","危倹"],"snd":"kiken"},
-	{"p":"beki","s":"deberías","r":"べき","o":["へき","べさ"],"snd":"beki"},
-	{"p":"iie","s":"no","r":"いいえ","o":["いええ","ここえ"],"snd":"iie"},
-	{"p":"itai","s":"querer estar","r":"いたい","o":["いだい","こたこ"],"snd":"itai","teoria":"teoria_tai"},
-	{"p":"omoide wo misete","s":"Muestra los recuerdos.","r":"思い出を見せて。","o":["Mira los recurdos.","Muestra el pasado."],"snd":"omoide wo misete","t":"trad","teoria":"teoria_wo_beki_yo"},
-	{"p":"kiken desu.","s":"Es peligroso.","r":"危険です。","o":["Es difícil.","Es extraño."],"snd":"kiken desu","t":"trad"},
-	{"p":"modoru beki da yo","s":"Deberías volver.","r":"戻るべきだよ。","o":["Deberías esperar.","Puedes volver."],"t":"trad"},
-	{"p":"anata to isshoni itai desu.","s":"Quiero estar a contigo.","r":"あなたと一緒にいたいです。","o":["Estoy contigo.","Quiero ir contigo."],"snd":"anata to isshoni itai desu","t":"trad"}
 ],
 "dialogos":{
 "preset":[
@@ -205,16 +261,21 @@
 	{"anim":"change","wait":16000,"name":"c_nami","scale":1.3,"time":4000},
 	{"anim":"hide","wait":20000,"name":"black_background","time":100,"waitEnd":1},
 	{"t":"¡Ha funcionado!"},
-	{"t":"Gracias por venir. Supongo que te debo una explicación: te he invocado porque necesito tu ayuda."},
+	{"t":"Hola amigo, lamento haberte invocado sin tu permiso, pero... necesito tu ayuda."},
 	{"t":"Me llamo Nami Kitsune y soy la bibliotecaria de la escuela de criaturas mágicas."},
-	{"t":"Estos son los subterráneos de la escuela. Por aquí se ha perdido un libro que puede cambiarlo todo, llamado \"Mahou no kotoba\"."},
-	{"t":"Y también creo que hay estudiantes persiguiéndolo, temo que se metan en líos."},
+	{"t":"Estos son los subterráneos de la escuela, en donde se ha perdido un libro llamado \"Mahou no kotoba\", que puede cambiarlo todo."},
+	{"t":"También creo que hay estudiantes persiguiéndolo, y temo que se metan en líos."},
 	{"anim":"hide","name":"luz","time":1000},
 	{"anim":"hide","name":"c_nami","time":1000,"waitEnd":1},
 	{"music":"3exploracion"},
-	{"t":"Luego te daré más detalles pero es importante que nos demos prisa.","pj":"c_nami"},
+	{"t":"Luego te daré más detalles, pero ahora debemos darnos prisa.","pj":"c_nami"},
 	{"t":"Necesito que me guíes por estos pasillos y me ayudes si surge algún peligro."},
-	{"t":"Antes de nada registremos los muebles de esta sala. Siento que hay magia cerca."}
+	{"t":"Antes de nada registremos los muebles de esta sala. Siento que hay magia cerca."},
+    {"muestraCuaderno":"tutorial_mover"},
+	{"t":"Quizás necesites ayuda para moverte por aquí. Me han dicho que estas notas pueden ayudarte."},
+	{"t":"En la página de la izquierda pone \"mover\", y en la derecha \"mirar\"."},
+	{"t":"Yo no puedo entenderlo, pero se supone que tiene que ver con la manera en que te conectas a nuestro mundo."},
+	{"t":"Sabiendo esto ¿Puedes echar un vistazo por la sala?"}
 ],
 "Escaleras arriba":[
 	{"t":"Esas escaleras llevan de vuelta a la escuela.","pj":"c_nami"},
@@ -267,7 +328,10 @@
 "vesPrimerEnemigo":[
 	{"t":"¡Cuidado! Esa masa azul que se mueve es un limo tóxico.","pj":"c_nami"},
 	{"t":"No puedo acercarme o me intoxicará, pero puedes eliminarlo usando tu magia."},
-	{"t":"Simplemente pulsa sobre el limo para lanzarle una bola de energía."}
+	{"t":"Espera, creo que tengo en mi cuaderno algún apunte que me hicieron sobre esto."},
+    {"muestraCuaderno":"tutorial_atacar"},
+	{"t":"¡Aquí está! ¿Lo entiendes? Pone atacar, y eso deben ser proyectiles mágicos."},
+	{"t":"Pero no entiendo que aparezca un dedo ahí, subiendo y bajando. Espero que a tí si te sea útil."}
 ],
 "eliminasPrimerEnemigo":[
 	{"t":"¡Buen trabajo! Has acabado con el limo.","pj":"c_nami"},
@@ -761,33 +825,33 @@
 	{"t":"Puede que sea lo que ha bloqueado la puerta. Si lo vaciamos podremos pasar."}
 ],
 "else":[
-	{"t":"Puede estar activando artefactos desconocidos de este nivel. Creo que sería mejor vaciarlo."}
+        {"t":"Puede estar activando artefactos desconocidos de este nivel. Creo que sería mejor vaciarlo."}
 ]},
-	{"t":"No entiendo del todo esta tecnología, pero creo que sé cómo hacerlo."},
-	{"t":"Lo que contiene es energía espiritual. Tú puedes absorberla si te metes en la esfera."},
-	{"opciones":[
-	{"t":"Meterte en la esfera.","a":[
-	{"set":"energiaAbsorvida","expresion":["val",true]}
-]},
-	{"t":"Alejarte de la esfera.","a":[
-	{"t":"Oh, no te preocupes, no debería hacerte daño.","pj":"c_nami","r":1},
-	{"t":"En el peor de los casos volverías a tu plano y te podría volver a invocar."},
-	{"opciones":[
-	{"t":"Meterte en la esfera.","a":[
-	{"set":"energiaAbsorvida","expresion":["val",true]}
-]},
-	{"t":"Alejarte de la esfera aún más.","a":[
-	{"t":"Está bien, probaré simplemente a liberar la energía.","pj":"c_nami","r":1},
-	{"t":"放す。"},
-	{"changeFrame":"colector","frame":"inactivo"},
-	{"custom":"give_energy","energy":"2000"},
-	{"t":"Sientes como si una onda de energía atravesase toda la sala.","pj":"none"},
-	{"t":"¡Vaya! Esperaba que se hubiese disipado, pero parece que la energía continua aquí.","pj":"c_nami","r":1},
-	{"t":"Si es así temo que pueda haber afectado a otras criaturas."}
-]}
-]}
-]}
-]},
+    {"t":"No entiendo del todo esta tecnología, pero creo que sé cómo hacerlo."},
+    {"t":"Lo que contiene es energía espiritual. Tú puedes absorberla si te metes en la esfera."},
+    {"opciones":[
+        {"t":"Meterte en la esfera.","a":[
+            {"set":"energiaAbsorvida","expresion":["val",true]}
+        ]},
+        {"t":"Alejarte de la esfera.","a":[
+            {"t":"Oh, no te preocupes, no debería hacerte daño.","pj":"c_nami","r":1},
+            {"t":"En el peor de los casos volverías a tu plano y te podría volver a invocar."},
+            {"opciones":[
+                {"t":"Meterte en la esfera.","a":[
+                    {"set":"energiaAbsorvida","expresion":["val",true]}
+                ]},
+                {"t":"Alejarte de la esfera aún más.","a":[
+                    {"t":"Está bien, probaré simplemente a liberar la energía.","pj":"c_nami","r":1},
+                    {"t":"放す。"},
+                    {"changeFrame":"colector","frame":"inactivo"},
+                    {"custom":"give_energy","energy":"2000"},
+                    {"t":"Sientes como si una onda de energía atravesase toda la sala.","pj":"none"},
+                    {"t":"¡Vaya! Esperaba que se hubiese disipado, pero parece que la energía continua aquí.","pj":"c_nami","r":1},
+                    {"t":"Si es así temo que pueda haber afectado a otras criaturas."}
+                ]}
+            ]}
+        ]}
+    ]},
 	{"if":["var","energiaAbsorvida"],
 "then":[
 	{"t":"Tan pronto como te introduces en la esfera sientes que una poderosa energía te inunda.","pj":"none"},
@@ -799,7 +863,8 @@
 	{"t":"En principio no debería suponerte un problema, pero estaré atenta por si algo pasa."}
 ]},
 	{"changeFrame":"Gran puerta","frame":"abierta"},
-	{"unblock":"Gran puerta"}
+	{"unblock":"Gran puerta"},
+	{"deactivate":"Gran puerta"}
 ],
 "Cristal2":[
 	{"t":"¡Otro cristal! Lanzaré el hechizo de nuevo.","pj":"c_nami"},
@@ -819,38 +884,55 @@
 	{"t":"LA DEMO TERMINA AQUÍ."},
 	{"t":"Espero que os guste y poder terminar el juego para que lo disfrutéis por completo."}
 ],
+
 "1_teoria_hiragana":[
-	{"t":"Aquí vas a aprender a usar tus poderes.","pj":"c_nami"},
-	{"t":"Aprenderás a usar hechizos a medida que aprendas el lenguaje de la magia."},
-	{"t":"Los símbolos で (de) y す (su) son hiragana, y representan sílabas. Si los juntamos tenemos la palabra です (desu), que significa \"ser\" o \"estar\"."},
-	{"t":"Por último tenemos el hiragana か (ka), que además es una partícula que indica interrogación. Pronto veremos más sobre esto."},
+	{"t":"Aquí vas a aprender a usar tus poderes. Aprenderás a usar hechizos a medida que aprendas el lenguaje de la magia.","pj":"c_nami"},
+    {"muestraCuaderno":"hiragana_de_su"},
+	{"t":"Empezaremos por el hiragana, símbolos que representan sonidos. Aquí tenemos で (de) y す (su), por ejemplo."},
+    {"muestraCuaderno":"hiragana_desu"},
+	{"t":"Si los juntamos tenemos la palabra です (desu), que significa \"ser\" o \"estar\"."},
+	{"t":"Fíjate que en la palabra です (desu) la \"u\" casi no se pronuncia. Esto es habitual en nuestro idioma."},
 	{"t":"Intenta memorizar todos los símbolos bien antes de continuar, porque el libro te hará preguntas. Cuantas más aciertes, más mejorará tu magia."}
 ],
 "2_frase":[
-	{"t":"Con los hiragana ど (do) y こ (ko) formamos la palabra どこ (doko), que significa \"dónde\".","pj":"c_nami"},
+    {"muestraCuaderno":"hiragana_doko"},
+	{"t":"Aquí tenemos dos nuevos hiragana ど (do) y こ (ko), con los que formamos la palabra どこ (doko), que significa \"dónde\".","pj":"c_nami"},
+    {"muestraCuaderno":"frase_doko_desu_ka"},
 	{"t":"Ahora que tenemos todo esto podemos formar nuestra primera frase: どこですか (doko desu ka)."},
-	{"t":"どこ (doko) significa \"dónde\" y です \"estar\"."},
-	{"t":"La partícula か al final de la frase indica que estamos haciendo una pregunta: \"¿Dónde está?\"."}
+	{"t":"Ya conocemos どこ (doko) y  です (desu), que significan \"dónde estar\". Pero ¿cual es el último hiragana de la frase?"},
+    {"muestraCuaderno":"particula_ka"},
+	{"t":"Es la partícula か (ka), que al colocarse al final de la frase indica que estamos haciendo una pregunta."},
+	{"t":"Es decir, estamos preguntando: \"¿Dónde está?\"."}
 ],
 "3_kanji":[
+    {"muestraCuaderno":"kanjis"},
 	{"t":"Además de hiragana, en japonés se usan kanjis de origen chino para escribir palabras. Los kanjis no representan sonidos sino conceptos.","pj":"c_nami"},
-	{"t":"Por ejemplo 日 (hi) y 十 (juu) son kanjis. Fíjate como sus trazos suelen ser más rectilíneos que el hiragana."},
-	{"t":"Además se pueden unir para formar kanjis más complejos. La palabra 早く (hayaku) tiene un kanji formado por 日 (hi) y 十 (juu), uno encima del otro."},
-	{"t":"Estos kanjis más sencillos que forman otros se llaman radicales, y conocerlos ayuda a recordar los kanjis más complejos."},
-	{"t":"Usando tanto kanjis como hiragana podemos formar palabras como 早く (hayaku)."},
+	{"t":"Por ejemplo 日 (hi), que significa \"sol\" o \"día\". O 十 (juu), que significa \"diez\" son kanjis."},
+    {"t":"Fíjate como sus trazos suelen ser más rectilíneos que el hiragana."},
+    {"muestraCuaderno":"radicales"},
+	{"t":"Estos kanjis más sencillos se llaman radicales y se pueden usar para formar otros. Por ejemplo, poniendo uno encima del otro."},
+	{"t":"Los kanjis pueden ser palabras por si mismos, pero también se pueden juntar con otros kanjis o hiragana."},
+    {"muestraCuaderno":"hayaku"},
+	{"t":"Por ejemplo, si juntamos el kanji anterior con el hiragana く (ku) tenemos la palabra  早く (hayaku)."},
 	{"t":"Esta palabra significa \"rápidamente\", pero se puede usar como una expresión para pedirle a otra persona que se de prisa."}
 ],
 "4_partículas":[
-	{"t":"En japonés los verbos suelen estar formados por kanjis seguidos por hiragana. Por ejemplo 行く (iku), el verbo \"ir\".","pj":"c_nami"},
-	{"t":"Junto al verbo 行く (iku) se suele usar la partícula に (ni), para indicar a dónde vamos, colocándola detras de la palabra que indica el destino."},
-	{"t":"Si escribimos そこに \"soko ni\" estamos indicando \"hacia ahí\". Enseguida veremos una frase que use todo esto."}
+	{"t":"A medida que avancemos comenzaremos a reutilizar parte de lo que aprendimos.","pj":"c_nami"},
+    {"muestraCuaderno":"soko"},
+	{"t":"Por ejemplo la palabra そこ (soko), que significa \"allí\", termina como どこ (doko), que significa \"dónde\"."},
+    {"muestraCuaderno":"so"},
+	{"t":"Para distinguir ambas palabras tendrás que fijarte en el primer hiragana: そ (so)."},
+    {"muestraCuaderno":"iku"},
+	{"t":"De igual manera tenemos el verbo \"ir\", escrito 行く (iku). Fíjate en la diferencia con 早く (hayaku)."},
+    {"muestraCuaderno":"frase_soko_ni_iku"},
+	{"t":"Juntando las palabras que acabamos de aprender podemos formar la frase そこに行く (soko ni iku), que significa: \"va por allí\"."},
+    {"muestraCuaderno":"particula_ni"},
+	{"t":"Entre ambas palabras tenemos el hiragana に (ni), que no conocíamos, y que en este caso funciona como una partícula gramatical."},
+	{"t":"に (ni) se coloca detrás de そこ (soko) para indicar la dirección en la que vamos: \"por allí\"."},
+	{"t":"Así que en este caso la partícula に (ni) significa \"por\"."}
 ],
 "5_frase_y_kanjis":[
-	{"t":"Con todo lo anterior podemos formar una nueva frase そこに行く (soko ni iku).","pj":"c_nami"},
-	{"t":"Como en japonés el verbo no indica la persona, esta frase puede interpretarse de varias maneras dependiendo del contexto."},
-	{"t":"\"Va por ahí\", \"Vamos por ahí\" o \"Voy por ahí\" podrían ser traducciones posibles."},
-	{"t":"Otra cosa a resaltar es que en japonés los verbos se sitúan al final de la frase, y las partículas detrás de las palabras que acompañan."},
-	{"t":"Además de esto tenemos varios kanjis que nos serán útiles más adelante. "}
+	{"t":"Aquí tienes varios kanjis que nos serán útiles más adelante. "}
 ],
 "teoria_diferencias_na_ta":[
 	{"t":"Aquí tenemos más sílabas en hiragana.","pj":"c_nami"},

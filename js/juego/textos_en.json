@@ -1,38 +1,53 @@
 {
    "textos":{
+    "Equipo de desarrollo":"Development team",
+    "Magos colaboradores":"Wizard contributor",
+    "Estudiantes de honor":"Honor student",
+    "Estudiantes de magia":"Magic student",
+    "Estudiantes novatos de magia":"Novice magic student",
+    "Escépticos en la magia":"Magic skeptic",
+    
+	"Música":"Music",
+	"Community Manager":"Community Manager",
+	"Tests y calidad":"Test and Quelity",
+	"Niveles e interfaz":"Levels and interface",
+	"Programación":"Programming",
+    
 	"¿Quieres continuar?":"If you continue, you will leave the game and go to the project page. Do you want to continue?",
 	"Apoya nuestro proyecto":"Support our project",
-      "Abrir":"Open",
-      "Jugar":"Play",
-		"Mirar":"Look",
-	  "Saltar":"Skip",
-      "Capítulo 1":"Chapter 1: The awakening",
-      "Menú":"Menu",
-      "Diccionario":"Dictionary",
-      "Entrenamiento":"Training",
-      "Guardar":"Save",
-      "Cargar":"Load",
-      "Créditos":"Credits",
-      "Cancelar":"Cancel",
-      "Palabra":"Word",
-      "Romaji":"Romaji",
-      "Significado":"Meaning",
-      "Practicar":"Practice",
-      "Nivel":"Level",
-      "Entrenar":"Train",
-      "Habilidades":"Skills",
-      "Mejora":"Improvement",
-      "Salir":"Exit",
-      "Volar":"Fly",
-      "Atacar":"Attack",
-      "Curar":"Heal",
-      "Energía espiritual":"Spiritual energy",
-      "Avance habilidad":"Skill advance",
-      "¡Nivel alcanzado!":"Level reached!",
-      "Mejoras disponibles":"Avaliable improvements",
-      "Mejorar habilidad":"Improve skill",
-      "Comunes":"Common",
-      "Energía":"Energy",
+    
+	"Nuevo":"New",
+    "Abrir":"Open",
+    "Jugar":"Play",
+	"Mirar":"Look",
+	"Saltar":"Skip",
+    "Capítulo 1":"Chapter 1: The awakening",
+    "Menú":"Menu",
+    "Diccionario":"Dictionary",
+    "Entrenamiento":"Training",
+    "Guardar":"Save",
+    "Cargar":"Load",
+    "Créditos":"Credits",
+    "Cancelar":"Cancel",
+    "Palabra":"Word",
+    "Romaji":"Romaji",
+    "Significado":"Meaning",
+    "Practicar":"Practice",
+    "Nivel":"Level",
+    "Entrenar":"Train",
+    "Habilidades":"Skills",
+    "Mejora":"Improvement",
+    "Salir":"Exit",
+    "Volar":"Fly",
+    "Atacar":"Attack",
+    "Curar":"Heal",
+    "Energía espiritual":"Spiritual energy",
+    "Avance habilidad":"Skill advance",
+    "¡Nivel alcanzado!":"Level reached!",
+    "Mejoras disponibles":"Avaliable improvements",
+    "Mejorar habilidad":"Improve skill",
+    "Comunes":"Common",
+    "Energía":"Energy",
       "Ataque":"Attack",
       "Curación":"Healing",
       "Protección":"Protection",
@@ -58,1057 +73,174 @@
       "Hechizo de escudo":"Shield spell",
 	
 	
-	"Movimiento ágil_desc":"Podrás moverte más rápido",
-	"Ataque potenciado_desc":"Tu ataque hará más daño, pero también consumirá más energía",
-	"Bala acelerada_desc":"Tus proyectiles mágicos se moverán más rápido",
-	"Aura ampliada_desc":"Podrás almacenar más energía para cuando la necesites",
-	"Ataque frecuente_desc":"Podrás disparar con más frecuencia",
-	"Absorber energía ambiental_desc":"Recuperarás más energía del entorno cada segundo",
-	"Atraer partículas_desc":"Atraerás las partículas de energía que liberen los enemigos",
-	"Ataque seguidor_desc":"Tu ataque tendrá más posibilidades de dar al enemigo",
-	"Curación potenciada_desc":"Tu hechizo de curación curará más rápido gastando la misma energía",
-	"Curación en grupo_desc":"Tu hechizo de curación curará a todos los miembros del grupo con la misma energía",
-	"Escudo en grupo_desc":"Tu hechizo de escudo protegerá a todos los miembros del grupo con la misma energía",
-	"Escudo potenciado_desc":"Tu hechizo de escudo durará más con el mismo gasto de energía",
-	"Hechizo de curar_desc":"Podrás curar a los miembros de tu grupo con este hechizo",
-	"Hechizo de escudo_desc":"Podrás proteger a los miembros de tu grupo con este hechizo"
+	"Movimiento ágil_desc":"You can move faster",
+	"Ataque potenciado_desc":"Your attack will do more damage, but it will also consume more energy",
+	"Bala acelerada_desc":"Your magical projectiles will move faster",
+	"Aura ampliada_desc":"You can store more energy for when you need it",
+	"Ataque frecuente_desc":"You can shoot more often",
+	"Absorber energía ambiental_desc":"You will recover more energy from the environment every second",
+	"Atraer partículas_desc":"You will attract the energy particles released by the enemies",
+	"Ataque seguidor_desc":"Your attack will be more likely to hit the enemy",
+	"Curación potenciada_desc":"Your healing spell will heal faster by spending the same energy",
+	"Curación en grupo_desc":"Your healing spell will heal all the members of the group with the same energy",
+	"Escudo en grupo_desc":"Your shield spell will protect all group members with the same energy",
+	"Escudo potenciado_desc":"Your shield spell will last longer with the same energy expenditure",
+	"Hechizo de curar_desc":"You can heal the members of your group with this spell",
+	"Hechizo de escudo_desc":"You can protect the members of your group with this spell"
    },
-   "preguntas":[
-      {
-         "p":"do",
-         "s":"hiragana",
-         "r":"ど",
-         "o":[
-            "で",
-            "こ"
-         ],
-         "snd":"do",
-         "teoria":"teoria_hiragana"
-      },
-      {
-         "p":"de",
-         "s":"hiragana",
-         "r":"で",
-         "o":[
-            "ど",
-            "く"
-         ],
-         "snd":"de"
-      },
-      {
-         "p":"su",
-         "s":"hiragana",
-         "r":"す",
-         "o":[
-            "そ",
-            "で"
-         ],
-         "snd":"su"
-      },
-      {
-         "p":"so",
-         "s":"hiragana",
-         "r":"そ",
-         "o":[
-            "す",
-            "こ"
-         ],
-         "snd":"so"
-      },
-      {
-         "p":"ku",
-         "s":"hiragana",
-         "r":"く",
-         "o":[
-            "こ",
-            "か"
-         ],
-         "snd":"ku"
-      },
-      {
-         "p":"ko",
-         "s":"hiragana",
-         "r":"こ",
-         "o":[
-            "に",
-            "く"
-         ],
-         "snd":"ko"
-      },
-      {
-         "p":"ka",
-         "s":"indicates interrogation",
-         "r":"か",
-         "o":[
-            "こ",
-            "く"
-         ],
-         "snd":"ka",
-         "teoria":"teoria_ka_y_ni"
-      },
-      {
-         "p":"ni",
-         "s":"indicates direction",
-         "r":"に",
-         "o":[
-            "こ",
-            "そ"
-         ],
-         "snd":"ni"
-      },
-      {
-         "p":"doko",
-         "s":"where",
-         "r":"どこ",
-         "o":[
-            "です",
-            "そこ"
-         ],
-         "snd":"doko",
-         "teoria":"teoria_palabras_hiragana_kanji_verbos"
-      },
-      {
-         "p":"soko",
-         "s":"there",
-         "r":"そこ",
-         "o":[
-            "です",
-            "どこ"
-         ],
-         "snd":"soko"
-      },
-      {
-         "p":"desu",
-         "s":"to be",
-         "r":"です",
-         "o":[
-            "そこ",
-            "どこ"
-         ],
-         "snd":"desu"
-      },
-      {
-         "p":"iku",
-         "s":"go",
-         "r":"行く",
-         "o":[
-            "徂く",
-            "早く"
-         ],
-         "snd":"iku"
-      },
-      {
-         "p":"kuchi",
-         "s":"mouth",
-         "r":"口",
-         "o":[
-            "十",
-            "日"
-         ],
-         "snd":"kuchi",
-         "teoria":"teoria_radicales"
-      },
-      {
-         "p":"hi",
-         "s":"day, sun",
-         "r":"日",
-         "o":[
-            "目",
-            "口"
-         ],
-         "snd":"hi"
-      },
-      {
-         "p":"me",
-         "s":"eye",
-         "r":"目",
-         "o":[
-            "耳",
-            "月"
-         ],
-         "snd":"me"
-      },
-      {
-         "p":"tsuki",
-         "s":"month, moon",
-         "r":"月",
-         "o":[
-            "目",
-            "耳"
-         ],
-         "snd":"tsuki"
-      },
-      {
-         "p":"juu",
-         "s":"ten",
-         "r":"十",
-         "o":[
-            "口",
-            "日"
-         ],
-         "snd":"juu"
-      },
-      {
-         "p":"hayaku",
-         "s":"quick",
-         "r":"早く",
-         "o":[
-            "行く",
-            "古く"
-         ],
-         "snd":"hayaku"
-      },
-      {
-         "p":"doko desu ka",
-         "s":"Where it is?",
-         "r":"どこですか",
-         "o":[
-            "There it goes."
-         ],
-         "t":"trad",
-         "snd":"doko desu ka",
-         "teoria":"teoria_estructura_frase"
-      },
-      {
-         "p":"soko ni iku",
-         "s":"There it goes.",
-         "r":"そこに行く",
-         "o":[
-            "Where it is?"
-         ],
-         "t":"trad",
-         "snd":"soko ni iku"
-      },
-      {
-         "p":"a",
-         "s":"hiragana",
-         "r":"あ",
-         "o":[
-            "お",
-            "な"
-         ],
-         "snd":"a"
-      },
-      {
-         "p":"na",
-         "s":"hiragana",
-         "r":"な",
-         "o":[
-            "た",
-            "す"
-         ],
-         "snd":"na",
-         "teoria":"teoria_diferencias_na_ta"
-      },
-      {
-         "p":"ta",
-         "s":"hiragana",
-         "r":"た",
-         "o":[
-            "な",
-            "に"
-         ],
-         "snd":"ta"
-      },
-      {
-         "p":"ha",
-         "s":"hiragana",
-         "r":"は",
-         "o":[
-            "な",
-            "ほ"
-         ],
-         "snd":"ha"
-      },
-      {
-         "p":"anata",
-         "s":"you",
-         "r":"あなた",
-         "o":[
-            "おなた",
-            "あたな"
-         ],
-         "snd":"anata"
-      },
-      {
-         "p":"wa",
-         "s":"indicates main topic",
-         "r":"は",
-         "o":[
-            "な",
-            "ほ"
-         ],
-         "snd":"wa",
-         "teoria":"teoria_particula_wa"
-      },
-      {
-         "p":"anata wa",
-         "s":"about you",
-         "r":"あなたは",
-         "o":[
-            "おなたは",
-            "あなたほ"
-         ],
-         "snd":"anata_wa"
-      },
-      {
-         "p":"no",
-         "s":"of, indicates relationship",
-         "r":"の",
-         "o":[
-            "お",
-            "は"
-         ],
-         "snd":"no"
-      },
-      {
-         "p":"hito",
-         "s":"person",
-         "r":"人",
-         "o":[
-            "大",
-            "夫"
-         ],
-         "snd":"hito"
-      },
-      {
-         "p":"otto",
-         "s":"husband",
-         "r":"夫",
-         "o":[
-            "大",
-            "本"
-         ],
-         "snd":"otto"
-      },
-      {
-         "p":"dai",
-         "s":"big (prefix)",
-         "r":"大",
-         "o":[
-            "犬",
-            "夫"
-         ],
-         "snd":"dai",
-         "teoria":"teoria_sufijos"
-      },
-      {
-         "p":"inu",
-         "s":"dog",
-         "r":"犬",
-         "o":[
-            "大",
-            "夫"
-         ],
-         "snd":"inu"
-      },
-      {
-         "p":"i",
-         "s":"hiragana",
-         "r":"い",
-         "o":[
-            "の",
-            "は"
-         ],
-         "snd":"i"
-      },
-      {
-         "p":"u",
-         "s":"hiragana",
-         "r":"う",
-         "o":[
-            "つ",
-            "て"
-         ],
-         "snd":"u"
-      },
-      {
-         "p":"ya",
-         "s":"hiragana",
-         "r":"や",
-         "o":[
-            "つ",
-            "う"
-         ],
-         "snd":"ya"
-      },
-      {
-         "p":"te",
-         "s":"hiragana",
-         "r":"て",
-         "o":[
-            "で",
-            "と"
-         ],
-         "snd":"te",
-         "teoria":"teoria_variación_te_de"
-      },
-      {
-         "p":"hai",
-         "s":"yes",
-         "r":"はい",
-         "o":[
-            "はの",
-            "ほい"
-         ],
-         "snd":"hai"
-      },
-      {
-         "p":"daijoubu",
-         "s":"to be all right",
-         "r":"大丈夫",
-         "o":[
-            "丈大夫",
-            "夫丈大"
-         ],
-         "snd":"daijoubu"
-      },
-      {
-         "p":"namae",
-         "s":"name",
-         "r":"名前",
-         "o":[
-            "夘前",
-            "名苅"
-         ],
-         "snd":"namae",
-         "teoria":"teoria_palabras_complejas_y_radicales"
-      },
-      {
-         "p":"isshoni",
-         "s":"together",
-         "r":"一緒に",
-         "o":[
-            "一紙に",
-            "一偖に"
-         ],
-         "snd":"isshoni"
-      },
-      {
-         "p":"ru",
-         "s":"hiragana",
-         "r":"る",
-         "o":[
-            "う",
-            "ろ"
-         ],
-         "snd":"ru"
-      },
-      {
-         "p":"shi",
-         "s":"hiragana",
-         "r":"し",
-         "o":[
-            "て",
-            "と"
-         ],
-         "snd":"shi"
-      },
-      {
-         "p":"ra",
-         "s":"hiragana",
-         "r":"ら",
-         "o":[
-            "ち",
-            "ろ"
-         ],
-         "snd":"ra",
-         "teoria":"diferencias_ra_chi"
-      },
-      {
-         "p":"chi",
-         "s":"hiragana",
-         "r":"ち",
-         "o":[
-            "ら",
-            "ろ"
-         ],
-         "snd":"chi"
-      },
-      {
-         "p":"ya",
-         "s":"arrow",
-         "r":"矢",
-         "o":[
-            "本",
-            "来"
-         ],
-         "snd":"ya"
-      },
-      {
-         "p":"rai",
-         "s":"next (prefix)",
-         "r":"来",
-         "o":[
-            "本",
-            "矢"
-         ],
-         "snd":"rai"
-      },
-      {
-         "p":"ki",
-         "s":"tree",
-         "r":"木",
-         "o":[
-            "本",
-            "夫"
-         ],
-         "snd":"ki"
-      },
-      {
-         "p":"hon",
-         "s":"book",
-         "r":"本",
-         "o":[
-            "来",
-            "矢"
-         ],
-         "snd":"hon",
-         "teoria":"teoria_hon_ki"
-      },
-      {
-         "p":"shiru",
-         "s":"to know",
-         "r":"知る",
-         "o":[
-            "利る",
-            "如る"
-         ],
-         "snd":"shiru"
-      },
-      {
-         "p":"kuru",
-         "s":"come",
-         "r":"来る",
-         "o":[
-            "本る",
-            "矢る"
-         ],
-         "snd":"kuru"
-      },
-      {
-         "p":"watashi tachi",
-         "s":"we",
-         "r":"私たち",
-         "o":[
-            "利たち",
-            "私たら"
-         ],
-         "snd":"watashi_tachi",
-         "teoria":"teoria_watashi_tachi"
-      },
-      {
-         "p":"hana",
-         "s":"flower",
-         "r":"花",
-         "o":[
-            "化",
-            "苻"
-         ],
-         "snd":"hana"
-      },
-      {
-         "p":"sa",
-         "s":"hiragana",
-         "r":"さ",
-         "o":[
-            "て",
-            "と"
-         ],
-         "snd":"sa"
-      },
-      {
-         "p":"tsu",
-         "s":"hiragana",
-         "r":"つ",
-         "o":[
-            "う",
-            "て"
-         ],
-         "snd":"tsu"
-      },
-      {
-         "p":"to",
-         "s":"with",
-         "r":"と",
-         "o":[
-            "て",
-            "ど"
-         ],
-         "snd":"to",
-         "teoria":"teoria_to"
-      },
-      {
-         "p":"koko",
-         "s":"here",
-         "r":"ここ",
-         "o":[
-            "たた",
-            "にに"
-         ],
-         "snd":"koko"
-      },
-      {
-         "p":"nani",
-         "s":"what",
-         "r":"何",
-         "o":[
-            "化",
-            "同"
-         ],
-         "snd":"nani"
-      },
-      {
-         "p":"kite",
-         "s":"come",
-         "r":"来て",
-         "o":[
-            "利る",
-            "如る"
-         ],
-         "snd":"kite",
-         "teoria":"teoria_forma_te_y_nai"
-      },
-      {
-         "p":"kudasai",
-         "s":"please",
-         "r":"ください",
-         "o":[
-            "くだとい",
-            "くたさい"
-         ],
-         "snd":"kudasai"
-      },
-      {
-         "p":"shiranai",
-         "s":"don't know",
-         "r":"知らない",
-         "o":[
-            "利る",
-            "如る"
-         ],
-         "snd":"shiranai"
-      },
-      {
-         "p":"kimashita",
-         "s":"came (to come)",
-         "r":"来ました",
-         "o":[
-            "矢ました",
-            "木ました"
-         ],
-         "snd":"kimashita",
-         "teoria":"teoria_pasado_formal_y_doble_consonante"
-      },
-      {
-         "p":"douyatte",
-         "s":"which way",
-         "r":"どうやって",
-         "o":[
-            "とうやって",
-            "とうやっで"
-         ],
-         "snd":"douyatte"
-      },
-      {
-         "p":"watashi wa shiranai",
-         "s":"I don't know",
-         "r":"私は知らない",
-         "o":[
-            "利らない",
-            "如らない"
-         ],
-         "snd":"watashi wa shiranai"
-      },
-      {
-         "p":"anata wa daijoubu?",
-         "s":"Are you all right?",
-         "r":"あなたは大丈夫？",
-         "o":[
-            "How are you?",
-            "Are you tired?"
-         ],
-         "snd":"anata wa daijoubu?",
-         "t":"trad"
-      },
-      {
-         "p":"kite kudasai",
-         "s":"Come, please.",
-         "r":"来てください",
-         "o":[
-            "とうやって",
-            "とうやっで"
-         ],
-         "snd":"kite kudasai",
-         "teoria":"teoria_forma_te_kudasai"
-      },
-      {
-         "p":"nan desu ka?",
-         "s":"What it is?",
-         "r":"何ですか",
-         "o":[
-            "How it is?",
-            "Are you all right?"
-         ],
-         "snd":"nan desu ka",
-         "t":"trad"
-      },
-      {
-         "p":"koko ni kimashita ka?",
-         "s":"You came here?",
-         "r":"ここに来ましたか",
-         "o":[
-            "You come back?",
-            "Are you here?"
-         ],
-         "snd":"koko ni kimashita ka",
-         "t":"trad"
-      },
-      {
-         "p":"watashi tachi to issho ni",
-         "s":"Together with us.",
-         "r":"私たちと一緒に",
-         "o":[
-            "Go with you.",
-            "Come with us."
-         ],
-         "snd":"watashi tachi to issho ni",
-         "t":"trad"
-      },
-      {
-         "p":"wo",
-         "s":"Indicates object",
-         "r":"を",
-         "o":[
-            "て",
-            "む"
-         ],
-         "snd":"wo",
-         "teoria":"teoria_wo_da"
-      },
-      {
-         "p":"re",
-         "s":"hiragana",
-         "r":"れ",
-         "o":[
-            "わ",
-            "ね"
-         ],
-         "snd":"re"
-      },
-      {
-         "p":"iru",
-         "s":"to be",
-         "r":"いる",
-         "o":[
-            "とる",
-            "いろ"
-         ],
-         "snd":"iru"
-      },
-      {
-         "p":"da",
-         "s":"to be",
-         "r":"だ",
-         "o":[
-            "た",
-            "な"
-         ],
-         "snd":"da"
-      },
-      {
-         "p":"kokoro",
-         "s":"heart",
-         "r":"心",
-         "o":[
-            "方",
-            "化"
-         ],
-         "snd":"kokoro"
-      },
-      {
-         "p":"kore",
-         "s":"this",
-         "r":"これ",
-         "o":[
-            "こわ",
-            "こね"
-         ],
-         "snd":"kore"
-      },
-      {
-         "p":"imasu",
-         "s":"to be (formal)",
-         "r":"います",
-         "o":[
-            "こます",
-            "いすま"
-         ],
-         "snd":"imasu",
-         "teoria":"teoria_masu"
-      },
-      {
-         "p":"shitte",
-         "s":"to know (-te form)",
-         "r":"知って",
-         "o":[
-            "知て",
-            "利って"
-         ],
-         "snd":"shitte"
-      },
-      {
-         "p":"kata",
-         "s":"person (respectful)",
-         "r":"方",
-         "o":[
-            "心",
-            "力"
-         ],
-         "snd":"kata"
-      },
-      {
-         "p":"ta",
-         "s":"rice field",
-         "r":"田",
-         "o":[
-            "日",
-            "皿"
-         ],
-         "snd":"ka"
-      },
-      {
-         "p":"yama",
-         "s":"mountain",
-         "r":"山",
-         "o":[
-            "出",
-            "心"
-         ],
-         "snd":"yama"
-      },
-      {
-         "p":"hon wo shitte imasu ka",
-         "s":"Do you know the book?",
-         "s":"ou know the book?",
-         "r":"本を知っていますか？",
-         "o":[
-            "Where is the book?",
-            "Have you learnt the book?"
-         ],
-         "t":"trad",
-         "snd":"hon wo shitte imasu ka",
-         "teoria":"teoria_te_imasu"
-      },
-      {
-         "p":"hanasu",
-         "s":"to free",
-         "r":"放す",
-         "o":[
-            "知す",
-            "改す"
-         ],
-         "snd":"hanasu",
-         "teoria":"teoria_otros_verbos"
-      },
-      {
-         "p":"omou",
-         "s":"to think",
-         "r":"思う",
-         "o":[
-            "見う",
-            "出う"
-         ],
-         "snd":"omou"
-      },
-      {
-         "p":"deru",
-         "s":"to exit",
-         "r":"出る",
-         "o":[
-            "心る",
-            "思る"
-         ],
-         "snd":"deru"
-      },
-      {
-         "p":"miru",
-         "s":"to look",
-         "r":"見る",
-         "o":[
-            "目る",
-            "思る"
-         ],
-         "snd":"miru"
-      },
-      {
-         "p":"omoide",
-         "s":"memory",
-         "r":"思い出",
-         "o":[
-            "見い出",
-            "思い心"
-         ],
-         "snd":"omoide"
-      },
-      {
-         "p":"miseru",
-         "s":"to show",
-         "r":"見せる",
-         "o":[
-            "見せて",
-            "思せる"
-         ],
-         "snd":"miseru"
-      },
-      {
-         "p":"misete",
-         "s":"show (imperative)",
-         "r":"見せて",
-         "o":[
-            "見せる",
-            "思せて"
-         ],
-         "snd":"misete",
-         "teoria":"teoria_imperativo"
-      },
-      {
-         "p":"modoru",
-         "s":"come back, return",
-         "r":"戻る",
-         "o":[
-            "戸る",
-            "涙る"
-         ],
-         "snd":"modoru"
-      },
-      {
-         "p":"be",
-         "s":"hiragana",
-         "r":"べ",
-         "o":[
-            "へ",
-            "づ"
-         ],
-         "snd":"be"
-      },
-      {
-         "p":"ki",
-         "s":"hiragana",
-         "r":"き",
-         "o":[
-            "ぎ",
-            "さ"
-         ],
-         "snd":"ki"
-      },
-      {
-         "p":"e",
-         "s":"hiragana",
-         "r":"え",
-         "o":[
-            "う",
-            "そ"
-         ],
-         "snd":"e"
-      },
-      {
-         "p":"yo",
-         "s":"emphasizes an order",
-         "r":"よ",
-         "o":[
-            "な",
-            "ま"
-         ],
-         "snd":"yo",
-         "teoria":"teoria_yo"
-      },
-      {
-         "p":"kiken",
-         "s":"danger",
-         "r":"危険\t",
-         "o":[
-            "厄険",
-            "危倹"
-         ],
-         "snd":"kiken"
-      },
-      {
-         "p":"beki",
-         "s":"should",
-         "r":"べき",
-         "o":[
-            "へき",
-            "べさ"
-         ],
-         "snd":"beki"
-      },
-      {
-         "p":"iie",
-         "s":"no",
-         "r":"いいえ",
-         "o":[
-            "いええ",
-            "ここえ"
-         ],
-         "snd":"iie"
-      },
-      {
-         "p":"itai",
-         "s":"want to be",
-         "r":"いたい",
-         "o":[
-            "いだい",
-            "こたこ"
-         ],
-         "snd":"itai",
-         "teoria":"teoria_tai"
-      },
-      {
-         "p":"omoide wo misete",
-         "s":"Show the memories.",
-         "r":"思い出を見せて。",
-         "o":[
-            "Look the memories.",
-            "Show the past."
-         ],
-         "snd":"omoide wo misete",
-         "t":"trad",
-         "teoria":"teoria_wo_beki_yo"
-      },
-      {
-         "p":"kiken desu.",
-         "s":"It's dangerous.",
-         "r":"危険です。",
-         "o":[
-            "It's dificult",
-            "It's strange."
-         ],
-         "snd":"kiken desu",
-         "t":"trad"
-      },
-      {
-         "p":"modoru beki da yo",
-         "s":"You should go back.",
-         "r":"戻るべきだよ。",
-         "o":[
-            "You should wait.",
-            "You can go back."
-         ],
-         "t":"trad"
-      },
-      {
-         "p":"anata to isshoni itai desu.",
-         "s":"I want to be with you.",
-         "r":"あなたと一緒にいたいです。",
-         "o":[
-            "I'm with you.",
-            "I want to go with you."
-         ],
-         "snd":"anata to isshoni itai desu",
-         "t":"trad"
-      }
-   ],
+"lecciones":[
+    {"teoria":"teoria_hiragana","preguntas":[
+        {"p":"do","s":"hiragana","r":"ど","o":["で","こ"],"snd":"do"},
+        {"p":"de","s":"hiragana","r":"で","o":["ど","く"],"snd":"de"},
+        {"p":"su","s":"hiragana","r":"す","o":["そ","で"],"snd":"su"},
+        {"p":"so","s":"hiragana","r":"そ","o":["す","こ"],"snd":"so"}
+    ]},
+    {"teoria":"teoria_ka_y_ni","preguntas":[
+        {"p":"ku","s":"hiragana","r":"く","o":["こ","か"],"snd":"ku"},
+        {"p":"ko","s":"hiragana","r":"こ","o":["に","く"],"snd":"ko"},
+        {"p":"ka","s":"indicates interrogation","r":"か","o":["こ","く"],"snd":"ka"},
+        {"p":"ni","s":"indicates direction","r":"に","o":["こ","そ"],"snd":"ni"}
+    ]},
+    {"teoria":"teoria_palabras_hiragana_kanji_verbos","preguntas":[
+        {"p":"doko","s":"where","r":"どこ","o":["です","そこ"],"snd":"doko"},
+        {"p":"soko","s":"there","r":"そこ","o":["です","どこ"],"snd":"soko"},
+        {"p":"desu","s":"to be","r":"です","o":["そこ","どこ"],"snd":"desu"},
+        {"p":"iku","s":"go","r":"行く","o":["徂く","早く"],"snd":"iku"}
+    ]},
+    {"teoria":"teoria_radicales","preguntas":[
+        {"p":"kuchi","s":"mouth","r":"口","o":["十","日"],"snd":"kuchi"},
+        {"p":"hi","s":"day, sun","r":"日","o":["目","口"],"snd":"hi"},
+        {"p":"me","s":"eye","r":"目","o":["耳","月"],"snd":"me"},
+        {"p":"tsuki","s":"month, moon","r":"月","o":["目","耳"],"snd":"tsuki"}
+    ]},
+    {"teoria":"teoria_estructura_frase","preguntas":[
+        {"p":"juu","s":"ten","r":"十","o":["口","日"],"snd":"juu"},
+        {"p":"hayaku","s":"quick","r":"早く","o":["行く","古く"],"snd":"hayaku"},
+        {"p":"doko desu ka","s":"Where it is?","r":"どこですか","o":["There it goes."],"t":"trad","snd":"doko desu ka"},
+        {"p":"soko ni iku","s":"There it goes.","r":"そこに行く","o":["Where it is?"],"t":"trad","snd":"soko ni iku"}
+    ]},
+    {"teoria":"teoria_diferencias_na_ta","preguntas":[
+        {"p":"a","s":"hiragana","r":"あ","o":["お","な"],"snd":"a"},
+        {"p":"na","s":"hiragana","r":"な","o":["た","す"],"snd":"na"},
+        {"p":"ta","s":"hiragana","r":"た","o":["な","に"],"snd":"ta"},
+        {"p":"ha","s":"hiragana","r":"は","o":["な","ほ"],"snd":"ha"}
+    ]},
+    {"teoria":"teoria_particula_wa","preguntas":[
+        {"p":"anata","s":"you","r":"あなた","o":["おなた","あたな"],"snd":"anata"},
+        {"p":"wa","s":"indicates main topic","r":"は","o":["な","ほ"],"snd":"wa"},
+        {"p":"anata wa","s":"about you","r":"あなたは","o":["おなたは","あなたほ"],"snd":"anata_wa"},
+        {"p":"no","s":"of, indicates relationship","r":"の","o":["お","は"],"snd":"no"}
+    ]},
+    {"teoria":"teoria_sufijos","preguntas":[
+        {"p":"hito","s":"person","r":"人","o":["大","夫"],"snd":"hito"},
+        {"p":"otto","s":"husband","r":"夫","o":["大","本"],"snd":"otto"},
+        {"p":"dai","s":"big (prefix)","r":"大","o":["犬","夫"],"snd":"dai"},
+        {"p":"inu","s":"dog","r":"犬","o":["大","夫"],"snd":"inu"}
+    ]},
+    {"teoria":"teoria_variación_te_de","preguntas":[
+        {"p":"i","s":"hiragana","r":"い","o":["の","は"],"snd":"i"},
+        {"p":"u","s":"hiragana","r":"う","o":["つ","て"],"snd":"u"},
+        {"p":"ya","s":"hiragana","r":"や","o":["つ","う"],"snd":"ya"},
+        {"p":"te","s":"hiragana","r":"て","o":["で","と"],"snd":"te"}
+    ]},
+    {"teoria":"teoria_palabras_complejas_y_radicales","preguntas":[
+        {"p":"hai","s":"yes","r":"はい","o":["はの","ほい"],"snd":"hai"},
+        {"p":"daijoubu","s":"to be all right","r":"大丈夫","o":["丈大夫","夫丈大"],"snd":"daijoubu"},
+        {"p":"namae","s":"name","r":"名前","o":["夘前","名苅"],"snd":"namae"},
+        {"p":"isshoni","s":"together","r":"一緒に","o":["一紙に","一偖に"],"snd":"isshoni"}
+    ]},
+    {"teoria":"diferencias_ra_chi","preguntas":[
+        {"p":"ru","s":"hiragana","r":"る","o":["う","ろ"],"snd":"ru"},
+        {"p":"shi","s":"hiragana","r":"し","o":["て","と"],"snd":"shi"},
+        {"p":"ra","s":"hiragana","r":"ら","o":["ち","ろ"],"snd":"ra"},
+        {"p":"chi","s":"hiragana","r":"ち","o":["ら","ろ"],"snd":"chi"}
+    ]},
+    {"teoria":"teoria_hon_ki","preguntas":[
+        {"p":"ya","s":"arrow","r":"矢","o":["本","来"],"snd":"ya"},
+        {"p":"rai","s":"next (prefix)","r":"来","o":["本","矢"],"snd":"rai"},
+        {"p":"ki","s":"tree","r":"木","o":["本","夫"],"snd":"ki"},
+        {"p":"hon","s":"book","r":"本","o":["来","矢"],"snd":"hon"}
+    ]},
+    {"teoria":"teoria_watashi_tachi","preguntas":[
+        {"p":"shiru","s":"to know","r":"知る","o":["利る","如る"],"snd":"shiru"},
+        {"p":"kuru","s":"come","r":"来る","o":["本る","矢る"],"snd":"kuru"},
+        {"p":"watashi tachi","s":"we","r":"私たち","o":["利たち","私たら"],"snd":"watashi_tachi"},
+        {"p":"hana","s":"flower","r":"花","o":["化","苻"],"snd":"hana"}
+    ]},
+    {"teoria":"teoria_to","preguntas":[
+        {"p":"sa","s":"hiragana","r":"さ","o":["て","と"],"snd":"sa"},
+        {"p":"tsu","s":"hiragana","r":"つ","o":["う","て"],"snd":"tsu"},
+        {"p":"to","s":"with","r":"と","o":["て","ど"],"snd":"to"},
+        {"p":"koko","s":"here","r":"ここ","o":["たた","にに"],"snd":"koko"}
+    ]},
+    {"teoria":"teoria_forma_te_y_nai","preguntas":[
+        {"p":"nani","s":"what","r":"何","o":["化","同"],"snd":"nani"},
+        {"p":"kite","s":"come","r":"来て","o":["利る","如る"],"snd":"kite"},
+        {"p":"kudasai","s":"please","r":"ください","o":["くだとい","くたさい"],"snd":"kudasai"},
+        {"p":"shiranai","s":"don't know","r":"知らない","o":["利る","如る"],"snd":"shiranai"}
+    ]},
+    {"teoria":"teoria_pasado_formal_y_doble_consonante","preguntas":[
+        {"p":"kimashita","s":"came (to come)","r":"来ました","o":["矢ました","木ました"],"snd":"kimashita"},
+        {"p":"douyatte","s":"which way","r":"どうやって","o":["とうやって","とうやっで"],"snd":"douyatte"},
+        {"p":"watashi wa shiranai","s":"I don't know","r":"私は知らない","o":["利らない","如らない"],"snd":"watashi wa shiranai"},
+        {"p":"anata wa daijoubu?","s":"Are you all right?","r":"あなたは大丈夫？","o":["How are you?","Are you tired?"],"snd":"anata wa daijoubu?","t":"trad"}
+    ]},
+    {"teoria":"teoria_forma_te_kudasai","preguntas":[
+        {"p":"kite kudasai","s":"Come, please.","r":"来てください","o":["とうやって","とうやっで"],"snd":"kite kudasai"},
+        {"p":"nan desu ka?","s":"What it is?","r":"何ですか","o":["How it is?","Are you all right?"],"snd":"nan desu ka","t":"trad"},
+        {"p":"koko ni kimashita ka?","s":"You came here?","r":"ここに来ましたか","o":["You come back?","Are you here?"],"snd":"koko ni kimashita ka","t":"trad"},
+        {"p":"watashi tachi to issho ni","s":"Together with us.","r":"私たちと一緒に","o":["Go with you.","Come with us."],"snd":"watashi tachi to issho ni","t":"trad"}
+    ]},
+    {"teoria":"teoria_wo_da","preguntas":[
+        {"p":"wo","s":"Indicates object","r":"を","o":["て","む"],"snd":"wo"},
+        {"p":"re","s":"hiragana","r":"れ","o":["わ","ね"],"snd":"re"},
+        {"p":"iru","s":"to be","r":"いる","o":["とる","いろ"],"snd":"iru"},
+        {"p":"da","s":"to be","r":"だ","o":["た","な"],"snd":"da"}
+    ]},
+    {"teoria":"teoria_masu","preguntas":[
+        {"p":"kokoro","s":"heart","r":"心","o":["方","化"],"snd":"kokoro"},
+        {"p":"kore","s":"this","r":"これ","o":["こわ","こね"],"snd":"kore"},
+        {"p":"imasu","s":"to be (formal)","r":"います","o":["こます","いすま"],"snd":"imasu"},
+        {"p":"shitte","s":"to know (-te form)","r":"知って","o":["知て","利って"],"snd":"shitte"}
+    ]},
+    {"teoria":"teoria_te_imasu","preguntas":[
+        {"p":"kata","s":"person (respectful)","r":"方","o":["心","力"],"snd":"kata"},
+        {"p":"ta","s":"rice field","r":"田","o":["日","皿"],"snd":"ka"},
+        {"p":"yama","s":"mountain","r":"山","o":["出","心"],"snd":"yama"},
+        {"p":"hon wo shitte imasu ka","s":"Do you know the book?","r":"本を知っていますか？","o":["Where is the book?","Have you learnt the book?"],"t":"trad","snd":"hon wo shitte imasu ka"}
+    ]},
+    {"teoria":"teoria_otros_verbos","preguntas":[
+        {"p":"hanasu","s":"to free","r":"放す","o":["知す","改す"],"snd":"hanasu","teoria":"teoria_otros_verbos"},
+        {"p":"omou","s":"to think","r":"思う","o":["見う","出う"],"snd":"omou"},
+        {"p":"deru","s":"to exit","r":"出る","o":["心る","思る"],"snd":"deru"},
+        {"p":"miru","s":"to look","r":"見る","o":["目る","思る"],"snd":"miru"}
+    ]},
+    {"teoria":"teoria_imperativo","preguntas":[
+        {"p":"omoide","s":"memory","r":"思い出","o":["見い出","思い心"],"snd":"omoide"},
+        {"p":"miseru","s":"to show","r":"見せる","o":["見せて","思せる"],"snd":"miseru"},
+        {"p":"misete","s":"show (imperative)","r":"見せて","o":["見せる","思せて"],"snd":"misete"},
+        {"p":"modoru","s":"come back, return","r":"戻る","o":["戸る","涙る"],"snd":"modoru"}
+    ]},
+    {"teoria":"teoria_yo","preguntas":[
+        {"p":"be","s":"hiragana","r":"べ","o":["へ","づ"],"snd":"be"},
+        {"p":"ki","s":"hiragana","r":"き","o":["ぎ","さ"],"snd":"ki"},
+        {"p":"e","s":"hiragana","r":"え","o":["う","そ"],"snd":"e"},
+        {"p":"yo","s":"emphasizes an order","r":"よ","o":["な","ま"],"snd":"yo"}
+    ]},
+    {"teoria":"teoria_tai","preguntas":[
+        {"p":"kiken","s":"danger","r":"危険\t","o":["厄険","危倹"],"snd":"kiken"},
+        {"p":"beki","s":"should","r":"べき","o":["へき","べさ"],"snd":"beki"},
+        {"p":"iie","s":"no","r":"いいえ","o":["いええ","ここえ"],"snd":"iie"},
+        {"p":"itai","s":"want to be","r":"いたい","o":["いだい","こたこ"],"snd":"itai"}
+    ]},
+    {"teoria":"teoria_wo_beki_yo","preguntas":[
+        {"p":"omoide wo misete","s":"Show the memories.","r":"思い出を見せて。","o":["Look the memories.","Show the past."],"snd":"omoide wo misete","t":"trad"},
+        {"p":"kiken desu.","s":"It's dangerous.","r":"危険です。","o":["It's dificult","It's strange."],"snd":"kiken desu","t":"trad"},
+        {"p":"modoru beki da yo","s":"You should go back.","r":"戻るべきだよ。","o":["You should wait.","You can go back."],"t":"trad"},
+        {"p":"anata to isshoni itai desu.","s":"I want to be with you.","r":"あなたと一緒にいたいです。","o":["I'm with you.","I want to go with you."],"snd":"anata to isshoni itai desu","t":"trad"}
+    ]}
+],
+"preguntas":[],
    "dialogos":{
       "preset":[
          {
@@ -2898,7 +2030,8 @@
          },
          {
             "unblock":"Gran puerta"
-         }
+         },
+        {"deactivate":"Gran puerta"}
       ],
       "Cristal2":[
          {

@@ -25,6 +25,8 @@ var barraMenu, botonLibro, opcionBtnSprite, capa_interfaz
 var libroAbierto=true;
 
 var textos_es,textos_en
+var preguntas_base
+var mapa_caminos_base
 
 function preparaEscenario(){
 	var userLang = navigator.language || navigator.userLanguage; 
@@ -36,6 +38,10 @@ function preparaEscenario(){
 	textos=textos_actuales.textos
 	preguntas=textos_actuales.preguntas
 	dialogos=textos_actuales.dialogos
+	lecciones=textos_actuales.lecciones
+    
+    preguntas_base=JSON.stringify(preguntas)
+    mapa_caminos_base=JSON.stringify(mapa_caminos)
 	
 	// Creamos interfaz
 	tilemaptest = new createjs.SpriteSheet({
@@ -43,7 +49,6 @@ function preparaEscenario(){
 			frames: {width:32*pixelScale, height:32*pixelScale, regX:0, regY:0, spacing:0, margin:0}
 		});
 			
-	scene= new createjs.Container();
 	testLayers['map_layer'] = new createjs.Container();
 	testLayers['map_layer'].mouseEnabled=false;
 	//testLayers['click_layer'] = new createjs.Container();
@@ -66,24 +71,24 @@ function preparaEscenario(){
 	
 	
 	barra_energia = new createjs.Bitmap(loader.getResult("barra_energia"))
-	barra_energia.x=1780-perfil.aura;
+	barra_energia.x=1780-getEstado('aura');
 	barra_energia.y=0;
 	capa_interfaz.addChild(barra_energia)
 	
 	nivel_energia = new createjs.Bitmap(loader.getResult("nivel_energia"))
-	nivel_energia.x=1775-perfil.aura;
+	nivel_energia.x=1775-getEstado('aura');
 	nivel_energia.y=0;
 	capa_interfaz.addChild(nivel_energia)
 	
 	boton_magia = new createjs.Bitmap(loader.getResult("magia"))
-	boton_magia.addEventListener("click",boton_magia_click)
+	boton_magia.addEventListener("pressup",boton_magia_click)
 	boton_magia.abierto=false;
 	boton_magia.x=1760;
 	boton_magia.y=-35;
 	capa_interfaz.addChild(boton_magia)
 	
 	esquina_salida = new createjs.Bitmap(loader.getResult("esquina"))
-	esquina_salida.addEventListener("click",volverAlMenu)
+	esquina_salida.on("click",volverAlMenu)
 	capa_interfaz.addChild(esquina_salida)
 	
 	
@@ -108,16 +113,21 @@ function preparaEscenario(){
 		capa_interfaz_derecho.addChild(botonUsar)
 		var fondo = new createjs.Shape();
 		fondo.graphics.beginFill("#000").beginStroke("#fff").drawRoundRect(0, 0, 400, 200,15);
+        iCache(fondo)
 		botonUsar.addChild(fondo)
 		var text = new createjs.Text(textos["Mirar"], "65px 'Merienda One'", "#fff");
 		text.x = 200;
 		text.y = 55;
 		text.textAlign='center'
+        iCache(text)
 		botonUsar.addChild(text);
 		botonUsar.alpha=0;
 		
 		botonUsar.on("click",function(){
 			if(objetoActivable && objetoActivable.activo){
+                stage.update();
+                capturaPantalla()
+                guardarPartida("autosave",screenShot)
 				iniciaDialogo(objetoActivable.nombre)
 				objetoActivable.removeAllEventListeners("click") // Sólo se puede usar una vez
 				objetoActivable.activo=false;
@@ -127,86 +137,204 @@ function preparaEscenario(){
 		})
 		
 		move_control = new createjs.Bitmap(loader.getResult("move_control"))
-		move_control.regX=200
-		move_control.regY=200
+		move_control.regX=114
+		move_control.regY=114
 		move_control.x=250
 		move_control.y=830
-		move_control.alpha=0.3
+		move_control.alpha=0
 		capa_interfaz_izquierdo.addChild(move_control)
-		stage.on("stagemousedown",function(evt){
-			var x=evt.stageX/capa_interfaz_izquierdo.scaleX
-			var y=evt.stageY/capa_interfaz_izquierdo.scaleY
-			if(x<400 && y>680){
-				evt.preventDefault();
-				move_control.x=x
-				move_control.y=y
-				move_control.alpha=0.8
-				startMovingJoystic=true
-			}
-		})
-		stage.on("stagemouseup",function(evt){
-			var x=evt.stageX/capa_interfaz_izquierdo.scaleX
-			var y=evt.stageY/capa_interfaz_izquierdo.scaleY
-			move_control.x=250
-			move_control.y=830
-			move_control.alpha=0.3
-			startMovingJoystic=false
-			moveX=0;
-			moveY=0;
-			if(x<400 && y>680){
-				evt.preventDefault();
-				return true
-			}
-		})
-		stage.on("stagemousemove",function(evt){
-			if(startMovingJoystic){
-				var x=evt.stageX/capa_interfaz_izquierdo.scaleX
-				var y=evt.stageY/capa_interfaz_izquierdo.scaleY
-				moveX=x-move_control.x
-				moveY=y-move_control.y
-				
-				var margin=80
-				var maxDesp=80
-				if(moveX>0){
-					if(moveX<margin) moveX=0;
-					else moveX=(moveX-margin)/maxDesp
-					if(moveX>1) moveX=1;
-				}
-				if(moveX<0){
-					if(-moveX<margin) moveX=0;
-					else moveX=(moveX+margin)/maxDesp
-					if(moveX<-1) moveX=-1;
-				}
-				if(moveY>0){
-					if(moveY<margin) moveY=0;
-					else moveY=(moveY-margin)/maxDesp
-					if(moveY>1) moveY=1;
-				}
-				if(moveY<0){
-					if(-moveY<margin) moveY=0;
-					else moveY=(moveY+margin)/maxDesp
-					if(moveY<-1) moveY=-1;
-				}
-				//frameRate.text=moveX+" - "+moveY;
-			}
-		})
 	}
 	
-	if(!estado.juegoEmpezado){
+	if(!getEstado('juegoEmpezado')){
 		// Capa negra
 		// Luz azul
 		// Acercar luz azul
 		estado.juegoEmpezado=true;
 		iniciaDialogo("preset")
+        endMoveControls()
 	}
 	
-	frameRate = new createjs.Text("", "12px Arial", "rgba(255,255,255,1)");
-	frameRate.x=150;
-	frameRate.y=10;
+	//frameRate = new createjs.Text("", "12px Arial", "rgba(255,255,255,1)");
+	//frameRate.x=150;
+	//frameRate.y=10;
 	//frameRate.alpha=0;
-	capa_interfaz.addChild(frameRate)
+	//capa_interfaz.addChild(frameRate)
 	
 	cargaElementosIniciales()
+}
+
+var touchPoints=[]
+
+function startMoveControls(){
+    if(game_options.versionTactil){
+        touchPoints=[]
+        joystic={x:0,y:0}
+        scene.on("mousedown",stageMouseDown)
+        scene.on("pressmove",stageMouseMove)
+        scene.on("pressup",stageMouseUp)
+    }
+}
+
+function endMoveControls(){
+    if(game_options.versionTactil){
+        scene.removeAllEventListeners()
+        joystic={x:0,y:0}
+        touchPoints=[]
+    }
+}
+
+function stageMouseDown(evt){
+    touchPoints.push({'x':evt.stageX,'y':evt.stageY,'originX':evt.stageX,'originY':evt.stageY,'start':new Date().getTime()})
+}
+
+var joystic={x:0,y:0}
+function stageMouseMove(evt){
+    var x=evt.stageX
+    var y=evt.stageY
+    
+    var minDist=1000000000000000000000000000
+    var currentPoint=0
+    for(var point in touchPoints){
+        var distance=Math.abs(touchPoints[point].x-x)+Math.abs(touchPoints[point].y-y)
+        if(minDist>distance){
+            currentPoint=point
+            minDist=distance
+        }
+    }
+    if(currentPoint){
+        touchPoints[currentPoint].x=x
+        touchPoints[currentPoint].y=y
+        
+        var distance=dist({'x':touchPoints[currentPoint].originX,'y':touchPoints[currentPoint].originY},{'x':x,'y':y})
+        if(distance/capa_interfaz_izquierdo.scaleY>70){
+            var difX=(x-touchPoints[currentPoint].originX)
+            var difY=(y-touchPoints[currentPoint].originY)
+            
+            if(Math.abs(difX)>2.6*Math.abs(difY)){
+                joystic.y=0
+                joystic.x=(difX>0)?1:-1
+            }
+            else if(Math.abs(difY)>2.6*Math.abs(difX)){
+                joystic.x=0
+                joystic.y=(difY>0)?1:-1
+            }
+            else{
+                joystic.x=(difX>0)?0.7:-0.7
+                joystic.y=(difY>0)?0.7:-0.7
+            }
+            
+            move_control.x=touchPoints[currentPoint].originX/capa_interfaz_izquierdo.scaleY
+            move_control.y=touchPoints[currentPoint].originY/capa_interfaz_izquierdo.scaleY
+            move_control.alpha=0.8
+            touchPoints[currentPoint].joystic=1
+        }
+        else if(touchPoints[currentPoint].joystic) joystic={x:0,y:0}
+    }
+}
+
+function stageMouseUp(evt){
+    var x=evt.stageX
+    var y=evt.stageY
+    
+    var minDist=1000000000000000000000000000
+    for(var point in touchPoints){
+        var dist=Math.abs(touchPoints[point].x-x)+Math.abs(touchPoints[point].y-y)
+        if(minDist>dist){
+            currentPoint=point
+            minDist=dist
+        }
+    }
+    
+    if(currentPoint){
+        // Intentamos usar un objeto
+        sceneX=(x-scene.x)/pixelartScale
+        sceneY=(y-scene.y)/pixelartScale
+        
+        var tileX=(Math.floor(sceneX/32))
+        var tileY=(Math.floor(sceneY/32))
+        
+        var distance=Math.abs(sceneX-spirit.x)+Math.abs(sceneY-spirit.y)
+        
+        if(distance < 96){
+            // Exploramos
+            if((child=testLayers['character_layer'].getObjectUnderPoint(sceneX,sceneY)) && child.parent) child=child.parent
+            if(child && child!=spirit && child.activo && 
+                (child.map_x==tileX || (child.map_x+1==tileX)) && (child.map_y==tileY || (child.map_y-1==tileY))){
+                stage.update();
+                capturaPantalla()
+                guardarPartida("autosave",screenShot)
+                iniciaDialogo(child.nombre)
+                child.activo=false;
+                child.removeChild(child.interrogacion)
+                return
+            }
+        }
+            
+        // Curamos
+        if(hechizo_actual=="hechizo_curar"){
+            var child=testLayers['character_layer'].getObjectUnderPoint(sceneX,sceneY)
+            if(child && child.parent && child.parent.tipo=="npc"){
+                actualizaEnergia(-40)
+                lanzaCuracion(child.parent)
+                return
+            }
+        }
+        
+        // Escudo
+        if(hechizo_actual=="hechizo_escudo"){
+            var child=testLayers['character_layer'].getObjectUnderPoint(sceneX,sceneY)
+            if(child && child.parent && child.parent.tipo=="npc"){
+                actualizaEnergia(-100-dotes["Escudo potenciado"].aprendido*20)
+                lanzaEscudo(child.parent)
+                return
+            }
+        }
+        
+	else if(hechizo_actual=="hechizo_escudo"){
+		actualizaEnergia(-100-dotes["Escudo potenciado"].aprendido*20)
+		lanzaEscudo(actor)
+	}
+    
+        // Disparamos si no hemos hecho ninguna otra acción antes
+        var dist=Math.abs(touchPoints[currentPoint].originX-x)+Math.abs(touchPoints[currentPoint].originY-y)
+        if(dist<70 && touchPoints[currentPoint].start+800>(new Date().getTime())){
+            x=(x-scene.x)/pixelartScale
+            y=(y-scene.y)/pixelartScale
+            var objetivo=0
+            if(dotes["Ataque seguidor"].aprendido){
+                var cercano=0
+                var min_distancia=32*pixelScale+1
+                for(var i in monster_list){
+                    var child=monster_list[i]
+                    var distancia=dist({"x":child.x+16*pixelScale,"y":child.y+16*pixelScale},{"x":x,"y":y})
+                    if(distancia<min_distancia){
+                        objetivo=child
+                        min_distancia=distancia
+                    }
+                }
+            }
+            dispara(x,y,objetivo)
+        }
+        
+        // Si es el joystic, lo soltamos
+        if(touchPoints[currentPoint].joystic){
+            joystic={x:0,y:0}
+            move_control.alpha=0
+        }
+        
+        touchPoints.splice(currentPoint,1)
+    }
+    /*
+    move_control.x=250
+    move_control.y=830
+    move_control.alpha=0.3
+    startMovingJoystic=false
+    moveX=0;
+    moveY=0;
+    if(x<400 && y>680){
+        evt.preventDefault();
+        return true
+    }*/
 }
 
 function cargaElementosIniciales(){
@@ -221,20 +349,22 @@ function cargaElementosIniciales(){
 	
 	createSpirit(initial_pos[0],initial_pos[1])
 		
-	pantalla_de_juego.cache(0,0,1920,1080);
+	//pantalla_de_juego.cache(0,0,1920,1080);
 }
 
 function createElemento(id,nombre,map_x,map_y,activo=1){	
-	var elemento;
+	var elemento=new createjs.Container();
 	if(configObjetos[id]){
 		var charimg=loadImage("elemento"+id);
 		var actions=configObjetos[id]
 		actions.images= [charimg];
 		var spriteSheet = new createjs.SpriteSheet(actions);
-		elemento = new createjs.Sprite(spriteSheet, "inicial");
+		elemento.sprite = new createjs.Sprite(spriteSheet, "inicial");
 
 	}
-	else elemento=new createjs.Bitmap(loadImage("elemento"+id))
+	else elemento.sprite=new createjs.Bitmap(loadImage("elemento"+id))
+    elemento.addChild(elemento.sprite)
+             
 		//elemento=new createjs.Bitmap(nearestNeighborScale(loader.getResult("elemento"+elementos_escena[i].id),pixelScale))
 	elemento.nombre=nombre;
 	elemento.regY=elemento.getBounds().height-32*pixelScale
@@ -252,8 +382,15 @@ function createElemento(id,nombre,map_x,map_y,activo=1){
 	if(!elements_list[elemento.nombre]) elements_list[elemento.nombre]=[elemento]
 	else elements_list[elemento.nombre].push(elemento)
 	
-	if(activo)
-		if(!game_options.controlTeclado)
+	if(activo){
+        elemento.interrogacion=new createjs.Bitmap(loadImage("interrogacion"))
+        elemento.interrogacion.regX=8
+        elemento.interrogacion.regY=16
+        //elemento.interrogacion.alpha=0.6
+        elemento.addChild(elemento.interrogacion)
+        elemento.interrogacion.x=elemento.getBounds().width/2
+        elemento.interrogacion.y=elemento.getBounds().height/4
+		/*if(!game_options.controlTeclado)
 			elemento.addEventListener("click", function(evt) {
 				if(game_options.controlTeclado) return;
 				if(ultimoDisparo+game_values.bloqueaDesdeDisparo>(new Date()).getTime()) return;
@@ -264,7 +401,8 @@ function createElemento(id,nombre,map_x,map_y,activo=1){
 				spirit.camino.limitMap(9)
 				spirit.camino.searchPath()
 				spirit.localizacionObjetivo=false
-			})
+			})*/
+    }
 	
 	mapa_caminos[map_x][map_y]=0;
 	if(elemento.getBounds().width>48*pixelScale){
@@ -390,7 +528,15 @@ function createCharacter(id,nombre,x,y){
 	npc.seguidor=1
 	
 	if(npc.nombre=="Bibliotecaria") party.push(npc)
-	else npc.activo=true;
+	else{
+        npc.activo=true;
+        npc.interrogacion=new createjs.Bitmap(loadImage("interrogacion"))
+        npc.interrogacion.regX=8
+        npc.interrogacion.regY=16
+        npc.addChild(npc.interrogacion)
+        npc.interrogacion.x=npc.getBounds().width/2
+        //npc.interrogacion.y=npc.getBounds().height/4
+    }
 	//if(npc.nombre=="Niña") party.push(npc)
 		
 	return npc;
@@ -462,6 +608,7 @@ function lanzaCuracion(actor){
 		var ancho_barra=Math.floor(32*pixelScale*actor.life/actor.max_life)
 		actor.barra_vida.graphics.command.w=ancho_barra;
 		actor.barra_vida.x=16*pixelScale-ancho_barra/2;
+        iCache(actor.barra_vida)
 	}
 }
 
@@ -487,11 +634,14 @@ function lanzaEscudo(npc){
 	
 	if(!npc.barra_escudo){
 		npc.barra_escudo = new createjs.Shape();
-		npc.barra_escudo.graphics.beginFill("#0ff").drawRect(0,-16,0,4);
+		npc.barra_escudo.graphics.beginFill("#0ff").drawRect(0,0,0,2);
+        npc.barra_escudo.y=-4
 		npc.barra_escudo.x=16*pixelScale
+		npc.barra_escudo.scaleX=0
+        iCache(npc.barra_escudo)
 		npc.addChild(npc.barra_escudo)
 	}
-	createjs.Tween.get(npc.barra_escudo.graphics.command).to({ w: 32*pixelScale },animSpeed,ease)
+	createjs.Tween.get(npc.barra_escudo).to({ scaleX: 1 },animSpeed,ease)
 	createjs.Tween.get(npc.barra_escudo).to({ x: 0 },animSpeed,ease)
 	
 	npc.max_escudo=200+dotes["Escudo potenciado"].aprendido*100
@@ -601,7 +751,7 @@ function disparaMonstruo(evt){
 
 function dispara(dest_x,dest_y,seguir=false){
 	ultimoDisparo=(new Date()).getTime()
-	if(!(spirit.lastAttack && spirit.lastAttack+((dotes["Ataque frecuente"].aprendido)?500:1000)>(new Date()).getTime()) && perfil.ataque<=estado.nivelEnergia){
+	if(!(spirit.lastAttack && spirit.lastAttack+((dotes["Ataque frecuente"].aprendido)?500:1000)>(new Date()).getTime()) && getEstado('ataque')<=getEstado('nivelEnergia')){
 		spirit.lastAttack=(new Date()).getTime()
 		
 		var bala = new createjs.Bitmap(loader.getResult("bala_energia"))
@@ -609,7 +759,7 @@ function dispara(dest_x,dest_y,seguir=false){
 		bala.regY=5;
 		bala.x=spirit.x+16*pixelScale
 		bala.y=spirit.y+8*pixelScale
-		bala.damage=perfil.ataque
+		bala.damage=getEstado('ataque')
 		//frameRate.text=spirit.base_damage
 		bala.target="monster"
 		
@@ -619,22 +769,25 @@ function dispara(dest_x,dest_y,seguir=false){
 		disparaBala(bala,{'x':dest_x,'y':dest_y},200+dotes["Bala acelerada"].aprendido*150)
 		
 		// Gastamos energía al disparar
-		actualizaEnergia(-perfil.ataque)
+		actualizaEnergia(-getEstado('ataque'))
 	}
 }
 
 function actualizaEnergia(variacion){
 	variacion=parseFloat(variacion)
-	estado.nivelEnergia+=variacion
-	if(estado.nivelEnergia<0) estado.nivelEnergia=0;
-	if(estado.nivelEnergia>perfil.aura) estado.nivelEnergia=perfil.aura;
+	estado.nivelEnergia=variacion+getEstado('nivelEnergia')
+	if(getEstado('nivelEnergia')<0) getEstado('nivelEnergia')=0;
+	if(getEstado('nivelEnergia')>getEstado('aura')) estado.nivelEnergia=getEstado('aura');
 	//nivel_energia.x=1775-estado.nivelEnergia;
 	
-	var diferencia=Math.abs(nivel_energia.x-1775+estado.nivelEnergia)
+	var diferencia=Math.abs(nivel_energia.x-1775+getEstado('nivelEnergia'))
 	
-	createjs.Tween.get(nivel_energia , {override:true}).to({ x:1775-estado.nivelEnergia}, diferencia*5)
+	createjs.Tween.get(nivel_energia , {override:true}).to({ x:1775-getEstado('nivelEnergia')}, diferencia*5)
 	
-	if(estado.nivelEnergia<20 && !estado.dialogoSinEnergia){
+	if(getEstado('nivelEnergia')<20 && !getEstado('dialogoSinEnergia')){
+        stage.update();
+        capturaPantalla()
+        guardarPartida("autosave",screenShot)
 		estado.dialogoSinEnergia=true;
 		iniciaDialogo("sinEnergía")
 	}
@@ -653,37 +806,37 @@ function disparaBala(bala,target,velocidad=300){
 }
 
 function setCentro(){
-	var centroX=Math.round(spirit.x)
-	var centroY=Math.round(spirit.y)
-	
-	var sx=canvasWidth/2-(centroX+16*pixelScale)
-	if(sx>0) sx=0
-	if(sx<(canvasWidth-32*pixelScale*map_width)) sx=canvasWidth-32*pixelScale*map_width
-	var sy=canvasHeight/2-16*pixelScale-centroY;
-	if(sy>0) sy=0
-	if(sy<(canvasHeight-32*pixelScale*map_height)) sy=canvasHeight-32*pixelScale*map_height
-	
-	scene.x=Math.round(sx);
-	scene.y=Math.round(sy);
-	
-	//niebla.x=spirit.x-1920*niebla.scaleX+scene.x+16*pixelScale
-	//niebla.y=spirit.y-1080*niebla.scaleY+32*pixelScale+scene.y
+		var centroX=Math.round(spirit.x)
+		var centroY=Math.round(spirit.y)
+		
+		var sx=canvasWidth/2-(centroX+16)*pixelartScale
+        sx_base=sx
+		if(sx>0) sx=0
+		if(sx<(canvasWidth-32*map_width*pixelartScale)) sx=canvasWidth-32*map_width*pixelartScale
+		var sy=canvasHeight/2-(centroY+16)*pixelartScale;
+        sy_base=sy
+		if(sy>0) sy=0
+		if(sy<(canvasHeight-32*map_height*pixelartScale)) sy=canvasHeight-32*map_height*pixelartScale
+		
+		scene.x=Math.round(sx);
+		scene.y=Math.round(sy);
+        
+        capa_niebla.x=canvasWidth/2-1920*capa_niebla.scaleX+sx-sx_base
+        capa_niebla.y=canvasHeight/2-1080*capa_niebla.scaleX+sy-sy_base
 }
 	
 function abreJuego() {
+    startMoveControls()
 	libroAbierto=false;
 	playMusic("3exploracion");
 	pantalla_de_juego.uncache();
 	
-	createjs.Ticker.timingMode = createjs.Ticker.RAF;
-	createjs.Ticker.addEventListener("tick", tick);
-	
-	if(!estado.juegoAbierto){
+	if(!getEstado('juegoAbierto')){
 		if(dialogo_inicio) iniciaDialogo("inicio")
 		//if(dialogo_inicio) iniciaDialogo("Cristal2")
 		estado.juegoAbierto=true;
 	}
-	else if(!estado.dialogoCurame && dotes["Hechizo de curar"].aprendido){
+	else if(!getEstado('dialogoCurame') && dotes["Hechizo de curar"].aprendido){
 		iniciaDialogo("Curame")
 		estado.dialogoCurame=true;
 	}
@@ -701,10 +854,10 @@ function testClickHandler(evt){
         var x=evt.stageX/capa_interfaz_izquierdo.scaleX
         var y=evt.stageY/capa_interfaz_izquierdo.scaleY
         
-        if(game_options.versionTactil && x<400 && y>680){}
+        if(game_options.versionTactil){}
         else{
-            x=ex-scene.x
-            y=ey-scene.y
+            x=(ex-scene.x)/pixelartScale
+            y=(ey-scene.y)/pixelartScale
             var objetivo=0
             if(dotes["Ataque seguidor"].aprendido){
                 var cercano=0
@@ -764,10 +917,14 @@ var handleKeyUp = function(e){
 	if(e.keyCode==83 || e.keyCode==40) moveDown=false
 	
 	if(game_options.controlTeclado && (e.keyCode==32 || e.keyCode==13) && objetoActivable){
+        stage.update();
+        capturaPantalla()
+        guardarPartida("autosave",screenShot)
 		iniciaDialogo(objetoActivable.nombre)
 		objetoActivable.removeAllEventListeners("click") // Sólo se puede usar una vez
 		objetoActivable.activo=false;
-		objetoActivable.shadow=null;
+		//objetoActivable.shadow=null;
+        objetoActivable.removeChildAt(0)
 		objetoActivable=false;
 	}
 };
@@ -783,16 +940,19 @@ var monster_hit;
 function tick(event) {
 	var benchmark_time=new Date().getTime();
 	
-	if(!libroAbierto && !estado.dialogoAbierto){
+	if(!libroAbierto && !getEstado('dialogoAbierto')){
 		
 	// Se regenera la energía
 	actualizaEnergia((game_values.energia_recuperada_segundo+
 		dotes["Absorber energía ambiental"].aprendido*game_values.energia_recuperada_nivel)*event.delta/1000)
 		
-	if(!estado.vistoEnemigo){
+	if(!getEstado('vistoEnemigo')){
 		for(var m in monster_list){
 			var monster=monster_list[m]
-			if(Math.abs(monster.x-spirit.x)<4*32*pixelScale && Math.abs(monster.y-spirit.y)<4*32*pixelScale){
+			if(Math.abs(monster.x-spirit.x)<3*32*pixelScale && Math.abs(monster.y-spirit.y)<3*32*pixelScale){
+                stage.update();
+                capturaPantalla()
+                guardarPartida("autosave",screenShot)
 				estado.vistoEnemigo=true;
 				iniciaDialogo("vesPrimerEnemigo")
 			}
@@ -893,7 +1053,10 @@ function tick(event) {
 					mapa_caminos[monster.map_x][monster.map_y]=1;
 					testLayers['character_layer'].removeChild(monster);
 					
-					if(!estado.eliminasPrimerEnemigo){
+					if(!getEstado('eliminasPrimerEnemigo')){
+                        stage.update();
+                        capturaPantalla()
+                        guardarPartida("autosave",screenShot)
 						estado.eliminasPrimerEnemigo=true;
 						iniciaDialogo("eliminasPrimerEnemigo")
 					}
@@ -902,8 +1065,8 @@ function tick(event) {
 					if(!monster.barra_vida){
 						monster.barra_vida = new createjs.Shape();
 						if(monster.size==2)
-							monster.barra_vida.graphics.beginFill("#f00").drawRect(0,10,64*pixelScale,4);
-						else monster.barra_vida.graphics.beginFill("#f00").drawRect(0,10,32*pixelScale,4);
+							monster.barra_vida.graphics.beginFill("#f00").drawRect(0,0,64,2);
+						else monster.barra_vida.graphics.beginFill("#f00").drawRect(0,0,32,2);
 						monster.addChild(monster.barra_vida)
 						
 					}
@@ -913,6 +1076,8 @@ function tick(event) {
 					monster.barra_vida.graphics.command.w=ancho_barra;
 					monster.barra_vida.x=16*pixelScale-ancho_barra/2;
 					if(monster.size==2) monster.barra_vida.x=32*pixelScale-ancho_barra/2;
+                    
+                    iCache(monster.barra_vida)
 				}
 				
 				break;
@@ -933,6 +1098,7 @@ function tick(event) {
 					var ancho=32*pixelScale*actor.escudo_actual/actor.max_escudo
 					actor.barra_escudo.graphics.command.w=ancho
 					actor.barra_escudo.x=16*pixelScale-ancho/2
+                    iCache(actor.barra_escudo)
 				}
 				else{
 					actor.removeChild(actor.barra_escudo)
@@ -1136,6 +1302,9 @@ function tick(event) {
 					actor.y=dest_y;
 					
 					if(actor.nombre=="Bibliotecaria" && locations[actor.camino.ruta[0].x+"x"+actor.camino.ruta[0].y]){
+                        stage.update();
+                        capturaPantalla()
+                        guardarPartida("autosave",screenShot)
 						iniciaDialogo(locations[actor.camino.ruta[0].x+"x"+actor.camino.ruta[0].y].name)
 					}
 					
@@ -1185,17 +1354,6 @@ function tick(event) {
 					}
 					
 					// Aumentamos la posibilidad de encotrar monstruos
-					/*siguienteEncuentro--
-					// ¿Encontramos monstruos?
-					if(!siguienteEncuentro){
-						siguienteEncuentro=15+Math.floor(Math.random()*20);
-						//character.gotoAndStop(direction);
-						personajeObjetivo=false;
-						localizacionObjetivo=false;
-						actor.camino='';
-						actor.dir=[0,0]
-						entraEncuentro()
-					}*/
 				}
 			}
 			
@@ -1204,20 +1362,7 @@ function tick(event) {
 		if(game_options.controlTeclado) controlTeclado(event)
 		
 		
-		var centroX=Math.round(spirit.x)
-		var centroY=Math.round(spirit.y)
-		
-		
-		
-		var sx=canvasWidth/2-(centroX+16*pixelScale)
-		if(sx>0) sx=0
-		if(sx<(canvasWidth-32*pixelScale*map_width)) sx=canvasWidth-32*pixelScale*map_width
-		var sy=canvasHeight/2-16*pixelScale-centroY;
-		if(sy>0) sy=0
-		if(sy<(canvasHeight-32*pixelScale*map_height)) sy=canvasHeight-32*pixelScale*map_height
-		
-		scene.x=Math.round(sx);
-		scene.y=Math.round(sy);
+		setCentro()
 		
 		//niebla.x=spirit.x+scene.x+16*pixelScale//-1920*niebla.scaleX
 		//niebla.y=spirit.y+32*pixelScale+scene.y//-1080*niebla.scaleX
@@ -1232,17 +1377,22 @@ function tick(event) {
 		//testLayers['character_layer'].setChildIndex(spirit,testLayers['character_layer'].numChildren-1)
 		
 	}
-	//frameRate.text="("+stage.canvas.width+"x"+stage.canvas.height+") - "+Math.round(createjs.Ticker.getMeasuredFPS());
+    //vari++
+	//frameRate.text="("+joystic.x+"x"+joystic.y+" - "+vari+") - "+Math.round(createjs.Ticker.getMeasuredFPS());
+    ////iCache(frameRate)
 	//frameRate.text=canvasWidth+" - "+sy;
+    
+    
 	stage.update();
-	
+    
 	//if(moveLeft) console.log(new Date().getTime()-benchmark_time)
 }
+vari=0
 
 function controlTeclado(event){
 	// Movemos el espíritu con el joystic virtual
-	if(moveX) spirit.x+=event.delta/1000*spirit.velocidad*moveX*0.7
-	if(moveY) spirit.y+=event.delta/1000*spirit.velocidad*moveY*0.7
+	if(joystic.x) spirit.x+=event.delta/1000*spirit.velocidad*joystic.x*(pixelScale/2)
+	if(joystic.y) spirit.y+=event.delta/1000*spirit.velocidad*joystic.y*(pixelScale/2)
 	// Movemos el espíritu con el teclado
 	if(moveUp){
 		if(moveLeft){
@@ -1294,7 +1444,7 @@ function controlTeclado(event){
 	// Creamos mapa de objetos
 	// Calculamos distancia a casilla
 	// For para cada elemento calculamos la distancia (nos quedamos con el más cercano que esté en rango y no inactivo)
-	var cercano=0
+	/*var cercano=0
 	var min_distancia=64*pixelScale+1
 	for(var i=0;i<testLayers['character_layer'].numChildren;i++){
 		var child=testLayers['character_layer'].getChildAt(i)
@@ -1318,19 +1468,29 @@ function controlTeclado(event){
 	}
 	if(cercano){
 		if(objetoActivable!=cercano){
-			if(objetoActivable) objetoActivable.shadow=null;
+			if(objetoActivable) objetoActivable.removeChildAt(0)
 			objetoActivable=cercano
-			objetoActivable.shadow = new createjs.Shadow("#ffff00", 0, 0, 20);
+			//objetoActivable.shadow = new createjs.Shadow("#ffff00", 0, 0, 20);
+            //objetoActivable.cache(-20,-20,objetoActivable.getBounds().width+120,objetoActivable.getBounds().height+20)
+            
+             var blurFilter = new createjs.BlurFilter(3, 3, 2);
+             var shadow=objetoActivable.sprite.clone()
+             shadow.filters = [ new createjs.ColorFilter(0,0,0,1, 255,255,0,0),blurFilter];
+             shadow.cache(-20,-20,objetoActivable.getBounds().width+120,objetoActivable.getBounds().height+20)
+             objetoActivable.addChildAt(shadow,0)
+             //alert((-20)+" / "+(-20)+" / "+(objetoActivable.sprite.getBounds().width+40)+" / "+(objetoActivable.sprite.getBounds().height+40))
 		}
 	}
 	else if(objetoActivable){
-		objetoActivable.shadow=null;
+		//objetoActivable.shadow=null;
+        //objetoActivable.uncache()
+        objetoActivable.removeChildAt(0)
 		objetoActivable=0;
-	}
+	}*/
 	
-	if(game_options.versionTactil)
+	/*if(game_options.versionTactil)
 		if(objetoActivable) botonUsar.alpha=0.8
-		else botonUsar.alpha=0
+		else botonUsar.alpha=0*/
 }
 
 var objetoActivable
@@ -1347,6 +1507,8 @@ function atacaPersonaje(actor,damage){
 			var ancho=32*pixelScale*actor.escudo_actual/actor.max_escudo
 			actor.barra_escudo.graphics.command.w=ancho
 			actor.barra_escudo.x=16*pixelScale-ancho/2
+            
+            iCache(actor.barra_escudo)
 		}
 		else{
 			actor.removeChild(actor.barra_escudo)
@@ -1368,13 +1530,15 @@ function atacaPersonaje(actor,damage){
 	if(actor.life<0) actor.life=0;
 	if(!actor.barra_vida){
 		actor.barra_vida = new createjs.Shape();
-		actor.barra_vida.graphics.beginFill("#f00").drawRect(0,-10,32*pixelScale,4);
+		actor.barra_vida.graphics.beginFill("#f00").drawRect(0,0,32*pixelScale,2);
 		actor.addChild(actor.barra_vida)
 	}
 	
 	var ancho_barra=Math.floor(32*pixelScale*actor.life/actor.max_life)
 	actor.barra_vida.graphics.command.w=ancho_barra;
 	actor.barra_vida.x=16*pixelScale-ancho_barra/2;
+    
+    iCache(actor.barra_vida)
 }
 
 function creaBrillo(x,y){
@@ -1405,8 +1569,12 @@ function llegaObjetivo(actor){
 		if(actor.walker) actor.walker.gotoAndStop("back")
 	}
 
-	if(dist(spirit,party[0])>pixelScale*32*4)
+	if(dist(spirit,party[0])>pixelScale*32*4){
+        stage.update();
+        capturaPantalla()
+        guardarPartida("autosave",screenShot)
 		iniciaDialogo("Nami lejos")
+    }
 	else{
 		if(actor.objetivo.tipo=="escena"){
 			actor.objetivo.removeAllEventListeners("click") // Sólo se puede usar una vez
@@ -1428,7 +1596,10 @@ function getDireccion(actor, dest_x, dest_y){
 }
 
 function sigueEspiritu(){
-	if(!estado.mensajeEsperame && dist(spirit,party[0])>pixelScale*32*5){
+	if(!getEstado('mensajeEsperame') && dist(spirit,party[0])>pixelScale*32*5){
+        stage.update();
+        capturaPantalla()
+        guardarPartida("autosave",screenShot)
 		iniciaDialogo("mensajeEsperame")
 		estado.mensajeEsperame=true;
 	}
@@ -1459,38 +1630,55 @@ function sigueEspiritu(){
 	
 function drawTestMap(){
 	testLayers['map_layer'].removeAllChildren();
+    var maxRow=0;
+    var maxCol=0;
+    
+    var supertiles=[]
+    for(var i=0;i<16;i++){
+        supertiles[i] = new createjs.Container();
+        supertiles[i].x=32*25*(i%4)
+        supertiles[i].y=32*25*Math.floor(i/4)
+        testLayers['map_layer'].addChild(supertiles[i]);
+    }
+    
 	for (var row=0; row<map_width; row++) {
 		for (var col=0; col<map_height; col++) {
+            var supertile=Math.floor(row/25)*4+Math.floor(col/25)
+            var x=(col%25)*32
+            var y=(row%25)*32
 			if(typeof map[col][row] == "number" && map[col][row]>0){
 				var idx = map[col][row] - 1;
 				
 				var tile = new createjs.Sprite(tilemaptest);
 				tile.gotoAndStop(idx);
-				tile.x = 32*pixelScale*col;
-				tile.y = 32*pixelScale*row;
-				testLayers['map_layer'].addChild(tile);
+				tile.x = x
+				tile.y = y
+				supertiles[supertile].addChild(tile);
 			}
 			else for (var tile_level=0; tile_level<map[col][row].length; tile_level++) if(map[col][row][tile_level]){
 				var idx = map[col][row][tile_level] - 1;
 				
 				var tile = new createjs.Sprite(tilemaptest);
 				tile.gotoAndStop(idx);
-				tile.x = 32*pixelScale*col;
-				tile.y = 32*pixelScale*row;
-				testLayers['map_layer'].addChild(tile);
+				tile.x = x
+				tile.y = y
+				supertiles[supertile].addChild(tile);
 			}
-			if(locations[col+"x"+row] && (graph=locations[col+"x"+row].graph)){
+			/*if(locations[col+"x"+row] && (graph=locations[col+"x"+row].graph)){
 				var tile = new createjs.Sprite(tilemaptest);
 				tile.gotoAndStop(graph);
 				tile.x = 32*pixelScale*col;
 				tile.y = 32*pixelScale*row;
 				testLayers['map_layer'].addChild(tile);
-				locations[col+"x"+row].tile=tile;
-			}
+				if(supertiles[supertile]) supertiles[supertile].tile=tile;
+			}*/
 			
 		}
 	}
-	testLayers['map_layer'].cache(0,0,32*pixelScale*map_width,32*pixelScale*map_height);
+    
+    for(var i=0;i<16;i++){
+        supertiles[i].cache(0,0,32*25,32*25)
+    }
 }
 
 function createBlob(pj,tam=32){

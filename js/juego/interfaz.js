@@ -21,7 +21,7 @@ var game_values={
 }
 
 window.onerror = function (msg, url, lineNo, columnNo, error) {
-  alert(error.stack)
+  if (error) alert(error.stack)
 
   return false;
 }
@@ -42,23 +42,21 @@ var libro={}
 
 var configObjetos
 var inicio_partida=new Date() // Para pruebas beta
- 
-$(function(){
-	/*$("button").click(function(){
-			var el = document.getElementById('canvas'),
-			  rfs = el.requestFullscreen
-				|| el.webkitRequestFullScreen
-				|| el.mozRequestFullScreen
-				|| el.msRequestFullscreen 
-			$('canvas').addClass('fullScreen');
-			rfs.call(el);
-			resize()
-	})*/
-	
-	if(screen.width>1600) pixelScale=3;
-	else if(screen.width>1000) pixelScale=2;
-	else if(screen.width>600) pixelScale=1;
-	else pixelScale=1;
+
+
+function init() {
+
+    queue = new createjs.LoadQueue();
+    queue.on("complete", initialize, this);
+    queue.loadFile({id:"portada_libro", src:"img/juego/portada_libro.png"});
+
+}
+
+var webGL=1
+var stage
+function initialize(){
+    
+    pixelScale=1;
 	
 	configObjetos={
 		7:{
@@ -78,19 +76,21 @@ $(function(){
 				}
 			}
 	}
-	
-    stage = new createjs.Stage("canvas");
+    
+    
+    
+    if(webGL)
+        stage = new createjs.StageGL("canvas",{ antialias: true });
+    else stage = new createjs.Stage("canvas",{ antialias: true });
+    if(webGL) stage.setClearColor("#4d311f");
 	var w=window.innerWidth;
 	var h=window.innerHeight;
-	stage.canvas.width = w
-	stage.canvas.height = h
+    stage.canvas.width=w;
+    stage.canvas.height=h;
+    if(webGL) stage.updateViewport(w,h)
 	stage.enableMouseOver(5);
 	createjs.Touch.enable(stage);
 	stage.preventSelection = false;
-	
-	fondo_juego = new createjs.Shape();
-	fondo_juego.graphics.beginFill("#4d311f").drawRect(0, 0, 1920, 1080);
-	stage.addChild(fondo_juego);
 	
 	pantalla_de_juego = new createjs.Container();
 	pantalla_de_juego.alpha=0;
@@ -108,8 +108,10 @@ $(function(){
 	capa_interfaz_izquierdo= new createjs.Container();
 	capa_interfaz_derecho= new createjs.Container();
 	capa_niebla= new createjs.Container();
-	
+	scene= new createjs.Container();
+    
 	resize()
+    window.addEventListener('resize', resize, false);
 	
 	stage.addChild(dialogo)
 	
@@ -121,25 +123,37 @@ $(function(){
 	interfaz_libro.addChild(libro_juego);
 	
 	
-	var portada_libro = new createjs.Bitmap("img/juego/portada_libro.png");
-	portada_libro.scaleX=1
-	portada_libro.scaleY=1
+	var portada_libro = new createjs.Bitmap(queue.getResult("portada_libro"));
 	libro_juego.addChild(portada_libro);
-	
+    
 	barra_progreso = new createjs.Container();
 	barra_progreso.x=160
 	barra_progreso.y=600
 	libro_juego.addChild(barra_progreso)
 	
 	var fondo_barra_progreso = new createjs.Shape();
-	fondo_barra_progreso.graphics.beginFill("#030").drawRoundRect(0, 0, 660, 80,15);
+	fondo_barra_progreso.graphics.beginFill("#030").drawRoundRect(0, 0, 660, 120,15);
+			//objetoActivable.shadow = new createjs.Shadow("#ffff00", 0, 0, 20);
 	barra_progreso.addChild(fondo_barra_progreso)
+    iCache(fondo_barra_progreso)
 	
 	barra_progreso_avance = new createjs.Shape();
+    
 	barra_progreso.addChild(barra_progreso_avance);
-	
-	createjs.Ticker.setFPS(60);
-	createjs.Ticker.addEventListener("tick", stage);
+    
+	//createjs.Ticker.on("tick", stage);
+    //createjs.Ticker.on("tick", handleTick);
+	//createjs.Ticker.timingMode = createjs.Ticker.RAF;
+
+    /*
+    var loader = new createjs.FontLoader({src:[
+      {
+        src: "local('Merienda One'), url(font/Merienda-Regular.ttf) format('truetype')",
+        family: "Merienda One"
+      }],
+    type: "font",
+    injectCSS: true});
+    loader.load();*/
 	
 	var manifest = [
 		{src: "js/juego/textos.json", id: "textos"},
@@ -155,7 +169,6 @@ $(function(){
 		//{src: "img/juego/opcion.png", id: "opciones_dialogo"},
 		{src: "img/juego/opcion_btn.png", id: "opcion_btn"},
 		{src: "img/juego/marco.png", id: "marco"},
-		{src: "img/juego/fondo_marco.png", id: "fondo_marco"},
 		{src: "img/juego/texto_capitulo.jpg", id: "texto_capitulo"},
 		{src: "img/juego/esquina.png", id: "esquina"},
 		{src: "img/juego/acierto.png", id: "acierto"},
@@ -166,11 +179,29 @@ $(function(){
 		{src: "img/juego/boton.png", id: "boton"},
 		
 		{src: "img/juego/brillo.png", id: "brillo"},
+		{src: "img/juego/interrogacion.png", id: "interrogacion"},
 		
 		{src: "img/juego/barra_energia.png", id: "barra_energia"},
 		{src: "img/juego/nivel_energia.png", id: "nivel_energia"},
 		{src: "img/juego/move_control.png", id: "move_control"},
+        
+		{src: "img/lecciones/tutorial_mover.png", id: "tutorial_mover"},
+		{src: "img/lecciones/tutorial_atacar.png", id: "tutorial_atacar"},
+		{src: "img/lecciones/hiragana_de_su.png", id: "hiragana_de_su"},
+		{src: "img/lecciones/hiragana_desu.png", id: "hiragana_desu"},
+		{src: "img/lecciones/hiragana_doko.png", id: "hiragana_doko"},
+		{src: "img/lecciones/frase_doko_desu_ka.png", id: "frase_doko_desu_ka"},
+		{src: "img/lecciones/particula_ka.png", id: "particula_ka"},
+		{src: "img/lecciones/kanjis.png", id: "kanjis"},
+		{src: "img/lecciones/radicales.png", id: "radicales"},
+		{src: "img/lecciones/hayaku.png", id: "hayaku"},
+		{src: "img/lecciones/soko.png", id: "soko"},
+		{src: "img/lecciones/so.png", id: "so"},
+		{src: "img/lecciones/iku.png", id: "iku"},
+		{src: "img/lecciones/frase_soko_ni_iku.png", id: "frase_soko_ni_iku"},
+		{src: "img/lecciones/particula_ni.png", id: "particula_ni"},
 		
+		{src: "img/juego/cuaderno.png", id: "cuaderno"},
 		{src: "img/juego/pagina.png", id: "pagina"},
 		
 		{src: "img/juego/spirit.png", id: "spirit"},
@@ -209,6 +240,7 @@ $(function(){
 		{src: "img/juego/dotes.png", id: "dotes"},
 		{src: "img/juego/esfera_nivel.png", id: "esfera_nivel"},
 		{src: "img/juego/progreso_nivel.png", id: "progreso_nivel"},
+		{src: "img/juego/fondo_progreso_nivel.png", id: "fondo_progreso_nivel"},
 		
 		{src: "img/juego/estrella.png", id: "estrella"},
 		
@@ -258,8 +290,9 @@ $(function(){
 	loader.on('progress', function(evt) {
 		var progress = Math.round(evt.loaded * 650);
 		if(progress<34) progress=34;
-		barra_progreso_avance.graphics.beginLinearGradientFill(["#eae","#b3b","#707","#a0a"],[0,0.5,0.5,1],0,1,0,70).
-			drawRoundRect(5, 5, progress, 70,14);
+		barra_progreso_avance.graphics.beginLinearGradientFill(["#eae","#b3b","#707","#a0a"],[0,0.5,0.5,1],0,1,0,110).
+			drawRoundRect(5, 5, progress, 110,12);
+        iCache(barra_progreso_avance)
 	});
 	
 	loader.addEventListener("complete", function(){
@@ -267,21 +300,13 @@ $(function(){
 		
 		iconos_dotes = new createjs.SpriteSheet({"images": [loader.getResult("dotes")],"frames": {"width":150, "height":150,"regX":75, "regY":75}});
 		
-		var text = new createjs.Text(textos["Abrir"], "45px 'Merienda One'", "#ff0");
+		var text = new createjs.Text(textos["Abrir"], "70px 'Merienda One'", "#ed0");
 		text.x = 330;
-		text.y = 8;
+		text.y = 20;
 		text.textAlign='center'
 		barra_progreso.addChild(text);
+        iCache(text)
 		barra_progreso.addEventListener("click",function(){
-			//resize()
-			
-			//interfaz_libro.scaleX=scale;
-			//interfaz_libro.scaleY=scale;
-			
-			//libro_juego.y=0;
-			//libro_juego.cache();
-			
-			//$("button").show()
 			playMusic("10intro",0);
 			setTimeout(function(){
 				if(libroAbierto){
@@ -292,7 +317,28 @@ $(function(){
 		});
 	});
 	loader.loadManifest(manifest, true, "");
-})
+    
+    
+	frameRate = new createjs.Text("", "12px Arial", "rgba(255,255,255,1)");
+	frameRate.x=550;
+	frameRate.y=10;
+	//frameRate.alpha=0;
+	stage.addChild(frameRate)
+    
+	createjs.Ticker.framerate=60;
+     createjs.Ticker.on("tick", tick);
+     
+     window.onbeforeunload = salirJuego;
+     return;
+}
+
+function salirJuego(){
+    if(!libroAbierto && !getEstado('dialogoAbierto')){
+        stage.update();
+        capturaPantalla()
+        guardarPartida("autosave",screenShot)
+    }
+}
 
 var currentMusic
 function playMusic(music,loop=-1){
@@ -328,15 +374,44 @@ function openBook(){
 	fondo_libro_d.x=960;
 	interior_libro.addChild(fondo_libro_d)
 	
-	screenShot=loader.getResult("fondo_marco")
+    // Mirar si hay partidas guardadas
+	var partidasGuardadas = localStorage.getItem('partidasGuardadas');
+	if(!partidasGuardadas) partidasGuardadas=[]
+	else partidasGuardadas=JSON.parse(partidasGuardadas)
 	
-	screenShot = new createjs.Bitmap( loader.getResult("luz") );
-	screenShot.cache( 0, 0, screenShot.getBounds().width, screenShot.getBounds().height,703/screenShot.getBounds().width);
-	screenShot=screenShot.cacheCanvas;
+	if(partidasGuardadas.length>0){
+        try {
+            screenShot = new createjs.Bitmap(partidasGuardadas[0].image)
+            cargarPartida(0)
+        }
+        catch(error) {
+            alert(error);
+        }
+    }
+    else{
+        screenShot = new createjs.Bitmap( loader.getResult("luz") );
+        screenShot.cache( 0, 0, screenShot.getBounds().width, screenShot.getBounds().height,703/screenShot.getBounds().width);
+        screenShot=screenShot.cacheCanvas;
+    }
 	
 	var pags=getPaginasIndice();
-	var paginaD=pags[1]
-	var paginaI=pags[0]
+    
+	var paginaD=new createjs.Container();
+	var rect = new createjs.Shape();
+	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1028);
+    iCache(rect)
+	paginaD.addChild(rect);
+	paginaD.addChild(pags[1]);
+    
+	var paginaI=new createjs.Container();
+	var rect = new createjs.Shape();
+	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1028);
+    iCache(rect)
+	paginaI.x=41;
+	paginaI.y=10
+	paginaI.addChild(rect);
+	paginaI.addChild(pags[0]);
+    
 	paginasLayer.addChild(paginaD)
 	paginaD.x=919;
 	
@@ -344,6 +419,7 @@ function openBook(){
 	
 	var sombraD = new createjs.Shape();
 	sombraD.graphics.beginLinearGradientFill(["rgba(100,50,20,0.3)","rgba(100,50,20,0)"],[0,1],0,0,200,0).drawRect(0, 0, 200,1028);
+    iCache(sombraD)
 	paginaD.addChild(sombraD);
 	libro.pagD=paginaD;
 	
@@ -364,6 +440,7 @@ function openBook(){
 		
 		var sombraI = new createjs.Shape();
 		sombraI.graphics.beginLinearGradientFill(["rgba(100,50,20,0)","rgba(100,50,20,0.2)"],[0,1],0,0,200,0).drawRect(0, 0, 200,1028);
+        iCache(sombraI)
 		sombraI.x=919-200;
 		paginaI.addChild(sombraI);
 		libro.pagI=paginaI;
@@ -385,35 +462,68 @@ function openBook(){
 	})
 }
 
+capturar=false
+function capturaPantalla() {
+	var canvas = document.getElementById( 'canvas' );
+    var retCanvas = document.createElement('canvas');
+    retCanvas.width = 703;
+    retCanvas.height = 395;
+    retCanvas.getContext('2d').drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, 703, 395);
+    screenShot=retCanvas
+    entrada_juego.image=screenShot
+}
+
 function entraJuego(){
+	capa_libro.mouseEnabled=false;
 	setCentro()
-	pantalla_de_juego.updateCache();
+	//pantalla_de_juego.updateCache();
 	
-	var scale=canvasWidth/entrada_juego.getBounds().width;
+	var scale=canvasWidth/703;
+	var scaleY=canvasHeight/395;
 	var x=-(entrada_juego.x+entrada_juego.parent.x+entrada_juego.parent.parent.x+(entrada_juego.parent.parent.parent?entrada_juego.parent.parent.parent.x:0))*scale
-	var y=-(entrada_juego.y+entrada_juego.parent.y+entrada_juego.parent.parent.y+(entrada_juego.parent.parent.parent?entrada_juego.parent.parent.parent.y:0))*scale
-	$('canvas').css('background','black')
-	var animSpeed=1000;
+	var y=-(entrada_juego.y+entrada_juego.parent.y+entrada_juego.parent.parent.y+(entrada_juego.parent.parent.parent?entrada_juego.parent.parent.parent.y:0))*scaleY
 	var ease=createjs.Ease.getPowOut(2);
-	capa_libro.cache(0,0,1920,1080)
-	
 	capa_libro.previousScale=capa_libro.scaleX
 	capa_libro.previousX=capa_libro.x
 	capa_libro.previousY=capa_libro.y
-	createjs.Tween.get(capa_libro).to({ scaleX: scale,scaleY: scale,x:x,y:y },animSpeed)
-	.call(function(){
+    capa_libro.alpha=1
 		pantalla_de_juego.alpha=1;
-		createjs.Tween.get(capa_libro).to({ alpha: 0 },400).call(function(){
+    
+	createjs.Tween.get(capa_libro).to({ scaleX: scale,scaleY: scaleY,x:x,y:y },500)
+	.call(function(){
+		createjs.Tween.get(capa_libro).to({ alpha: 0 },100).call(function(){
+            capa_libro.alpha=0
 			pantalla_de_juego.mouseEnabled=true;
+            pantalla_de_juego.uncache()
 			abreJuego()
-			
-			// Hacemos un autoguardado
-			var canvas = document.getElementById( 'canvas' );
-			screenshot = new createjs.Bitmap( canvas );
-			screenshot.cache( 0, 0, canvas.width, canvas.height,entrada_juego.getBounds().width/canvas.width);
-	
-			guardarPartida("autosave",screenshot.cacheCanvas)
 		})
+	})
+}
+
+function volverAlMenu(callback){
+    stage.update();
+    capturaPantalla()
+    guardarPartida("autosave",screenShot)
+            
+    endMoveControls()
+	paginaAbierta=false
+	libroAbierto=true
+	pantalla_de_juego.mouseEnabled=false;
+    
+	stage.update();
+    capturaPantalla()
+    
+	//pantalla_de_juego.cache(0,0,canvasWidth,canvasHeight)
+	
+	playMusic("7libro");
+    pantalla_de_juego.alpha=0;
+    capa_libro.alpha=1;
+	
+	createjs.Tween.get(capa_libro).to({ scaleX: capa_libro.previousScale,scaleY: capa_libro.previousScale,
+		x: capa_libro.previousX,y: capa_libro.previousY },500,createjs.Ease.getPowOut(2)).call(function(){
+		capa_libro.uncache()
+		if(typeof callback=='function') callback()
+        capa_libro.mouseEnabled=true;
 	})
 }
 
@@ -426,26 +536,27 @@ var screenShot
 var enlace_practica
 function getPaginasIndice(){
 	var paginaD = new createjs.Container();
-	var rect = new createjs.Shape();
-	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1028);
-	paginaD.addChild(rect);
 	
 	var titulo_capitulo=new createjs.Text(textos["Capítulo 1"], "40px 'Merienda One',Cursive", '#642');
 	titulo_capitulo.x=100;titulo_capitulo.y=60;
 	paginaD.addChild(titulo_capitulo);
+    iCache(titulo_capitulo)
 	
 	entrada_juego = new createjs.Bitmap(screenShot)
-	entrada_juego.x=123
+	entrada_juego.x=125
 	entrada_juego.y=154
 	paginaD.addChild(entrada_juego)
 	
-	entrada_juego.scaleY=396/entrada_juego.getBounds().height
+	if(entrada_juego.getBounds()) entrada_juego.scaleY=395/entrada_juego.getBounds().height
 	
 	if(!screenShot){
 		screenShot = new createjs.Bitmap( loader.getResult("luz") );
 		screenShot.cache( 0, 0, screenShot.getBounds().width, screenShot.getBounds().height,entrada_juego.getBounds().width/screenShot.getBounds().width);
-		entrada_juego.image=screenShot.cacheCanvas;
 	}
+    
+    if(screenShot.image)
+        entrada_juego.image=screenShot.image
+    else entrada_juego.image=screenShot
 	
 	/*entrada_juego.scaleX=entrada_juego.getBounds().width/1920
 	entrada_juego.scaleY=entrada_juego.getBounds().width/1920
@@ -465,8 +576,9 @@ function getPaginasIndice(){
 	]
 	
 	for(var i in menu){
-		var enlace=new createjs.Text(menu[i].nombre, "40px 'Merienda One',Cursive", '#642');
-		enlace.x=150;enlace.y=600+i*80;
+		var enlace=new createjs.Text(menu[i].nombre, "60px 'Merienda One',Cursive", '#642');
+		enlace.x=150;enlace.y=600+i*120;
+        iCache(enlace)
 		paginaD.addChild(enlace);
 		
 		if(!menu[i].activo) enlace.alpha=0.3;
@@ -490,27 +602,25 @@ function getPaginasIndice(){
 	
 	
 	var paginaI = new createjs.Container();
-	var rect = new createjs.Shape();
-	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1028);
-	paginaI.x=41;
-	paginaI.y=10
-	paginaI.addChild(rect);
 	
-	var texto_indice=new createjs.Text(textos["Menú"], "50px 'Merienda One',Cursive", '#421');
-	texto_indice.x=100;texto_indice.y=100;
+	var texto_indice=new createjs.Text(textos["Menú"], "70px 'Merienda One',Cursive", '#421');
+	texto_indice.x=100;texto_indice.y=80;
+    iCache(texto_indice)
 	paginaI.addChild(texto_indice);
 	
 	var menu=[
+		{'nombre':textos["Nuevo"],'enlace':mostrarNuevo,'activo':true},
 		{'nombre':textos["Guardar"],'enlace':mostrarGuardar,'activo':true},
 		{'nombre':textos["Cargar"],'enlace':mostrarCargar,'activo':true},
 		{'nombre':textos["Créditos"],'enlace':mostrarCreditos,'activo':true},
-		{'nombre':textos["Apoya nuestro proyecto"],'enlace':mostrarApoyar,'activo':true},
+		//{'nombre':textos["Apoya nuestro proyecto"],'enlace':mostrarApoyar,'activo':true},
 		//{'nombre':textos["Cerrar"],'enlace':cerrar,'activo':true},
 	]
 	
 	for(var i in menu){
-		var enlace=new createjs.Text(menu[i].nombre, "40px 'Merienda One',Cursive", '#642');
-		enlace.x=150;enlace.y=200+i*80;
+		var enlace=new createjs.Text(menu[i].nombre, "60px 'Merienda One',Cursive", '#642');
+		enlace.x=150;enlace.y=200+i*120;
+        iCache(enlace)
 		paginaI.addChild(enlace);
 		
 		if(!menu[i].activo) enlace.alpha=0.3;
@@ -523,11 +633,12 @@ function getPaginasIndice(){
 	
 	
 	var en = new createjs.Bitmap( loader.getResult("en") );
-	en.x=100; en.y=910
+	en.x=100; en.y=905
 	paginaI.addChild(en)
 		
-	var enlace=new createjs.Text("English", "40px 'Merienda One',Cursive", '#642');
-	enlace.x=170;enlace.y=900;
+	var enlace=new createjs.Text("English", "50px 'Merienda One',Cursive", '#642');
+    iCache(enlace)
+	enlace.x=170;enlace.y=890;
 	paginaI.addChild(enlace);
 	enlace.on("click",setIdiomaIngles)
 	
@@ -537,11 +648,12 @@ function getPaginasIndice(){
 	
 	
 	var es = new createjs.Bitmap( loader.getResult("es") );
-	es.x=580; es.y=910
+	es.x=580; es.y=905
 	paginaI.addChild(es)
 	
-	var enlace=new createjs.Text("Español", "40px 'Merienda One',Cursive", '#642');
-	enlace.x=650;enlace.y=900;
+	var enlace=new createjs.Text("Español", "50px 'Merienda One',Cursive", '#642');
+    iCache(enlace)
+	enlace.x=650;enlace.y=890;
 	paginaI.addChild(enlace);
 	enlace.on("click",setIdiomaEspanol)
 	
@@ -550,6 +662,37 @@ function getPaginasIndice(){
 	enlace.hitArea = hit_enlace;
 	
 	return [paginaI,paginaD];
+}
+
+function mostrarNuevo(){
+    screenShot = new createjs.Bitmap( loader.getResult("luz") );
+    screenShot.cache( 0, 0, screenShot.getBounds().width, screenShot.getBounds().height,703/screenShot.getBounds().width);
+    screenShot=screenShot.cacheCanvas;
+    
+    
+	testLayers['character_layer'].removeAllChildren()
+	testLayers['brillos_layer'].removeAllChildren()
+	testLayers['balas_layer'].removeAllChildren()
+	capa_animaciones.removeAllChildren();
+	elementosAnimacion=[];
+	actores=[]
+	party=[]
+	monster_list=[]
+	elements_list={}
+	npcs={}
+    preguntas=[]
+    estado={}
+	voces_cargadas=[]
+    
+    dotes=JSON.parse(dotes_base)
+    preguntas=JSON.parse(preguntas_base)
+    mapa_caminos=JSON.parse(mapa_caminos_base)
+    
+    cargaElementosIniciales()
+    
+    iniciaDialogo("preset")
+    
+	volverAIndice()
 }
 
 function mostrarApoyar(){
@@ -563,12 +706,13 @@ function cerrar(){
 		|| el.webkitExitFullscreen
 		|| el.mozCancelFullScreen
 		|| el.msExitFullscreen 
-	$('canvas').removeClass('fullScreen');
+	//$('canvas').removeClass('fullScreen');
 	rfs.call(el);
 	resize()
 }
 
 function setIdiomaIngles(){
+	lecciones=textos_en.lecciones
 	textos=textos_en.textos
 	preguntas=textos_en.preguntas
 	dialogos=textos_en.dialogos
@@ -576,6 +720,7 @@ function setIdiomaIngles(){
 }
 
 function setIdiomaEspanol(){
+	lecciones=textos_es.lecciones
 	textos=textos_es.textos
 	preguntas=textos_es.preguntas
 	dialogos=textos_es.dialogos
@@ -670,6 +815,7 @@ function mostrarCargar(){
 		marco.pos=i
 		marco.on("click",function(){
 			cargarPartida(this.pos)
+            volverAIndice()
 		})
 		contenido.addChild(marco)
 		
@@ -686,73 +832,88 @@ function mostrarCargar(){
 	pasarPaginaDerecha(pagI,pagD)
 }
 
-function mostrarCreditos(){
+var creditos={
+    "Equipo de desarrollo":[],
+    "Magos colaboradores":["Alex Valero “Danda”"],
+    "Estudiantes de honor":["Fermin Sáez","Christian Viñolo Fernández","Luis Gasco Poderoso","Rubén Estebanez del Toro","Christian Labarca Conejeros"],
+    "Estudiantes de magia":["Manzano Galán","Blapo Merjebo","Lord Nacht","S.Roberto Padilla","Rocio  Gutiérrez Muñoz de la Torre"],
+    "Estudiantes novatos de magia":["Alberto San Segundo Sierra","Mónica Sánchez Calzado","Kuwabara","Alva Majo","Laura González Fernández","Maria Ruiz","Oriol García","Jairo Rios Suárez",
+        "Andrea Giannini","Jamie White","Francisco López Ambrosio","Mulflar","Raoul Medina (Rhazer)","Ester Garcia","Nekoyasha"],
+    "Escépticos en la magia":["Kaori Tamashiro","Enrique Villegas"],
+}
+
+function mostrarCreditos(pagina=1,dir='der'){
+    if(typeof pagina === 'object') pagina=1
 		
 	var pagI = new createjs.Container();
-	
-	esquina_salida = new createjs.Bitmap(loader.getResult("esquina"))
-	esquina_salida.addEventListener("click",volverAIndice)
-	esquina_salida.x=0;
-	esquina_salida.y=9;
-	pagI.addChild(esquina_salida)
+        
+    var infoPag=[]
+    var numPag=0;
+	for(var i in creditos){
+        numPag++
+        if (pagina==numPag) infoPag[0]=i
+        if (pagina+1==numPag) infoPag[1]=i
+	}
 	
 	var pagD = new createjs.Container();
 	
-	pagD.addChild(txtLeft(crearTextoLibro("Equipo de desarrollo",150,80,40,'#742')))
+    for(var inf in infoPag){
+        pag=inf==1?pagD:pagI
+        pag.addChild(txtLeft(crearTextoLibro(textos[infoPag[inf]],150,80,40,'#742')))
+        
+        if(infoPag[inf]=="Equipo de desarrollo"){
+            var pos=0;
+            for(var i in c){
+                pag.addChild(txtLeft(crearTextoLibro(textos[i],150,200+pos*150,30)))
+                pag.addChild(txtLeft(crearTextoLibro(c[i],230,250+pos*150,40,'#742')))
+                pos++
+            }
+        }
+        else{
+            var pos=0;
+            for(var i in creditos[infoPag[inf]]){
+                pag.addChild(txtLeft(crearTextoLibro(creditos[infoPag[inf]][i],180,160+pos*55,35)))
+                pos++
+            }
+        }
+    }
+    
+	var hit_enlace = new createjs.Shape();
+	hit_enlace.graphics.beginFill('#eda').drawRect(0, 0, 919,1036);
+	pagI.hitArea = hit_enlace;
+	pagD.hitArea = hit_enlace;
+    
+    if(pagina==1) pagI.addEventListener("click",volverAIndice)
+    else pagI.on("click",function(evt){
+        mostrarCreditos(pagina-2,'izq')
+    })
+    
+    if(pagina+2<=numPag)
+        pagD.on("click",function(evt){
+            mostrarCreditos(pagina+2)
+        })
+    
+	/**/
 	
-	var pos=0;
-	for(var i in c){
-		pagD.addChild(txtLeft(crearTextoLibro(i,150,200+pos*150,30)))
-		pagD.addChild(txtLeft(crearTextoLibro(c[i],230,250+pos*150,40,'#742')))
-		pos++
-	}
-		
-	pasarPaginaDerecha(pagI,pagD)
+    if(dir=='izq') pasarPaginaIzquierda(pagI,pagD)
+	else pasarPaginaDerecha(pagI,pagD)
 }
 
-function volverAlMenu(){
-	
-    var canvas = document.getElementById( 'canvas' );
-    screenshot = new createjs.Bitmap( canvas );
-	//screenshot.scaleY=1080*canvas.width/(1920*canvas.height)
-    screenshot.cache( 0, 0, canvas.width, canvas.height,entrada_juego.getBounds().width/canvas.width);
-	//screenshot.scaleY=396/entrada_juego.getBounds().height
-	entrada_juego.image=screenshot.cacheCanvas;
-	screenShot=screenshot.cacheCanvas;
-	
-	entrada_juego.scaleY=396/entrada_juego.getBounds().height
-	
-	libroAbierto=true
-	playMusic("7libro");
-	createjs.Ticker.removeEventListener("tick", tick);
-	pantalla_de_juego.cache(0,0,canvasWidth,canvasHeight)
-	pantalla_de_juego.mouseEnabled=false;
-	capa_libro.uncache()
-	capa_libro.cache(0,0,canvasWidth*3,canvasHeight*3)
-	
-	
-	createjs.Tween.get(capa_libro).to({ scaleX: capa_libro.previousScale,scaleY: capa_libro.previousScale,
-		x: capa_libro.previousX,y: capa_libro.previousY },1000,createjs.Ease.getPowOut(2)).call(function(){
-		capa_libro.uncache()
-	})
-	createjs.Tween.get(capa_libro).to({ alpha: 1 },500,createjs.Ease.getPowOut(2)).call(function(){
-		pantalla_de_juego.alpha=0;
-	})
-}
-
-window.addEventListener('resize', resize, false);
 
 var menuWidth=0;
 function resize() { 
 	var w=window.innerWidth;
 	var h=window.innerHeight;
-	stage.canvas.width = w
-	stage.canvas.height = h
-	
+    
+    stage.canvas.width=w;
+    stage.canvas.height=h;
+    if(webGL) stage.updateViewport(w,h)
 	//console.log(window.innerWidth)
-	
-	fondo_juego.scaleX=w/1920
-	fondo_juego.scaleY=h/1080
+    
+    pixelartScale=Math.ceil(h/300)
+        
+    scene.scaleX=pixelartScale
+    scene.scaleY=pixelartScale
 	
 	if(w<h){
 		stage.rotation=90;
@@ -857,6 +1018,7 @@ var configLibro={
 }
 
 function pasarPaginaDerecha(contI,contD,callback=false){
+	capa_libro.mouseEnabled=false;
 	paginasLayer.mouseEnabled = false;
 	
 	var animacionPagina = new createjs.Container();
@@ -864,80 +1026,68 @@ function pasarPaginaDerecha(contI,contD,callback=false){
 	
 	var sound=createjs.Sound.play("flip-page");
 	sound.volume =0.3;
-	var mascara4 = new createjs.Shape();
-	mascara4.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth*2,configLibro.pageHeight);
-	mascara4.x=configLibro.pageWidth*2
 	
 	var paginaD = new createjs.Container();
 	var rect = new createjs.Shape();
-	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1028);
-	paginaD.x=configLibro.pageWidth;
+	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1036);
+	paginaD.x=configLibro.pageWidth*2;
 	paginaD.addChild(rect);
-	paginaD.mask=mascara4;
+    iCache(rect)
 	paginaD.addChild(contD);
+    paginaD.scaleX=0;
 	animacionPagina.addChild(paginaD)
-	
-	var maskSombra4 = new createjs.Shape(); // ???
-	maskSombra4.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth,configLibro.pageHeight);
 	
 	var sombra4 = new createjs.Shape();
 	sombra4.graphics.beginLinearGradientFill(["rgba(100,50,20,0.3)","rgba(100,50,20,0)"],[0,1],0,0,200,0).drawRect(0, 0, 200,configLibro.pageHeight);
-	sombra4.x=configLibro.pageWidth;
-	sombra4.mask=maskSombra4;
-	paginaD.addChild(sombra4);
-	
-	var maskSombraAnima = new createjs.Shape();
-	maskSombraAnima.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth*2,configLibro.pageHeight);
+	sombra4.x=configLibro.pageWidth*2;
+	animacionPagina.addChild(sombra4);
+    iCache(sombra4)
 	
 	var sombraAnima = new createjs.Shape();
 	sombraAnima.graphics.beginLinearGradientFill(["rgba(100,50,20,0)","rgba(100,50,20,0.4)"],[0,1],0,0,50,0).drawRect(0, 0, 50,configLibro.pageHeight);
 	sombraAnima.x=configLibro.pageWidth*2-40;
-	sombraAnima.mask=maskSombraAnima
 	sombraAnima.alpha=0;
 	animacionPagina.addChild(sombraAnima);
-	
-	var recorte = new createjs.Shape();
-	recorte.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth*2,configLibro.pageHeight);
-	
+    iCache(sombraAnima)
+    
 	var paginaI = new createjs.Container();
 	var rect = new createjs.Shape();
-	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1028);
+	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1036);
 	paginaI.x=configLibro.pageWidth*2;
 	paginaI.addChild(rect);
-	paginaI.mask=recorte;
 	paginaI.addChild(contI)
 	animacionPagina.addChild(paginaI)
-	
-	
-	var maskSombraPag3 = new createjs.Shape(); // ??
-	maskSombraPag3.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth*2,configLibro.pageHeight);
+    paginaI.scaleX=0;
+    iCache(rect)
 	
 	var sombra3 = new createjs.Shape();
 	sombra3.graphics.beginLinearGradientFill(["rgba(100,50,20,0)","rgba(100,50,20,1)"],[0,1],0,0,100,0).drawRect(0, 0, 100,configLibro.pageHeight);
-	sombra3.x=-90;
+	sombra3.x=819;
 	sombra3.alpha=0.5
-	sombra3.mask=maskSombraPag3
 	paginaI.addChild(sombra3);
+    iCache(sombra3)
+    //paginaI.cache(0, 0, 919,1028)
 	
 	var pageSpeed=500
 	var metodo=createjs.Ease.getPowOut(8) //createjs.Ease.getPowInOut(4)
 	
-	createjs.Tween.get(paginaI).to({ x: 0 }, pageSpeed, metodo)
-	createjs.Tween.get(sombra4).to({ x: 0 }, pageSpeed, metodo)
-	createjs.Tween.get(recorte).to({ x: -configLibro.pageWidth }, pageSpeed, metodo)
-	createjs.Tween.get(mascara4).to({ x: configLibro.pageWidth }, pageSpeed, metodo)
+	createjs.Tween.get(paginaD).to({ x: configLibro.pageWidth, scaleX:1 }, pageSpeed/2, metodo)
+	createjs.Tween.get(paginaI).to({ x: 0, scaleX:1 }, pageSpeed, metodo)
+	createjs.Tween.get(sombra4).to({ x: configLibro.pageWidth }, pageSpeed, metodo)
 	createjs.Tween.get(sombraAnima).to({ alpha: 0.5 }, pageSpeed/2, metodo)
 	createjs.Tween.get(sombraAnima).to({ x: -40 }, pageSpeed, metodo)
-	createjs.Tween.get(sombra3).to({ x: configLibro.pageWidth-100 }, pageSpeed, metodo)
-	createjs.Tween.get(sombra3).to({ alpha: 0.2 }, pageSpeed, metodo).call(function(){
+	createjs.Tween.get(sombra3).to({ x: configLibro.pageWidth-100, alpha: 0.2 }, pageSpeed, metodo).call(function(){
+        paginaD.addChild(sombra4)
+        sombra4.x=0
 		reset(paginaI,paginaD,animacionPagina)
-		if(callback) callback()
+		if(typeof callback=='function') callback()
 	})
 	
 	return [paginaI,paginaD]
 }
 
 function pasarPaginaIzquierda(contI,contD,callback=false){
+	capa_libro.mouseEnabled=false;
 	paginasLayer.mouseEnabled = false;
 	
 	var animacionPagina = new createjs.Container();
@@ -945,68 +1095,58 @@ function pasarPaginaIzquierda(contI,contD,callback=false){
 	
 	var sound=createjs.Sound.play("flip-page");
 	sound.volume =0.3;
-	var mascara4 = new createjs.Shape();
-	mascara4.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth,configLibro.pageHeight);
-	mascara4.x=-configLibro.pageWidth
-	
+    
 	var paginaI = new createjs.Container();
 	var rect = new createjs.Shape();
 	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1028);
 	paginaI.addChild(rect);
-	paginaI.mask=mascara4;
 	paginaI.addChild(contI);
+    paginaI.scaleX=0;
 	animacionPagina.addChild(paginaI)
-	
-	var maskSombraPag4 = new createjs.Shape();
-	maskSombraPag4.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth,configLibro.pageHeight);
+    iCache(rect)
 	
 	var sombra4 = new createjs.Shape();
 	sombra4.graphics.beginLinearGradientFill(["rgba(100,50,20,0)","rgba(100,50,20,1)"],[0,1],0,0,200,0).drawRect(0, 0, 200,configLibro.pageHeight);
 	sombra4.x=-200;
 	sombra4.alpha=0.5
-	sombra4.mask=maskSombraPag4
-	paginaI.addChild(sombra4);
-	
-	var maskSombraAnima = new createjs.Shape();
-	maskSombraAnima.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth*2,configLibro.pageHeight);
+	animacionPagina.addChild(sombra4);
+    iCache(sombra4)
 	
 	var sombraAnima = new createjs.Shape();
 	sombraAnima.graphics.beginLinearGradientFill(["rgba(100,50,20,0)","rgba(100,50,20,0.4)"],[0,1],50,0,0,0).drawRect(0, 0, 50,configLibro.pageHeight);
-	sombraAnima.mask=maskSombraAnima
 	sombraAnima.alpha=0;
 	animacionPagina.addChild(sombraAnima);
-	
-	// Seguir
-	var recorte = new createjs.Shape();
-	recorte.graphics.beginFill("#000").drawRect(0, 0, configLibro.pageWidth,configLibro.pageHeight);
+    iCache(sombraAnima)
 	
 	var paginaD = new createjs.Container();
 	var rect = new createjs.Shape();
 	rect.graphics.beginFill('#eda').drawRect(0, 0, 919,1028);
-	paginaD.x=-configLibro.pageWidth;
+	paginaD.x=0;
 	paginaD.addChild(rect);
-	paginaD.mask=recorte;
 	paginaD.addChild(contD)
+    paginaD.scaleX=0;
 	animacionPagina.addChild(paginaD)
+    iCache(rect)
 	
 	var sombra3 = new createjs.Shape();
 	sombra3.graphics.beginLinearGradientFill(["rgba(100,50,20,0.3)","rgba(100,50,20,0)"],[0,1],0,0,100,0).drawRect(0, 0, 100,configLibro.pageHeight);
-	sombra3.x=configLibro.pageWidth;
+	sombra3.x=0;
 	paginaD.addChild(sombra3);
+    iCache(sombra3)
 	
 	var pageSpeed=500
 	var metodo=createjs.Ease.getPowOut(8) //createjs.Ease.getPowInOut(4)
 	
 	//stage.update();
-	createjs.Tween.get(paginaD).to({ x: configLibro.pageWidth }, pageSpeed, metodo)
-	createjs.Tween.get(sombra3).to({ x: 0 }, pageSpeed, metodo)
-	createjs.Tween.get(recorte).to({ x: configLibro.pageWidth }, pageSpeed, metodo)
-	createjs.Tween.get(mascara4).to({ x: 0 }, pageSpeed, metodo)
+	createjs.Tween.get(paginaI).to({ x: 0, scaleX:1 }, pageSpeed/2, metodo)
+	createjs.Tween.get(paginaD).to({ x: configLibro.pageWidth, scaleX:1 }, pageSpeed, metodo)
+	//createjs.Tween.get(sombra3).to({ x: configLibro.pageWidth }, pageSpeed, metodo)
 	createjs.Tween.get(sombraAnima).to({ alpha: 0.5 }, pageSpeed/2, metodo)
 	createjs.Tween.get(sombraAnima).to({ x: configLibro.pageWidth*2 }, pageSpeed, metodo)
-	createjs.Tween.get(sombra4).to({ x: configLibro.pageWidth-100 }, pageSpeed, metodo)
+	createjs.Tween.get(sombra4).to({ x: configLibro.pageWidth-200 }, pageSpeed, metodo)
 	createjs.Tween.get(sombra4).to({ alpha: 0.2 }, pageSpeed, metodo).call(function(callback){
-		reset(paginaI,paginaD,animacionPagina)
+        paginaI.addChild(sombra4)
+        reset(paginaI,paginaD,animacionPagina)
 		if(callback && {}.toString.call(callback) === '[object Function]') callback()
 	},[callback])
 	
@@ -1015,11 +1155,62 @@ function pasarPaginaIzquierda(contI,contD,callback=false){
 
 function reset(pagA,pagB,animacionPagina){
 	paginasLayer.mouseEnabled = true;
-	
+    stage.releaseTexture(paginasLayer)
 	paginasLayer.removeAllChildren()
 	paginasLayer.addChild(pagA)
 	paginasLayer.addChild(pagB)
 	capaAnimacion.removeChild(animacionPagina)
 	libro.pagI=pagA
 	libro.pagD=pagB
+	capa_libro.mouseEnabled=true;
+}
+
+function iCache(item){
+    if(!webGL) return;
+    var x=0
+    var y=0
+    var width=0
+    var height=0
+    if(item instanceof createjs.Text){
+        if(item.textAlign=="center")
+            x=-item.getMeasuredWidth()/2
+        width=item.getMeasuredWidth()
+        height=item.getMeasuredHeight()*1.3
+    }
+    else{
+        if(item.graphics && item.graphics.command && item.graphics.command.radius){
+            x=-item.graphics.command.radius-1
+            y=-item.graphics.command.radius-1
+            width=item.graphics.command.radius*2+2
+            height=item.graphics.command.radius*2+2
+        }
+        if(item.graphics && item.graphics.command && item.graphics.command.w){
+            x=item.graphics.command.x-1
+            y=item.graphics.command.y-1
+            width=item.graphics.command.w+2
+            height=item.graphics.command.h+2
+        }
+       else  if(item.graphics && item.graphics.command && item.graphics.command.x){
+            width=item.graphics.command.x
+            height=item.graphics.command.y
+        }
+        else if(item.getBounds() && item.getBounds().width && item.getBounds().height){
+            width=item.getBounds().width
+            height=item.getBounds().height
+        }
+    }
+    
+    var sizes=[2,4,8,16,32,64,128,256,512,1024,2048]
+    
+    for(var s in sizes) if(sizes[s]>=width){
+        width=sizes[s]
+        break;
+    }
+    
+    for(var s in sizes) if(sizes[s]>=height){
+        height=sizes[s]
+        break;
+    }
+    //if(item.test) alert(x+"/"+y+"/"+width+"/"+height)
+    item.cache(x,y,width,height,1,["stageGL"])
 }

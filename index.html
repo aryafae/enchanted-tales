@@ -8,7 +8,6 @@
 		<!-- CSS Import -->
 		<title>Enchanted Tales</title>
 		
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="canonical" href="http://localhost/developer/enchanted/" />
 <link rel="alternate" href="https://es.nugalis.com/" hreflang="es" />
 <link rel="alternate" href="http://localhost/developer/enchanted/" hreflang="en" />
@@ -24,9 +23,7 @@ var files_name=".png"
     src: url('font/Merienda-Regular.ttf'); /*URL to font*/
 }
 
-html{height:100%;background:#4d311f}
-body{margin:0;font-family:'Roboto',sans-serif;display:flex;flex-direction:row;text-align:center;flex:grow;height:100%;}
-canvas{width:100%;height:100%}
+html,body,canvas{height:100%;width:100%;margin:0;overflow:hidden}
 		</style>
 		
 		<meta http-equiv="Content-Language" content="en-us" /><meta name="author" content="Aryadna García" /><link rel="author" href="https://twitter.com/enchantales_es" /><meta property="og:title" content="Enchanted Tales (Faery Games)" /><meta property="og:url" content="http://faerygames.com/" /><meta property="og:type" content="website" /><meta property="og:image" content="http://faerygames.com/img/portada.jpg" />
@@ -37,14 +34,8 @@ canvas{width:100%;height:100%}
 <meta name="twitter:title" content="Enchanted Tales (Faery Games)">
 <meta name="twitter:description" content="Learn japanese to help the librarian find a lost book in the undergraund of the magic school.">
 <meta name="twitter:image" content="http://faerygames.com/img/portada.jpg">
-	</head>
-	<body>
-	<canvas id="canvas"></canvas>
 		<script type="text/javascript" src="js/jquery2.js"></script>
-		<script type="text/javascript" src="js/easeljs-NEXT.min.js"></script>
-		<script type="text/javascript" src="js/preloadjs-NEXT.min.js"></script>
-		<script type="text/javascript" src="js/soundjs-NEXT.min.js"></script>
-		<script type="text/javascript" src="js/tweenjs-NEXT.min.js"></script>
+		<script type="text/javascript" src="js/createjs.min.js"></script>
 		<script type="text/javascript" src="js/level1.js"></script>
 		<script type="text/javascript" src="js/juego/interfaz.js"></script>
 		<script type="text/javascript" src="js/juego/interprete-dialogos.js"></script>
@@ -52,5 +43,6 @@ canvas{width:100%;height:100%}
 		<script type="text/javascript" src="js/juego/aprender.js"></script>
 		<script type="text/javascript" src="js/juego/actores.js"></script>
 		<script type="text/javascript" src="js/juego/estado.js"></script>
-	</body>
+	</head>
+	<body onload="init();"><canvas id="canvas"></canvas></body>
 </html>

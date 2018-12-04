@@ -1,8 +1,6 @@
 var perfil={
 	"nivel":1,
 	"estrellas":0,
-	"paginasEncontradas":0,
-	"paginasPracticadas":0,
 	"dotesAprendidas":0,
 	
 	"velocidad":120, //100
@@ -10,7 +8,23 @@ var perfil={
 	"aura":200
 }
 
-var estado={
+function getEstado(key){
+    if(key in estado) return estado[key]
+    else return estado_inicial[key]
+}
+
+var estado_inicial={
+	"nivel":1,
+	"estrellas":0,
+	"dotesAprendidas":0,
+	
+	"velocidad":120, //100
+	"ataque":10, //5
+	"aura":200,
+    
+	"paginasEncontradas":0,
+	"paginasPracticadas":0,
+    
 	"juegoEmpezado":false,
 	"primeraSubida":true,
 	"juegoAbierto":false,
@@ -37,6 +51,10 @@ var estado={
 	"primerEscritorio":true,
 	"dialogoCurame":false,
 	"encontradoHana":false
+}
+
+var estado={
+    
 }
 
 var dotes={
@@ -130,6 +148,8 @@ var dotes={
 	},
 }
 
+var dotes_base=JSON.stringify(dotes)
+
 var voces_cargadas=[]
 
 function guardarPartida(name,image){
@@ -152,8 +172,8 @@ function guardarPartida(name,image){
 		"perfil":perfil,
 		"dotes":dotes
 	}
+    
 	var partida={"name":name,"image":image.toDataURL(),"info":guardar}
-	
 	// Guardamos el aprendizaje
 	partida.preguntas=preguntas
 	// Guardamos el mapa de caminos
@@ -181,7 +201,7 @@ function guardarPartida(name,image){
 	partidasGuardadas.unshift(partida)
 	localStorage.setItem('partidasGuardadas', JSON.stringify(partidasGuardadas));
 
-	volverAIndice()
+	if(name!="autosave") volverAIndice()
 }
 
 function cargarPartida(i){
@@ -204,8 +224,8 @@ function cargarPartida(i){
 	
 	// Cargamos los datos
 	guardar=partida.info
-	estado=guardar.estado
 	perfil=guardar.perfil
+	estado=guardar.estado
 	dotes=guardar.dotes
 	voces_cargadas=[]
 	// Cargamos el aprendizaje
@@ -279,10 +299,7 @@ function cargarPartida(i){
 	barra_energia.x=1780-perfil.aura;
 	
 	// Cargamos el screenshot
-	screenShot = partida.image
-	
-	volverAIndice()
-	//partidasGuardadas[i]
+	screenShot = new createjs.Bitmap(partida.image)
 }
 
 function copiaAtributos(origen,destino,atributos){

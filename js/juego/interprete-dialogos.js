@@ -1,6 +1,8 @@
 var pila_acciones=[]
 function iniciaDialogo(nombre){
 	if(dialogos[nombre]){
+        cuaderno=false
+        endMoveControls()
 		pila_acciones=[]
 		capa_interfaz.mouseEnabled=false;
 		scene.mouseEnabled=false;
@@ -52,6 +54,7 @@ function finDialogo(){
 		estado.dialogoAbierto=false;
 		removeDialogo()
 		dialogo.removeAllChildren()
+        startMoveControls()
 	}
 	dialogo.removeChild(burbuja_dialogo)
 	imagen_avatar=null;
@@ -78,12 +81,14 @@ function startAnimation(){
 		
 		var fondo = new createjs.Shape();
 		fondo.graphics.beginFill("#ccc").drawRoundRect(0, 0, 150, 50,8);
+        iCache(fondo)
 		skipAnimationButton.addChild(fondo)
 		
 		var text = new createjs.Text(textos["Saltar"], "30px Arial", "#000");
 		text.x = 75;
 		text.y = 10;
 		text.textAlign='center'
+        iCache(text)
 		skipAnimationButton.addChild(text);
 		
 		skipAnimationButton.on("click",function(){
@@ -121,7 +126,6 @@ function ejecutarAccion(accion){
 	else if(accion.anim){
 		startAnimation()
 		if(accion.anim=="text"){
-			
 			var texto_dialogo = new createjs.Text(accion.text, "45px Arial", "#fff");
 			texto_dialogo.x=accion.x
 			texto_dialogo.y=accion.y
@@ -129,6 +133,7 @@ function ejecutarAccion(accion){
 			texto_dialogo.lineWidth=1200;
 			texto_dialogo.textAlign='center';
 			capa_animaciones.addChild(texto_dialogo)
+            iCache(texto_dialogo)
 		
 			var anim=createjs.Tween.get(texto_dialogo)
 			if(accion.wait) anim.wait(accion.wait)
@@ -146,6 +151,7 @@ function ejecutarAccion(accion){
 			removeDialogo()
 			var rect = new createjs.Shape();
 			rect.graphics.beginFill(accion.color).drawRect(0, 0, accion.width,accion.height);
+            iCache(rect)
 			elementosAnimacion[accion.name]=rect;
 			capa_animaciones.addChild(rect);
 		}
@@ -168,6 +174,7 @@ function ejecutarAccion(accion){
 			imagen.regX=imagen.getBounds().width/2
 			imagen.regY=imagen.getBounds().height/2
 			imagen.alpha=0
+            iCache(imagen)
 			if(accion.scale){
 				imagen.scaleX=accion.scale
 				imagen.scaleY=accion.scale
@@ -197,6 +204,9 @@ function ejecutarAccion(accion){
 		
 		if(!accion.waitEnd) siguienteAccion()
 	}
+    else if(accion.muestraCuaderno){
+        muestraCuaderno(accion.muestraCuaderno)
+    }
 	else if(accion.del_char){
 		testLayers['character_layer'].removeChild(npcs[accion.del_char]);
 		siguienteAccion()
@@ -238,7 +248,7 @@ function ejecutarAccion(accion){
 	}
 	else if(accion.changeFrame){
 		for(var i in elements_list[accion.changeFrame])
-			elements_list[accion.changeFrame][i].gotoAndPlay(accion.frame)
+			elements_list[accion.changeFrame][i].sprite.gotoAndPlay(accion.frame)
 		siguienteAccion()
 	}
 	else if(accion.changeSpirit){
@@ -250,6 +260,14 @@ function ejecutarAccion(accion){
 		for(var i in elements_list[accion.unblock]){
 			mapa_caminos[elements_list[accion.unblock][i].map_x][elements_list[accion.unblock][i].map_y]=1;
 			if(elements_list[accion.unblock][i].getBounds().width>48*pixelScale) mapa_caminos[elements_list[accion.unblock][i].map_x+1][elements_list[accion.unblock][i].map_y]=1;
+		}
+		siguienteAccion()
+	}
+	else if(accion.deactivate){
+		for(var i in elements_list[accion.deactivate]){
+            var item=elements_list[accion.deactivate][i]
+            item.activo=false;
+            item.removeChild(item.interrogacion)
 		}
 		siguienteAccion()
 	}
@@ -335,10 +353,50 @@ function muestraObjeto(imgObjeto){
 			})
 		})
 }
+
+var cuaderno=false
+function muestraCuaderno(pagina){
+    if(cuaderno){
+        cuaderno.uncache()
+        cuaderno.removeChild(cuaderno.pagina)
+        var pagina = new createjs.Bitmap(loader.getResult(pagina))
+        pagina.x=20
+        pagina.y=20
+        cuaderno.pagina=pagina
+        cuaderno.addChild(pagina)
+        iCache(cuaderno)
+        siguienteAccion()
+    }
+    else{
+        cuaderno= new createjs.Container();
+        cuaderno.x=960;
+        cuaderno.y=440;
+        cuaderno.scaleX=0
+        cuaderno.scaleY=0
+        dialogo.addChild(cuaderno)
+        
+        var fondocuaderno = new createjs.Bitmap(loader.getResult("cuaderno"))
+        cuaderno.addChild(fondocuaderno)
+        
+        var pagina = new createjs.Bitmap(loader.getResult(pagina))
+        pagina.x=20
+        pagina.y=20
+        cuaderno.pagina=pagina
+        cuaderno.addChild(pagina)
+        iCache(cuaderno)
+        
+        var animSpeed=500;
+        var ease=createjs.Ease.getPowOut(2);
+        createjs.Tween.get(cuaderno).to({ y: 0},animSpeed/2).to({ y: 140},animSpeed/2,ease)
+        createjs.Tween.get(cuaderno).to({x: 660,  scaleY: 1, scaleX: 1 },animSpeed,ease).call(function(){
+            siguienteAccion()
+        })
+    }
+}
 	
 var pagina
 function encuentraPagina(dote){
-	perfil.paginasEncontradas++;
+	estado.paginasEncontradas=getEstado('paginasEncontradas')+1
 	paginaAbierta=true
 	
 	playMusic("12hoja", 0);
@@ -362,8 +420,7 @@ function encuentraPagina(dote){
 	pagina.addChild(fondopagina)
 	// Y metemos textos, símbolo de conocimiento y botones.
 	
-	
-	var preg=preguntas.slice(perfil.paginasPracticadas*4,perfil.paginasPracticadas*4+4)
+	var preg=lecciones[getEstado('paginasEncontradas')-1].preguntas
 	var j=0;
 	for(var i in preg){
 		var palabra = new createjs.Text(preg[i].r, "60px 'Merienda One',Cursive",'#742');
@@ -372,36 +429,42 @@ function encuentraPagina(dote){
 		palabra.textAlign = "center"
 		palabra.alpha = 0.6
 		pagina.addChild(palabra)
+        iCache(palabra)
 	}
 	
 	var boton_cerrar = new createjs.Shape();
 	boton_cerrar.graphics.beginStroke("#432").beginFill("#dc8").drawRoundRect(-320,290,200,70,5);
+    iCache(boton_cerrar)
 	boton_cerrar.alpha=0.6
 	pagina.addChild(boton_cerrar)
 	
 	var texto_cerrar = new createjs.Text(textos["Cerrar"], "30px 'Merienda One',Cursive", "#742");
 	texto_cerrar.x = -220; texto_cerrar.y=300; texto_cerrar.textAlign = "center"
 	texto_cerrar.alpha=0.8
+    iCache(texto_cerrar)
 	pagina.addChild(texto_cerrar)
 	
 	
 	var boton_aprender = new createjs.Shape();
 	boton_aprender.graphics.beginStroke("#432").beginFill("#dc8").drawRoundRect(120,290,200,70,5);
+    iCache(boton_aprender)
 	boton_aprender.alpha=0.6
 	pagina.addChild(boton_aprender)
 	
 	var texto_aprender = new createjs.Text(textos["Aprender"], "30px 'Merienda One',Cursive", "#742");
 	texto_aprender.x = 220; texto_aprender.y=300; texto_aprender.textAlign = "center"
 	texto_aprender.alpha=0.8
+    iCache(texto_aprender)
 	pagina.addChild(texto_aprender)
 	
 	var texto_dote = new createjs.Text(textos[dote], "40px 'Merienda One',Cursive", "#742");
 	texto_dote.x = 0; texto_dote.y=-300; texto_dote.textAlign = "center"
+    iCache(texto_dote)
 	pagina.addChild(texto_dote)
 	
 	var icono = new createjs.Sprite(iconos_dotes);
 	icono.gotoAndStop(dotes[dote].icono)
-	icono.x=-texto_dote.getBounds().width/2-45;
+	icono.x=-texto_dote.getMeasuredWidth()/2-45;
 	icono.y=-280;
 	icono.scaleX=0.5;
 	icono.scaleY=0.5;
@@ -446,29 +509,17 @@ function abre_aprendizaje(evt){
 	finDialogo()
 					
 	pagina.mouseEnabled=false;
-	libroAbierto=true
 	capa_interfaz.mouseEnabled=false;
 	scene.mouseEnabled=true;
 	scene.tickEnabled =true;
 	siguienteAccion()
 	
-	playMusic("7libro");
-	createjs.Ticker.removeEventListener("tick", tick);
+	//createjs.Ticker.removeEventListener("tick", tick);
 	
-	pantalla_de_juego.cache(0,0,canvasWidth,canvasHeight)
-	pantalla_de_juego.mouseEnabled=false;
-	var animSpeed=500;
-	var ease=createjs.Ease.getPowOut(2);
-	createjs.Tween.get(capa_libro).to({ scaleX: capa_libro.previousScale,scaleY: capa_libro.previousScale,
-		x: capa_libro.previousX,y: capa_libro.previousY },animSpeed,ease).call(function(){
-		capa_libro.uncache()
-		
+	volverAlMenu(function(){
 		if(debug.avoidExercises) resumenEjercicio(false,5)
 		else abrirEjercicio()
-	})
-	createjs.Tween.get(capa_libro).to({ alpha: 1 },500,ease).call(function(){
-		pantalla_de_juego.alpha=0;
-	})
+    })
 }
 
 var capa_dialogo;
@@ -525,6 +576,7 @@ function showMessage(accion){
 		texto_dialogo.x=(1850+imagen_avatar.getBounds().width)/2;
 		
 		imagen_avatar.r=accion.r;
+        iCache(imagen_avatar)
 	}
 	
 	var texto_offset=20;
@@ -536,6 +588,7 @@ function showMessage(accion){
 	
 	texto_dialogo.x=35+texto_offset+600;
 	texto_dialogo.text=accion.t;
+    iCache(texto_dialogo)
 	
 	var hit = new createjs.Shape();
 	hit.graphics.beginFill("#000").rect(0, 0, 1920, 1080);
@@ -592,6 +645,7 @@ function addOpcion(opcion,posY,opcion_id){
 	dialogo_opciones.addChild(opcionBtnSprite)
 		
 	texto = new createjs.Text(opcion.t, "40px Arial", "#fff");
+    iCache(texto)
 	texto.x=40;
 	texto.y=60;
 	dialogo_opciones.addChild(texto)
@@ -619,7 +673,7 @@ var variables={}
 function resuelveExpresion(expresion){
 	if(expresion[0]=='not') return !resuelveExpresion(expresion[1])
 	if(expresion[0]=='and') return resuelveExpresion(expresion[1]) && resuelveExpresion(expresion[2])
-	else if(expresion[0]=='var') return estado[expresion[1]]
+	else if(expresion[0]=='var') return getEstado(expresion[1])
 	else if(expresion[0]=='val') return expresion[1]
 	else alert(JSON.stringify(expresion))
 }

@@ -6,29 +6,6 @@ var diccionario={}
 				SISTEMA DE APRENDIZAJE
 					
  *********************************************************/
-	 
-function saveWords(sentences){
-	// Guardamos la frase
-	$.post(itrad.pagSalvaFrase+frases[sentences[0]].id_frase_usada,{frases:sentences},function(num){
-		if(num>0) showNewWords(num)
-		
-	})
-}
-	
-function showNewWords(num){
-	var avance = new createjs.Container();
-	avance.x=50;
-	avance.y=50;
-	capa_interfaz.addChild(avance)
-	avance.addChild(new createjs.Text("+"+num, "80px Arial", "lime"))
-	textoAvance = new createjs.Text("+"+num, "80px Arial", "black");
-	textoAvance.outline=3;
-	avance.addChild(textoAvance)
-	
-	createjs.Tween.get(avance, { loop: false}).to({ scaleX: 2, scaleY: 2, y: 0, x: 0, alpha: 0 }, 3000, createjs.Ease.getPowOut(4)).call(function(evt){
-		stageTest.removeChild(evt.target)
-	});
-}
 
 function abrirDiccionario(){
 	diccionario.pagina=1
@@ -86,8 +63,8 @@ function anteriorPaginaDiccionario(evt){
 
 function addLineasDiccionario(pag,numpag){
 		
-	pag.addChild(crearTextoLibro(textos.Palabra,260,35,20,'#000'));
-	pag.addChild(crearTextoLibro(textos.Significado,600,35,20,'#000'));
+	pag.addChild(crearTextoLibro(textos.Palabra,260,35,20,'#000'))
+	pag.addChild(crearTextoLibro(textos.Significado,600,35,20,'#000'))
 		
 	var altoLinea=110;
 	var topTabla=30;
@@ -96,23 +73,18 @@ function addLineasDiccionario(pag,numpag){
 		if(p<0) break;
 		if(p>=diccionario.palabras_diccionario.length) break;
 		var pos=p-(numpag-1)*8;
-		/*var linea = new createjs.Shape();
-		linea.graphics.setStrokeStyle(1).beginStroke("rgba(50,40,20,0.2)").moveTo(100,topTabla+pos*altoLinea).lineTo(800,topTabla+pos*altoLinea);
-		pag.addChild(linea)
-			
-		pag.addChild(crearTextoLibro(diccionario.palabras_diccionario[p].r,180,topTabla+pos*altoLinea+15,40))
-		pag.addChild(crearTextoLibro(diccionario.palabras_diccionario[p].p,350,topTabla+pos*altoLinea+25,20))
-		pag.addChild(txtLeft(crearTextoLibro(diccionario.palabras_diccionario[p].s,460,topTabla+pos*altoLinea+25,20,'#742')))
-		pag.addChild(crearTextoLibro(diccionario.palabras_diccionario[p].nivel,770,topTabla+pos*altoLinea+20,30))*/
 		
 		var linea = new createjs.Shape();
-		linea.graphics.setStrokeStyle(1).beginStroke("rgba(50,40,20,0.2)").moveTo(50,topTabla+pos*altoLinea+50).lineTo(870,topTabla+pos*altoLinea+50);
+		linea.graphics.setStrokeStyle(1).beginStroke("rgba(50,40,20,0.2)").moveTo(0,0).lineTo(850,0)
+        linea.x=50
+        linea.y=topTabla+pos*altoLinea+50
+        iCache(linea)
 		pag.addChild(linea)
 		
-		var texto=crearTextoLibro(diccionario.palabras_diccionario[p].r,260,topTabla+pos*altoLinea+55,45);
-		if(texto.getBounds().width>360) texto=crearTextoLibro(diccionario.palabras_diccionario[p].r,260,
-			topTabla+pos*altoLinea+55+20*(1-360/texto.getBounds().width)
-			,Math.round(45*360/texto.getBounds().width));
+		var texto=crearTextoLibro(diccionario.palabras_diccionario[p].r,260,topTabla+pos*altoLinea+55,45)
+		if(texto.getMeasuredWidth()>380) texto=crearTextoLibro(diccionario.palabras_diccionario[p].r,260,
+			topTabla+pos*altoLinea+55+20*(1-380/texto.getMeasuredWidth())
+			,Math.round(45*380/texto.getMeasuredWidth()));
 		
 		pag.addChild(texto)
 		pag.addChild(crearTextoLibro(diccionario.palabras_diccionario[p].p,260,topTabla+pos*altoLinea+115,25,'#742'))
@@ -120,18 +92,21 @@ function addLineasDiccionario(pag,numpag){
 	}
 	
 	pag.addChild(crearTextoLibro(numpag+'/'+Math.ceil(diccionario.palabras_diccionario.length/8)+' - '+textos.Diccionario,450,970,25,'#963'));
+    iCache(pag)
 }
 
  
  function crearTextoLibro(texto,x,y,tam=40,color="#432"){
 	var texto=new createjs.Text(texto, ""+tam+"px 'Merienda One'", color);
 	texto.textAlign='center';texto.x=x;texto.y=y;
+    iCache(texto)
 	return texto
  }
  
  function crearTextoIzq(texto,x,y,tam=40,color="#432"){
 	var texto=new createjs.Text(texto, ""+tam+"px 'Merienda One'", color);
 	texto.x=x;texto.y=y;
+    iCache(texto)
 	return texto
  }
  
@@ -145,27 +120,26 @@ var palabrasPreguntadas=[];
 var palabrasPreguntas;
 var habilidadActual
 var muestra_teoria, inicio_ejercicio // Fechas para betatest
+var preguntas={}
 function abrirEjercicio(){
 	muestra_teoria=new Date()
 	//habilidadActual=evento.target.habilidad
 	palabrasPreguntas=[]
-	
 	var manifest=[]
-	var teoria=""
-	for(var i in preguntas){
-		if(typeof preguntas[i].nivel === 'undefined'){
-			palabrasPreguntas.push(preguntas[i])
-			if(preguntas[i].teoria) teoria=preguntas[i].teoria;
-			if(preguntas[i].snd)
-				if(voces_cargadas.indexOf(preguntas[i].snd) == -1){
-					manifest.push({id:"snd_"+preguntas[i].snd, src:"snd/ejercicios/"+preguntas[i].snd+".mp3"})
-					voces_cargadas.push(preguntas[i].snd)
-				}
-		}
-		if(palabrasPreguntas.length==4) break;
+	
+    leccion=getEstado('paginasPracticadas')
+	var teoria=lecciones[leccion].teoria
+	var preg=lecciones[leccion].preguntas
+	var j=0;
+	for(var i in preg){
+		palabrasPreguntas.push(preg[i])
+        preg[i].indice=leccion+"_"+i
+        if(preg[i].snd)
+            if(voces_cargadas.indexOf(preg[i].snd) == -1){
+                manifest.push({id:"snd_"+preg[i].snd, src:"snd/ejercicios/"+preg[i].snd+".mp3"})
+                voces_cargadas.push(preg[i].snd)
+            }
 	}
-	
-	
 	// Palabras repaso
 	var repaso=[]
 	for(var i in preguntas){
@@ -228,6 +202,7 @@ function abrirEjercicio(){
 			var destacado = new createjs.Shape();
 			destacado.graphics.beginFill((palabrasPreguntas[p].nivel==0)?"#fe0":"#fff").drawRect(50,topTabla+pos*altoLinea+50,820,altoLinea);
 			destacado.alpha=0.2;
+            iCache(destacado)
 			pagTabla.addChild(destacado)
 		}
 		else continue;
@@ -235,7 +210,10 @@ function abrirEjercicio(){
 		palabrasPreguntas[p].fallo=0;
 		
 		var linea = new createjs.Shape();
-		linea.graphics.setStrokeStyle(1).beginStroke("rgba(50,40,20,0.2)").moveTo(50,topTabla+pos*altoLinea+50).lineTo(870,topTabla+pos*altoLinea+50);
+		linea.graphics.setStrokeStyle(1).beginStroke("rgba(50,40,20,0.2)").moveTo(0,0).lineTo(820,0);
+        linea.x=50
+        linea.y=topTabla+pos*altoLinea+50
+        iCache(linea)
 		pagTabla.addChild(linea)
 		
 		var texto=crearTextoLibro(palabrasPreguntas[p].r,260,topTabla+pos*altoLinea+55,45);
@@ -411,6 +389,7 @@ function pulsaOpcion(evt){
 	// Si fallamos
 	if(evt.target.identificador!=respuesta){
 		evt.target.graphics.clear().setStrokeStyle(1).beginStroke("#cc0000").beginFill("rgba(255,200,200,0.8)").drawRoundRect(0,0,700,200,20);
+        iCache(evt.target)
 		evt.target.mouseEnabled=false;
 		fallada=1;
 		numeroFallos++;
@@ -419,6 +398,7 @@ function pulsaOpcion(evt){
 	}
 	else{
 		evt.target.graphics.clear().setStrokeStyle(1).beginStroke("#00cc00").beginFill("rgba(200,255,200,0.8)").drawRoundRect(0,0,700,200,20);
+        iCache(evt.target)
 		evt.target.mouseEnabled=false;
 		
 		if(fallada && !pregunta.repetida){
@@ -444,7 +424,9 @@ function pulsaOpcion(evt){
 			//resumenEjercicio(); return;
 			if(preguntaActual<palabrasPreguntas.length) mostrarPregunta()
 			else{ 
-				perfil.paginasPracticadas++
+                for(var p in palabrasPreguntas)
+                    if(-1==preguntas.indexOf(palabrasPreguntas[p])) preguntas.push(palabrasPreguntas[p])
+				estado.paginasPracticadas=getEstado("paginasPracticadas")+1
 				resumenEjercicio(true,estrellas)
 			}
 		},500)
@@ -496,12 +478,12 @@ function resumenEjercicio(volver=false,estrellas=false){
 			"inicio_ejercicio":inicio_ejercicio,
 			"fin_ejercicio":new Date(),
 			"preguntas":palabrasPreguntas,
-			"paginasEncontradas":perfil.paginasEncontradas,
-			"paginasPracticadas":perfil.paginasPracticadas
+			"paginasEncontradas":getEstado('paginasEncontradas'),
+			"paginasPracticadas":getEstado('paginasPracticadas')
 		})})
 	}
 	
-	var pagI = new createjs.Container();
+	pagI = new createjs.Container();
 	
 	esquina_salida = new createjs.Bitmap(loader.getResult("esquina"))
 	esquina_salida.addEventListener("click",volverAIndice)
@@ -509,7 +491,7 @@ function resumenEjercicio(volver=false,estrellas=false){
 	esquina_salida.y=9;
 	pagI.addChild(esquina_salida)
 	
-	var lista_estrellas=[]
+	lista_estrellas=[]
 	for(var i=0;i<estrellas;i++){
 		var estrella = new createjs.Bitmap(loader.getResult("estrella"))
 		estrella.regX=20;
@@ -520,96 +502,64 @@ function resumenEjercicio(volver=false,estrellas=false){
 		lista_estrellas.push(estrella)
 	}
 	
-	var progreso_nivel = new createjs.Bitmap(loader.getResult("progreso_nivel"))
-	progreso_nivel.regX=125;progreso_nivel.regY=125;
-	progreso_nivel.y=450;progreso_nivel.x=450
-	pagI.addChild(progreso_nivel)
+	var fondo_progreso_nivel = new createjs.Bitmap(loader.getResult("fondo_progreso_nivel"))
+	fondo_progreso_nivel.regX=125;fondo_progreso_nivel.regY=125;
+	fondo_progreso_nivel.y=451;fondo_progreso_nivel.x=449
+    fondo_progreso_nivel.scaleX=-1
+    iCache(fondo_progreso_nivel)
+	pagI.addChild(fondo_progreso_nivel)
+    
+	progreso_nivel1 = new createjs.Bitmap(loader.getResult("progreso_nivel"))
+	progreso_nivel1.regX=125;progreso_nivel1.regY=125;
+	progreso_nivel1.y=451;progreso_nivel1.x=451
+    iCache(progreso_nivel1)
+	pagI.addChild(progreso_nivel1)
+    
+	fondo_progreso_nivel = new createjs.Bitmap(loader.getResult("fondo_progreso_nivel"))
+	fondo_progreso_nivel.regX=125;fondo_progreso_nivel.regY=125;
+	fondo_progreso_nivel.y=451;fondo_progreso_nivel.x=451
+    iCache(fondo_progreso_nivel)
+	pagI.addChild(fondo_progreso_nivel)
+    
+	progreso_nivel2 = new createjs.Bitmap(loader.getResult("progreso_nivel"))
+	progreso_nivel2.regX=125;progreso_nivel2.regY=125;
+	progreso_nivel2.y=451;progreso_nivel2.x=451
+    progreso_nivel2.alpha=0
+    iCache(progreso_nivel2)
+	pagI.addChild(progreso_nivel2)
 	
-	estrellas_niveles[perfil.nivel-1]
-	var porcentaje_inicial=0;
-	if(perfil.nivel==1) porcentaje_inicial=perfil.estrellas/estrellas_niveles[perfil.nivel-1]
-	else porcentaje_inicial=(perfil.estrellas-estrellas_niveles[perfil.nivel-2])/(estrellas_niveles[perfil.nivel-1]-estrellas_niveles[perfil.nivel-2])
-	var s = new createjs.Shape().set({x:450,y:450});
-	s.graphics.ss(3).beginFill ("#433");
-	s.graphics.lt(0,0)
-	var arcCommand = s.graphics.arc(0,0,126,(porcentaje_inicial*360-90)*Math.PI/180,270*Math.PI/180).command;
-	pagI.addChild(s);
+	estrellas_niveles[getEstado('nivel')-1]
+	porcentaje_inicial=0;
+	if(getEstado('nivel')==1) porcentaje_inicial=getEstado('estrellas')/estrellas_niveles[getEstado('nivel')-1]
+	else porcentaje_inicial=(getEstado('estrellas')-estrellas_niveles[getEstado('nivel')-2])/(estrellas_niveles[getEstado('nivel')-1]-estrellas_niveles[getEstado('nivel')-2])
+    
+	if(porcentaje_inicial<0.5){
+        progreso_nivel1.rotation=360*porcentaje_inicial
+    }
+    else{
+        progreso_nivel1.rotation=180
+        progreso_nivel2.alpha=1
+        progreso_nivel2.rotation=360*porcentaje_inicial
+    }
 	
 	var esfera_nivel = new createjs.Bitmap(loader.getResult("esfera_nivel"))
 	esfera_nivel.regX=127;esfera_nivel.regY=127
 	esfera_nivel.y=450;esfera_nivel.x=450
+    iCache(esfera_nivel)
 	pagI.addChild(esfera_nivel)
 	
 	pagI.addChild(crearTextoLibro(textos["Nivel"],450,200,70))
-	var textoNivel=crearTextoLibro(perfil.nivel,450,370,100,'#fff');
+	textoNivel=crearTextoLibro(getEstado('nivel'),450,370,100,'#fff');
 	pagI.addChild(textoNivel)
 	
-	var textoEstrellas=txtLeft(crearTextoLibro(perfil.estrellas+"/"+(perfil.paginasPracticadas*5),750,50,40));
+	textoEstrellas=txtLeft(crearTextoLibro(getEstado('estrellas')+"/"+(getEstado('paginasPracticadas')*5),750,50,40));
 	
-	var mejorasDisponibles=perfil.nivel-perfil.dotesAprendidas-1;
-	var textoMejorasDisponibles=txtRight(crearTextoLibro(textos["Mejoras disponibles"]+": "+mejorasDisponibles,870,85,30));
+	mejorasDisponibles=getEstado('nivel')-getEstado('dotesAprendidas')-1;
+	textoMejorasDisponibles=txtRight(crearTextoLibro(textos["Mejoras disponibles"]+": "+mejorasDisponibles,870,85,30));
 
-	setTimeout(function(){
-		for(var i=0;i<lista_estrellas.length;i++) lanzaEstrella(lista_estrellas[i],i,pagI)
-		
-		perfil.estrellas+=estrellas
-		
-		textoEstrellas.text=perfil.estrellas+"/"+(perfil.paginasPracticadas*5) // Actualizamos el número de estrellas conseguidas
-		
-		if(perfil.estrellas<estrellas_niveles[perfil.nivel-1]){// No subimos de nivel
-			var porcentaje_final=0;
-			if(perfil.nivel==1) porcentaje_final=perfil.estrellas/estrellas_niveles[perfil.nivel-1]
-			else porcentaje_final=(perfil.estrellas-estrellas_niveles[perfil.nivel-2])/(estrellas_niveles[perfil.nivel-1]-estrellas_niveles[perfil.nivel-2])
-			
-			createjs.Tween.get(arcCommand).to({startAngle:(porcentaje_final*360-90)*Math.PI/180}, 1000); 
-		}
-		else{
-	
-			createjs.Tween.get(arcCommand).to({startAngle:270*Math.PI/180}, 1000).call(function(){
-				perfil.nivel++;
-				
-				playMusic("11nivel",0);
-				setTimeout(function(){
-					if(libroAbierto) playMusic("7libro");
-				},6000)
-				
-				mejorasDisponibles=perfil.nivel-perfil.dotesAprendidas-1;
-				textoMejorasDisponibles.text=textos["Mejoras disponibles"]+": "+mejorasDisponibles;
-				for(var i in dotesEncontradas){
-					dotesEncontradas[i].setStrokeColor("#ff0000")
-					dotesEncontradas[i].setStrokeStyle(2)
-				}
-	
-				subirNivel()
-				if(estado.primeraSubida){
-					estado.primeraSubida=false;
-					
-					dialogo.alpha=0;
-					setTimeout(function(){
-						iniciaDialogo("primeraSubida")
-					},1000)
-					
-					var animSpeed=500;
-					var ease=createjs.Ease.getPowOut(2);
-					createjs.Tween.get(dialogo).to({ alpha: 1 },animSpeed,ease)
-				}
-				
-				createjs.Tween.get(textoNivel).to({alpha:0}, 300).call(function(){
-					textoNivel.text=perfil.nivel
-					createjs.Tween.get(textoNivel).to({alpha:1}, 300)
-				}); 
-				
-				pagI.addChild(crearTextoLibro(textos["¡Nivel alcanzado!"],450,600,50))
-				
-				var porcentaje_final=0;
-				if(perfil.nivel==1) porcentaje_final=perfil.estrellas/estrellas_niveles[perfil.nivel-1]
-				else porcentaje_final=(perfil.estrellas-estrellas_niveles[perfil.nivel-2])/(estrellas_niveles[perfil.nivel-1]-estrellas_niveles[perfil.nivel-2])
-			
-				arcCommand.startAngle=-90*Math.PI/180
-				createjs.Tween.get(arcCommand).to({startAngle:(porcentaje_final*360-90)*Math.PI/180}, 1000); 
-			}); 
-		}
-	},500)
+	if(estrellas) setTimeout(function(){
+        animateLevelUp(estrellas)
+    },500)
 	
 	var pagD = new createjs.Container();
 	
@@ -664,6 +614,7 @@ function resumenEjercicio(volver=false,estrellas=false){
 					var circulo = new createjs.Shape();
 					circulo.graphics.beginFill("#fff").beginStroke("#742").drawCircle(0,0,15);
 					circulo.x=b.boton.x+70;circulo.y=b.boton.y+70
+                    iCache(circulo)
 					pagD.addChild(circulo)
 	
 					pagD.addChild(crearTextoLibro(aprendidas[j].aprendido,b.boton.x+70,b.boton.y+55,20))
@@ -693,6 +644,7 @@ function resumenEjercicio(volver=false,estrellas=false){
 					var circulo = new createjs.Shape();
 					circulo.graphics.beginFill("#fff").beginStroke("#742").drawCircle(0,0,15);
 					circulo.x=b.boton.x+70;circulo.y=b.boton.y+70
+                    iCache(circulo)
 					pagD.addChild(circulo)
 	
 					pagD.addChild(crearTextoLibro(1+encontradas[j].aprendido,b.boton.x+70,b.boton.y+55,20))
@@ -705,7 +657,7 @@ function resumenEjercicio(volver=false,estrellas=false){
 		}
 	}
 	
-	if(perfil.paginasEncontradas>perfil.paginasPracticadas){
+	if(getEstado('paginasEncontradas')>getEstado('paginasPracticadas')){
 		var boton = new createjs.Container();
 		boton.x=550
 		boton.y=900
@@ -731,6 +683,121 @@ function resumenEjercicio(volver=false,estrellas=false){
 	if(volver===true) pasarPaginaIzquierda(pagI,pagD)
 	else pasarPaginaDerecha(pagI,pagD)
  } 
+ 
+ function animateLevelUp(estrellas){
+    for(var i=0;i<lista_estrellas.length;i++) lanzaEstrella(lista_estrellas[i],i,pagI)
+        
+    estado.estrellas=getEstado('estrellas')+estrellas
+    
+    textoEstrellas.text=getEstado('estrellas')+"/"+(getEstado('paginasPracticadas')*5) // Actualizamos el número de estrellas conseguidas
+    iCache(textoEstrellas)
+    
+    var tiempoAnimacion=1000
+    
+    if(getEstado('estrellas')<estrellas_niveles[getEstado('nivel')-1]){// No subimos de nivel
+        porcentaje_final=0;
+        if(getEstado('nivel')==1) porcentaje_final=getEstado('estrellas')/estrellas_niveles[getEstado('nivel')-1]
+        else porcentaje_final=(getEstado('estrellas')-estrellas_niveles[getEstado('nivel')-2])/(estrellas_niveles[getEstado('nivel')-1]-estrellas_niveles[getEstado('nivel')-2])
+        
+        if(porcentaje_final>0.5){
+            if(porcentaje_inicial>0.5){
+                createjs.Tween.get(progreso_nivel2).to({rotation:porcentaje_final*360}, tiempoAnimacion/2); 
+            }
+            else{
+                var t1=tiempoAnimacion*(0.5-porcentaje_inicial)/(porcentaje_final-porcentaje_inicial)
+                var t2=tiempoAnimacion*(porcentaje_final-0.5)/(porcentaje_final-porcentaje_inicial)
+                createjs.Tween.get(progreso_nivel1).to({rotation:180}, t1).call(function(){
+                    progreso_nivel2.alpha=1
+                    progreso_nivel2.rotation=180
+                    createjs.Tween.get(progreso_nivel2).to({rotation:porcentaje_final*360}, t2); 
+                }); 
+            }
+        }
+        else{
+            createjs.Tween.get(progreso_nivel1).to({rotation:porcentaje_final*360}, tiempoAnimacion/2); 
+        }
+        
+    }
+    else{
+        estado.nivel=getEstado('nivel')+1;
+        porcentaje_final=(getEstado('estrellas')-estrellas_niveles[getEstado('nivel')-2])/(estrellas_niveles[getEstado('nivel')-1]-estrellas_niveles[getEstado('nivel')-2])
+        
+        var t3=tiempoAnimacion*(1-porcentaje_inicial)/(porcentaje_final+1-porcentaje_inicial)
+        var t4=tiempoAnimacion*(porcentaje_final)/(porcentaje_final+1-porcentaje_inicial)
+        
+        if(porcentaje_inicial>0.5){
+            createjs.Tween.get(progreso_nivel2).to({rotation:porcentaje_final*360}, t3).call(function(){
+                subirNivel(t4,porcentaje_final)
+            })
+        }
+        else{
+            var t1=t3*(0.5-porcentaje_inicial)/(1-porcentaje_inicial)
+            var t2=t3*(1-0.5)/(1-porcentaje_inicial)
+            createjs.Tween.get(progreso_nivel1).to({rotation:180}, t1).call(function(){
+                progreso_nivel2.alpha=1
+                progreso_nivel2.rotation=180
+                createjs.Tween.get(progreso_nivel2).to({rotation:360}, t2).call(function(){
+                    subirNivel(t4,porcentaje_final)
+                })
+            }); 
+        }
+    }
+}
+ 
+function subirNivel(tiempo,porcentaje_final){
+    progreso_nivel2.alpha=0
+    progreso_nivel1.rotation=0
+    
+    playMusic("11nivel",0);
+    setTimeout(function(){
+        if(libroAbierto) playMusic("7libro");
+    },6000)
+    
+    mejorasDisponibles=getEstado('nivel')-getEstado('dotesAprendidas')-1;
+    textoMejorasDisponibles.text=textos["Mejoras disponibles"]+": "+mejorasDisponibles;
+    iCache(textoMejorasDisponibles)
+    for(var i in dotesEncontradas){
+        dotesEncontradas[i].setStrokeColor("#ff0000")
+        dotesEncontradas[i].setStrokeStyle(2)
+    }
+
+    actualizarNivel()
+    if(getEstado('primeraSubida')){
+        estado.primeraSubida=false;
+        
+        dialogo.alpha=0;
+        setTimeout(function(){
+            iniciaDialogo("primeraSubida")
+        },1000)
+        
+        var animSpeed=500;
+        var ease=createjs.Ease.getPowOut(2);
+        createjs.Tween.get(dialogo).to({ alpha: 1 },animSpeed,ease)
+    }
+    
+    createjs.Tween.get(textoNivel).to({alpha:0}, 300).call(function(){
+        textoNivel.text=getEstado('nivel')
+        iCache(textoNivel)
+        createjs.Tween.get(textoNivel).to({alpha:1}, 300)
+    }); 
+    
+    pagI.addChild(crearTextoLibro(textos["¡Nivel alcanzado!"],450,600,50))
+    
+
+    progreso_nivel1.rotation=0
+    progreso_nivel2.alpha=0
+    if(porcentaje_final>0.5){
+        var t1=tiempo*0.5/porcentaje_final
+        var t2=tiempo*(porcentaje_final-0.5)/porcentaje_final
+        createjs.Tween.get(progreso_nivel1).to({rotation:180}, t1).call(function(){
+            progreso_nivel2.alpha=1
+            progreso_nivel2.rotation=180
+            createjs.Tween.get(progreso_nivel2).to({rotation:porcentaje_final*360}, t2); 
+        }); 
+    }
+    else createjs.Tween.get(progreso_nivel1).to({rotation:porcentaje_final*360}, tiempo); 
+    
+}
  
  function lanzaEstrella(estrella,i,pagI){
 	setTimeout(function(){
@@ -758,6 +825,7 @@ function verDote(evt){
 	
 	var texto_desc=crearTextoLibro(textos[evt.target.dote+"_desc"],450,700,40)
 	texto_desc.lineWidth=700;
+    iCache(texto_desc)
 	pagD.addChild(texto_desc)
 	
 	var icono = new createjs.Sprite(iconos_dotes);
@@ -766,15 +834,15 @@ function verDote(evt){
 	icono.y=500
 	pagD.addChild(icono)
 	
-	if(dote.aprendido<dote.encontrado && perfil.dotesAprendidas<(perfil.nivel-1)){
+	if(dote.aprendido<dote.encontrado && getEstado('dotesAprendidas')<(getEstado('nivel')-1)){
 		var boton = new createjs.Container();
 		boton.x=200
 		boton.y=800
 		pagD.addChild(boton)
 		boton.addChild(creaBotonLibro(500,100,function(){
-			perfil.dotesAprendidas++
+			estado.dotesAprendidas=getEstado('dotesAprendidas')+1
 			dote.aprendido++
-			subirNivel()
+			actualizarNivel()
 			resumenEjercicio(true)
 		}))
 		boton.addChild(crearTextoLibro(textos["Mejorar habilidad"],250,25))
@@ -783,22 +851,14 @@ function verDote(evt){
 	var pags=pasarPaginaDerecha(pagI,pagD)
 }
 
-function subirNivel(){
-	/*perfil.velocidad=90+perfil.nivel*10+dotes["Movimiento ágil"].aprendido*80
-	spirit.velocidad=perfil.velocidad
+function actualizarNivel(){
+	estado.velocidad=120+dotes["Movimiento ágil"].aprendido*100
+	spirit.velocidad=getEstado('velocidad')
 	
-	perfil.ataque=3+perfil.nivel*2+dotes["Ataque potenciado"].aprendido*15
+	estado.ataque=game_values.ataqueBase+dotes["Ataque potenciado"].aprendido*game_values.subidasAtaque
 	
-	perfil.aura=180+perfil.nivel*20+dotes["Aura ampliada"].aprendido*100
-	barra_energia.x=1780-perfil.aura;*/
-	
-	perfil.velocidad=120+dotes["Movimiento ágil"].aprendido*100
-	spirit.velocidad=perfil.velocidad
-	
-	perfil.ataque=game_values.ataqueBase+dotes["Ataque potenciado"].aprendido*game_values.subidasAtaque
-	
-	perfil.aura=200+dotes["Aura ampliada"].aprendido*100
-	barra_energia.x=1780-perfil.aura;
+	estado.aura=200+dotes["Aura ampliada"].aprendido*100
+	barra_energia.x=1780-getEstado('aura');
 }
 
 
@@ -807,20 +867,16 @@ function subirNivel(){
 				UTILIDADES
 					
  *********************************************************/
-
- function creaLinea(x1,y1,x2,y2,color='#000'){
-	var linea = new createjs.Shape();
-	linea.graphics.setStrokeStyle(1).beginStroke(color).moveTo(x1,y1).lineTo(x2,y2);
-	return linea;
- }
  
  function txtLeft(texto){
 	texto.textAlign='left';
+    iCache(texto)
 	return texto
  }
  
  function txtRight(texto){
 	texto.textAlign='right';
+    iCache(texto)
 	return texto
  }
 
@@ -832,17 +888,20 @@ function BotonLibro(x,y,ancho,alto,accion){
 	this.boton = new createjs.Shape();
 	this.boton.object=this;
 	this.boton.graphics.setStrokeStyle(this.strokeStyle).beginStroke(this.strokeColor).beginFill("rgba(255,255,255,0.2)").drawRoundRect(0,0,ancho,alto,20);
+    iCache(this.boton)
 	this.boton.cursor='pointer';
 	this.boton.addEventListener("mouseover",function(evt){
 		if(evt.target.mouseEnabled){
 			if(evt.target.object.hideIfOut) evt.target.object.boton.alpha=1;
 			evt.target.graphics.clear().setStrokeStyle(evt.target.object.strokeStyle).beginStroke(evt.target.object.strokeColor).beginFill("rgba(255,255,255,0.9)").drawRoundRect(0,0,ancho,alto,20);
-		}
+            iCache(evt.target)
+        }
 	})
 	this.boton.addEventListener("mouseout",function(evt){
 		if(evt.target.mouseEnabled){
 			if(evt.target.object.hideIfOut) evt.target.object.boton.alpha=0.03;
 			evt.target.graphics.clear().setStrokeStyle(evt.target.object.strokeStyle).beginStroke(evt.target.object.strokeColor).beginFill("rgba(255,255,255,0.4)").drawRoundRect(0,0,ancho,alto,20);
+            iCache(evt.target)
 		}
 	})
 	this.boton.addEventListener("click",accion)
@@ -857,24 +916,31 @@ function BotonLibro(x,y,ancho,alto,accion){
 	this.setStrokeColor=function(color){
 		this.strokeColor=color;
 		this.boton.graphics.clear().setStrokeStyle(1).beginStroke(this.strokeColor).beginFill("rgba(255,255,255,0.2)").drawRoundRect(0,0,ancho,alto,20);
+        iCache(this.boton)
 	}
 	this.setStrokeStyle=function(style){
 		this.strokeStyle=style;
 		this.boton.graphics.clear().setStrokeStyle(this.strokeStyle).beginStroke(this.strokeColor).beginFill("rgba(255,255,255,0.2)").drawRoundRect(0,0,ancho,alto,20);
+        iCache(this.boton)
 	}
 }
  
 function creaBotonLibro(ancho,alto,accion){
 	var boton = new createjs.Shape();
 	boton.graphics.setStrokeStyle(1).beginStroke("#000000").beginFill("rgba(255,255,255,0.2)").drawRoundRect(0,0,ancho,alto,20);
+    iCache(boton)
 	boton.cursor='pointer';
 	boton.addEventListener("mouseover",function(evt){
-		if(evt.target.mouseEnabled)
+		if(evt.target.mouseEnabled){
 			evt.target.graphics.clear().setStrokeStyle(1).beginStroke("#000000").beginFill("rgba(255,255,255,0.9)").drawRoundRect(0,0,ancho,alto,20);
+            iCache(evt.target)
+        }
 	})
 	boton.addEventListener("mouseout",function(evt){
-		if(evt.target.mouseEnabled)
+		if(evt.target.mouseEnabled){
 			evt.target.graphics.clear().setStrokeStyle(1).beginStroke("#000000").beginFill("rgba(255,255,255,0.4)").drawRoundRect(0,0,ancho,alto,20);
+            iCache(evt.target)
+        }
 	})
 	boton.addEventListener("click",accion)
 	return boton
