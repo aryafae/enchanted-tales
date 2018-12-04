@@ -237,6 +237,7 @@ function stageMouseUp(evt){
     var y=evt.stageY
     
     var minDist=1000000000000000000000000000
+    var currentPoint=false
     for(var point in touchPoints){
         var dist=Math.abs(touchPoints[point].x-x)+Math.abs(touchPoints[point].y-y)
         if(minDist>dist){
