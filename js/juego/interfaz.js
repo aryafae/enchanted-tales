@@ -910,7 +910,7 @@ function resize() {
     if(webGL) stage.updateViewport(w,h)
 	//console.log(window.innerWidth)
     
-    pixelartScale=Math.ceil(h/300)
+    pixelartScale=Math.ceil(h/400)
         
     scene.scaleX=pixelartScale
     scene.scaleY=pixelartScale
@@ -1211,6 +1211,9 @@ function iCache(item){
         height=sizes[s]
         break;
     }
+    
+    if(width>height) height=width;
+    else width=height;
     //if(item.test) alert(x+"/"+y+"/"+width+"/"+height)
     item.cache(x,y,width,height,1,["stageGL"])
 }
