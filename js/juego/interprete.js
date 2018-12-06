@@ -1378,9 +1378,9 @@ function tick(event) {
 		//testLayers['character_layer'].setChildIndex(spirit,testLayers['character_layer'].numChildren-1)
 		
 	}
-    //vari++
+    vari++
 	//frameRate.text="("+joystic.x+"x"+joystic.y+" - "+vari+") - "+Math.round(createjs.Ticker.getMeasuredFPS());
-    ////iCache(frameRate)
+    //iCache(frameRate)
 	//frameRate.text=canvasWidth+" - "+sy;
     
     

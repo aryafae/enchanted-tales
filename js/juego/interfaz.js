@@ -42,19 +42,24 @@ var libro={}
 
 var configObjetos
 var inicio_partida=new Date() // Para pruebas beta
-
-
-function init() {
-
+ 
+function onDeviceReady() {
+    // Cocoon Canvas+ code here
     queue = new createjs.LoadQueue();
     queue.on("complete", initialize, this);
     queue.loadFile({id:"portada_libro", src:"img/juego/portada_libro.png"});
-
 }
+
+if (navigator.isCocoonJS)
+    document.addEventListener("deviceready", onDeviceReady, false);
+else window.onload=onDeviceReady
 
 var webGL=1
 var stage
 function initialize(){
+    if (navigator.isCocoonJS) {
+        CocoonJS.App.setAntialias(true);
+    }
     
     pixelScale=1;
 	
@@ -1212,8 +1217,8 @@ function iCache(item){
         break;
     }
     
-    if(width>height) height=width;
-    else width=height;
+    //if(width>height) height=width;
+   // else width=height;
     //if(item.test) alert(x+"/"+y+"/"+width+"/"+height)
     item.cache(x,y,width,height,1,["stageGL"])
 }
