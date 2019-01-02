@@ -40,6 +40,23 @@ function preparaEscenario(){
 	dialogos=textos_actuales.dialogos
 	lecciones=textos_actuales.lecciones
     
+    
+    // Para la demo del segundo nivel invertimos el mapa
+    if(desarrollo_nivel==2){
+        map2=[]
+        mapa_caminos2=[]
+        for (var row=0; row<map_width; row++) {
+            map2[row]=[]
+            mapa_caminos2[row]=[]
+            for (var col=0; col<map_height; col++) {
+                map2[row][col]=map[col][row];
+                mapa_caminos2[row][col]=Math.abs(mapa_caminos[col][row]-1);
+            }
+        }
+        map=map2
+        mapa_caminos=mapa_caminos2
+    }
+    
     preguntas_base=JSON.stringify(preguntas)
     mapa_caminos_base=JSON.stringify(mapa_caminos)
 	
@@ -205,7 +222,7 @@ function stageMouseMove(evt){
         touchPoints[currentPoint].x=x
         touchPoints[currentPoint].y=y
         
-        var distance=dist({'x':touchPoints[currentPoint].originX,'y':touchPoints[currentPoint].originY},{'x':x,'y':y})
+        var distance=getDistance({'x':touchPoints[currentPoint].originX,'y':touchPoints[currentPoint].originY},{'x':x,'y':y})
         if(distance/capa_interfaz_izquierdo.scaleY>70){
             var difX=(x-touchPoints[currentPoint].originX)
             var difY=(y-touchPoints[currentPoint].originY)
@@ -290,15 +307,14 @@ function stageMouseUp(evt){
                 return
             }
         }
-        
-	else if(hechizo_actual=="hechizo_escudo"){
-		actualizaEnergia(-100-dotes["Escudo potenciado"].aprendido*20)
-		lanzaEscudo(actor)
-	}
+        else if(hechizo_actual=="hechizo_escudo"){
+            actualizaEnergia(-100-dotes["Escudo potenciado"].aprendido*20)
+            lanzaEscudo(actor)
+        }
     
         // Disparamos si no hemos hecho ninguna otra acción antes
-        var dist=Math.abs(touchPoints[currentPoint].originX-x)+Math.abs(touchPoints[currentPoint].originY-y)
-        if(dist<70 && touchPoints[currentPoint].start+800>(new Date().getTime())){
+        var dist_medida=Math.abs(touchPoints[currentPoint].originX-x)+Math.abs(touchPoints[currentPoint].originY-y)
+        if(dist_medida<70 && touchPoints[currentPoint].start+800>(new Date().getTime())){
             x=(x-scene.x)/pixelartScale
             y=(y-scene.y)/pixelartScale
             var objetivo=0
@@ -307,7 +323,7 @@ function stageMouseUp(evt){
                 var min_distancia=32*pixelScale+1
                 for(var i in monster_list){
                     var child=monster_list[i]
-                    var distancia=dist({"x":child.x+16*pixelScale,"y":child.y+16*pixelScale},{"x":x,"y":y})
+                    var distancia=getDistance({"x":child.x+16*pixelScale,"y":child.y+16*pixelScale},{"x":x,"y":y})
                     if(distancia<min_distancia){
                         objetivo=child
                         min_distancia=distancia
@@ -340,17 +356,25 @@ function stageMouseUp(evt){
 
 function cargaElementosIniciales(){
 	for(var i in elementos_escena)
-		createElemento(elementos_escena[i].id,elementos_escena[i].nombre,elementos_escena[i].x,elementos_escena[i].y)
+        createElemento(elementos_escena[i].id,elementos_escena[i].nombre,elementos_escena[i].x,elementos_escena[i].y)
 	
 	for(var i in monsters)
 		createMonster(monsters[i].id,monsters[i].nombre,monsters[i].x,monsters[i].y)
 	
 	for(var i in characters)
-		createCharacter(characters[i].id,characters[i].nombre,characters[i].x,characters[i].y)
+        if(characters[i].nombre=='spirit'){
+            // Si es el espíritu, usamos su punto de origen
+            initial_pos[0]=characters[i].x
+            initial_pos[1]=characters[i].y
+        }
+		else createCharacter(characters[i].id,characters[i].nombre,characters[i].x,characters[i].y)
 	
 	createSpirit(initial_pos[0],initial_pos[1])
-		
 	//pantalla_de_juego.cache(0,0,1920,1080);
+    
+    frameRate.text=spirit.map_x+"x"+spirit.map_y+" - "+mapa_caminos[spirit.map_x][spirit.map_y]
+    iCache(frameRate)
+    
 }
 
 function createElemento(id,nombre,map_x,map_y,activo=1){	
@@ -795,7 +819,7 @@ function actualizaEnergia(variacion){
 }
 
 function disparaBala(bala,target,velocidad=300){
-	var distancia=dist(bala,target)
+	var distancia=getDistance(bala,target)
 	
 	bala.velocidad=velocidad
 	bala.velx=(target.x-bala.x)*velocidad/distancia
@@ -831,6 +855,7 @@ function abreJuego() {
 	libroAbierto=false;
 	playMusic("3exploracion");
 	pantalla_de_juego.uncache();
+    
 	
 	if(!getEstado('juegoAbierto')){
 		if(dialogo_inicio) iniciaDialogo("inicio")
@@ -865,7 +890,7 @@ function testClickHandler(evt){
                 var min_distancia=32*pixelScale+1
                 for(var i in monster_list){
                     var child=monster_list[i]
-                    var distancia=dist({"x":child.x+16*pixelScale,"y":child.y+16*pixelScale},{"x":x,"y":y})
+                    var distancia=getDistance({"x":child.x+16*pixelScale,"y":child.y+16*pixelScale},{"x":x,"y":y})
                     if(distancia<min_distancia){
                         objetivo=child
                         min_distancia=distancia
@@ -972,7 +997,7 @@ function tick(event) {
 			var velocidad=80
 			if(dotes["Atraer partículas"].aprendido) velocidad=150
 			var target={x:spirit.x+15*pixelScale,y:spirit.y+11*pixelScale};
-			var distancia=dist(brillo,target)
+			var distancia=getDistance(brillo,target)
 			
 			if(distancia > 10){
 				brillo.x+=event.delta/1000*(target.x-brillo.x)*velocidad/distancia*(pixelScale/2)
@@ -1000,7 +1025,7 @@ function tick(event) {
 				var dest_x=bala.seguir.x+((bala.seguir.size==2)?32:16)*pixelScale
 				var dest_y=bala.seguir.y+((bala.seguir.size==2)?32:16)*pixelScale
 				var target={'x':dest_x,'y':dest_y}
-				var distancia=dist(bala,target)
+				var distancia=getDistance(bala,target)
 				bala.velx=(target.x-bala.x)*bala.velocidad/distancia
 				bala.vely=(target.y-bala.y)*bala.velocidad/distancia
 				bala.espera_giro=100;
@@ -1282,7 +1307,7 @@ function tick(event) {
 				var dest_y=actor.camino.ruta[0].y*32*pixelScale;
 				
 				// Calculamos la distancia
-				var distancia=dist(actor,{'x':dest_x,'y':dest_y})
+				var distancia=getDistance(actor,{'x':dest_x,'y':dest_y})
 				
 				if(actor.walker){
 					var direccion=getDireccion(actor,dest_x,dest_y)
@@ -1419,7 +1444,7 @@ function controlTeclado(event){
 	}
 	else if(moveLeft) spirit.x-=event.delta/1000*spirit.velocidad*(pixelScale/2)
 	else if(moveRight) spirit.x+=event.delta/1000*spirit.velocidad*(pixelScale/2)
-		
+    
 	// Controlamos no salirnos a una zona bloqueada
 	if(mapa_caminos[spirit.map_x-1][spirit.map_y]==0) 
 		if(spirit.x<(spirit.map_x*32-8)*pixelScale) spirit.x=(spirit.map_x*32-8)*pixelScale
@@ -1451,7 +1476,7 @@ function controlTeclado(event){
 		var child=testLayers['character_layer'].getChildAt(i)
 		if(child!=spirit && child.activo){
 			if(child.size==2 && Math.abs(child.map_x+1-spirit.map_x)<2 && Math.abs(child.map_y-spirit.map_y)<2){
-				var distancia=dist({'x':child.x+32*pixelScale,'y':child.y},spirit)
+				var distancia=getDistance({'x':child.x+32*pixelScale,'y':child.y},spirit)
 				if(distancia<min_distancia){
 					cercano=child
 					min_distancia=distancia
@@ -1459,7 +1484,7 @@ function controlTeclado(event){
 			}
 
 			if(Math.abs(child.map_x-spirit.map_x)<2 && Math.abs(child.map_y-spirit.map_y)<2){
-				var distancia=dist(child,spirit)
+				var distancia=getDistance(child,spirit)
 				if(distancia<min_distancia){
 					cercano=child
 					min_distancia=distancia
@@ -1570,7 +1595,7 @@ function llegaObjetivo(actor){
 		if(actor.walker) actor.walker.gotoAndStop("back")
 	}
 
-	if(dist(spirit,party[0])>pixelScale*32*4){
+	if(getDistance(spirit,party[0])>pixelScale*32*4){
         stage.update();
         capturaPantalla()
         guardarPartida("autosave",screenShot)
@@ -1597,7 +1622,7 @@ function getDireccion(actor, dest_x, dest_y){
 }
 
 function sigueEspiritu(){
-	if(!getEstado('mensajeEsperame') && dist(spirit,party[0])>pixelScale*32*5){
+	if(!getEstado('mensajeEsperame') && getDistance(spirit,party[0])>pixelScale*32*5){
         stage.update();
         capturaPantalla()
         guardarPartida("autosave",screenShot)
@@ -1642,20 +1667,23 @@ function drawTestMap(){
         testLayers['map_layer'].addChild(supertiles[i]);
     }
     
+    
 	for (var row=0; row<map_width; row++) {
 		for (var col=0; col<map_height; col++) {
             var supertile=Math.floor(row/25)*4+Math.floor(col/25)
             var x=(col%25)*32
             var y=(row%25)*32
-			if(typeof map[col][row] == "number" && map[col][row]>0){
-				var idx = map[col][row] - 1;
-				
-				var tile = new createjs.Sprite(tilemaptest);
-				tile.gotoAndStop(idx);
-				tile.x = x
-				tile.y = y
-				supertiles[supertile].addChild(tile);
+			if(typeof map[col][row] == "number"){
+                if(map[col][row]>0){
+                    var idx = map[col][row] - 1;
+                    var tile = new createjs.Sprite(tilemaptest);
+                    tile.gotoAndStop(idx);
+                    tile.x = x
+                    tile.y = y
+                    supertiles[supertile].addChild(tile);
+                }
 			}
+            else if(map[col][row]==undefined){}
 			else for (var tile_level=0; tile_level<map[col][row].length; tile_level++) if(map[col][row][tile_level]){
 				var idx = map[col][row][tile_level] - 1;
 				
@@ -1736,7 +1764,7 @@ function createCharacterImage(pj){
 	return pj;
 }
 
-function dist(a,b){
+function getDistance(a,b){
 	return Math.sqrt(Math.pow(a.x-b.x,2)+Math.pow(a.y-b.y,2));
 }
 

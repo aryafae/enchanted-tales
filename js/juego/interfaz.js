@@ -20,6 +20,8 @@ var game_values={
 	subidasAtaque:20,
 }
 
+var desarrollo_nivel=1;
+
 window.onerror = function (msg, url, lineNo, columnNo, error) {
   if (error) alert(error.stack)
 
